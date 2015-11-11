@@ -1,0 +1,143 @@
+---
+layout: post
+status: publish
+published: true
+title: Linked Data, website as API and URI fragility
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: The document web Back in 1998 Tim Berners-Lee published a W3C style guide
+  with the title Cool URIs don't change. Probably everyone reading this has read that
+  but if not there's no better time than now. Cool URIs was a plea for web developers
+  to de...
+wordpress_id: 34518552
+wordpress_url: http://smethur.st/linked-data-website-as-api-and-uri-fragility
+date: '2010-11-25 00:00:00 +0000'
+date_gmt: '2010-11-25 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 26
+  author: karl
+  author_email: ''
+  author_url: http://www.la-grange.net/karl/
+  date: ''
+  date_gmt: ''
+  content: 'You said: &quot;URIs have become part of the furniture of the real world,
+    like corporate graffiti tags. I''m typing this on a tube train and every poster
+    at this end of the carriage features a URI in some shape.&quot;The metaphor is
+    a little bit off. Basically yes you are right in the physical world (everything
+    is real, the difference is more digital-physical), things change too. The poster
+    in the carriage is content (aka the representation served to you), but this is
+    not the URI. The URI in the carriage in this case is the pointer which led to
+    this poster. It could be for example &quot;carriage XZ345-window AXV&quot; This
+    is the identifier, the URI. The content can change it is no issue. Now the URI
+    helps you to designate and draws an expectation, at this URI, I''m used to read
+    this or that. Example in the physical world. At this address, 123 Smith Street,
+    etc. (URI = identifier), there is a shop (representation) which sells bread. Maybe
+    one day the shop will be replaced by a fisher place and you break the expectation
+    of the usual person coming here. You break URIs when you do not handle it anymore.
+    Exemple an urban architect redesign the city, and the street completely disappears,
+    where one day the street was here, the next year no more than a big factory on
+    what was one day a street. The important is not that the street disappeared, but
+    that the name of the street disappeared. The History books of the city or the
+    streets around could display a 410 Gone (Here was Smith Street).'
+- id: 27
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Hi KarlThanks for your comment. Although I have to admit I'm not quite
+    sure I understand it... My comment about posters on tube trains wasn't meant to
+    be a metaphor; just a statement that many promotional channels now include a something.something-expected/something-else
+    sign by default. Usually to signify (i) we're part of the modern world and (ii)
+    if you have web access you can type this into your browser and get some html.
+    But it wasn't an metaphor for any kind of real-world object / non-information
+    resource malarkey. Or anything else...But running with your point I'd say if &quot;carriage
+    XZ345-window AXV&quot; did exist as an identifier in any Transport for London
+    system it would identify the poster slot not the poster. Similarly, some advertising
+    agency might have identifiers somewhere for a campaign and a poster design from
+    the campaign and a print run for a tweaked version of that poster and the exact
+    same poster i was looking at. It just happens that the thing in the poster slot
+    at the time I looked was that item. The same poster item could, in the future,
+    move to a different slot in a different carriage but it's still the same poster;
+    it's moved to a different slot with a different slot identifier but its own identifier
+    remains the same. But that's about a physical thing occupying a physical space;
+    both space and thing can have separate identifiers...Same point with your shop
+    / address analogy. There's a physical space that happens to have a postal address.
+    Currently occupying that address is a building. Currently occupying the building
+    is a shop. You could take the address to be an identifier for the shop, the building
+    or the physical place. In reality they could all have separate identifiers. Whether
+    the thing identified by the address changes if the bread shop moves or closes
+    or even if the building gets demolished and rebuilt depends on what you think
+    the address denotes. But I'd argue against the analogy that the shop is the &quot;representation&quot;
+    of the address or the building a &quot;representation&quot; of the physical space...Suspect
+    you can disappear down as many semantic / semiotic rabbit holes as you choose
+    but even the rabbit holes have rabbit holes. And none of this really answers the
+    2 points i was trying to make:- that there is a set of animals commonly and biologically
+    understood to be single species. Different cultures label the species differently.
+    Which leads to lots of edits and re-edits of the label. Because of the way Wikipedia
+    works every label edit changes the URI. Because of the way DBpedia works every
+    label edit changes the URI of the non-information resource, the information resource,
+    the HTML representation and the RDF representation. It's not about the thing identified
+    by the URI changing; it's about the URI changing because of an change to one property
+    (the label) of the thing identified. Which is brittle and breaks things- traditionally
+    HTML views and data views have been separate. The data view / API world has tended
+    to put more emphasis on URI stability than the HTML world where a degree of brittleness
+    is tolerated. Given Linked Data's emphasis on conneg to serve different representations
+    of the same information resource from the same URI we need to ensure that URI
+    stability is seen to be important in the HTML world. And we have product owners
+    and business owners and marketeers etc to convince
+- id: 28
+  author: karl
+  author_email: ''
+  author_url: http://www.la-grange.net/karl/
+  date: ''
+  date_gmt: ''
+  content: ah misunderstanding from me. We violently agree in your clarification.
+    For the marketing partâ€¦ the economic infrastructure and organization of most
+    Web agencies (I worked a few times in Web agencies) make the Web something which
+    is more on the side of ephemeral (unfortunately). All cases will arise, there
+    will be organizations for which the stability matters and for some where it will
+    never be the case. Here insert a long discussions about the world we want to live
+    in ;)Thanks for the clarification.
+- id: 29
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Hi KarlGood to hear. Admit I was vaguely puzzled by what exactly we were
+    disagreeing on :-)And thanks again for the comment. My reply was probably closer
+    to (and less long winded than) the point I was trying to make in the original
+    post. And didn't include the frankly awful phrase &quot;document web&quot; &lt;
+    I've no idea why I ever typed that :-)
+---
+<div class="section">
+<h2>The document web</h2>
+<p>Back in 1998 Tim Berners-Lee published a W3C style guide with the title <a href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don't change</a>. Probably everyone reading this has read that but if not there's no better time than now.</p>
+<p>Cool URIs was a plea for web developers to design HTTP URIs for persistence and addressed many of the potential pitfalls regularly encountered en route (site redesigns, URIs mapped to file and folder structures, URIs exposing technology stacks that change over time etc).</p>
+<p>By this stage in web history most developers and designers (or most of the ones I know) have experienced what goes wrong when URIs change. Users follow links and get 404s or out of date information from unmaintained pages, people's bookmarks break, inbound links break, search engine equity built up over years from inbound links leaks all over the carpet. Uncool URIs don't make the web die, but they do make it whimper slightly. From a less self-interested perspective broken links also break accountability. If your site contains something people disagree with / object to, they can write their own page and link to / cite your original piece. If your URI changes it's not just a link lost to the web, it's a link lost in the chain of accountability and public discourse.</p>
+<p>But, but, but in real life URIs do change. Usually because it's not just the developers and designers who have a say. URIs have become part of the furniture of the real world, like corporate graffiti tags. I'm typing this on a tube train and <em>every poster</em> at this end of the carriage features a URI in some shape. There are URIs read out on radio programmes, plastered across the sides of buses, on mugs, on t-shirts, on beers mats, on screen at the end of TV programmes. URIs are common currency and almost everywhere outside the rarified sphere of web developers and designers they're seen as labels, not identifiers. And labels change. If the world were run by a benevolent cabal of web devs I'm pretty sure that 95% of URIs would be cool. Unfortunately it's not and important people occasionally demand changes. Which usually results in web devs attempting to wrangle redirect files with the complexity of a less reader friendly Ulysses.</p>
+<p>I don't want to go too deep into the ever popular URIs should be human readable arguments because it always ends up going in circles and no-one ever agrees. But in the context of persistence human readable URIs are a problem because labels change. And some things have different labels in different cultural contexts (before you even get to different languages). The current canonical example amongst my <a href="http://derivadow.com/">circle of friend</a> is the ermine. Or the stoat. People in the UK call some species of animal a stoat. People in the US call the same thing an ermine. Or the other way round. This leads to edit wars in Wikipedia between Brits and Yanks. And because Wikipedia URIs reflect article titles, the URIs change. And change again. Which isn't cool. And because DBpedia URIs reflect Wikipedia URIs if you're using DBpedia URIs as identifiers in your own systems things break. Or at least whimper.</p>
+</div>
+<div class="section">
+<h2>The data web</h2>
+<p>These days lots of websites (and not just the usual web2.0 suspects) make content available as data for consumption by machines. In 99% of cases this is done under an API separate from the main (document) website. And there are lots of reasons why you might want to separate the two. Machines (or at least those manned by impolite developers) tend to hit sites more aggressively than the average punter. Separating out the API allows organisations to make access dependent on possession of an API key and API keys can be used to track usage and impose rate limits. All of this goes back to one important point: the business value of having web pages is proved, the business value of publishing the same stuff as data isn't (yet).</p>
+<p>In all of this there's a very important distinction: web pages are seen as the things punters surf; APIs as platforms for development. And no-one wants a brittle platform. Sales forces and marketeers and business owners often enjoy the bragging rights of having an API. But it's not something they ever see. The shape of the API is entirely in the hands of the developers. No one outside the development team is ever asking for redesigns or marketing URIs or human readability. It's just obvious to all that machines need persistent identifiers.</p>
+<p>The classic case is Twitter. If you surf the document web the URI of a tweet looks like::</p>
+<p><code><a href="http://twitter.com/#!/fantasticlife/status/7925332711571456">http://twitter.com/#!/fantasticlife/status/7925332711571456</a></code>
+<p>with the tweet identifier nested under the tweeter's username. But on Twitter users are able to change their username. Not many people do it but it has been known. So in the old style REST API the same tweet lives at:</p>
+<p><code><a href="http://api.twitter.com/1/statuses/show/7925332711571456.xml">http://api.twitter.com/1/statuses/show/7925332711571456.xml</a></code>
+<p>(where 1 is just the API version.) The username isn't there because the username can change and changing URIs make APIs brittle. And as ever encoding resource structure into URIs is the enemy of persistence. Or cool URIs <em>stay flat</em>.</p>
+<p>So it seems there's a clear pattern. The document web benefits from cool-ish URIs (give or take) whereas the API view can never allow the cool mask to slip. But...</p>
+</div>
+<div class="section">
+<h2>The website as API</h2>
+<p>In the Linked Data world there's a heavy presumption that you use HTTP appropriately (read RESTfully). That the HTML views (desktop, mobile, tablet...) and the data views all get served from the same URI depending on what the HTTP request asks for.</p>
+<p>In the original <a href="http://www.w3.org/DesignIssues/LinkedData.html">design notes for Linked Data</a> there's no <em>explicit</em> mention of content negotiation. The only instruction is When someone looks up a URI, provide useful information, using the standards (RDF*, SPARQL). It doesn't <em>explicitly</em> say any URI and it doesn't <em>explicitly</em> denounce the separate API / API key pattern but it's all fairly implicit from the Browsable graphs section. You can't browse graphs if you have to keep stopping to register another API key.</p>
+<p>From my experience of the Linked Data world there's lots of attention paid to how Non-Information Resources relate to Information Resources (303s and hashes and possibly 200s when the bickering dies down). But there's relatively little attention paid to the content negotiation of the IR. And even when there is it tends to be about conneg between RDF and desktop HTML ignoring mobiles and tablets and etc.</p>
+<p>Nevertheless, the general presumption seems to be one URI for desktop HTML, mobile HTML, RDF XML, RDF n3, json etc. I <em>think</em> it was <a href="http://www.jenitennison.com/">Jeni Tennison</a> who coined the phrase <a href="http://www.jenitennison.com/blog/node/100">your website is your API</a>. And for what's it's worth I think website as API / website as platform is the only sane approach. It makes data views and cross platform support just a matter of some templates and some CSS and some Javascript. Which means there's less code (almost always a good thing) and it's cheaper to develop. And it's all just using web standards (in this case HTTP) as intended.</p>
+<p>But the point I've been trying to make is that currently there's a greater (business if not user) tolerance for uncool URIs and lack of persistence on the document web than there is on the data web. And if the two worlds are collapsing (and given RDFa and microformats even without conneg they are) some of the best practice approaches to developing API URIs need to migrate into best practice approaches for developing document URIs. And some people who want to change document URIs for various reasons still need to be persuaded that persistence matters to punters as well as machines. And I don't think we're there yet.</p>
+</div>

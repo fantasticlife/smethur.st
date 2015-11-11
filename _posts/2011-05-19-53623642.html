@@ -1,0 +1,97 @@
+---
+layout: post
+status: publish
+published: true
+title: A comment for /node/114
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: This is a long, long delayed comment to Jeni Tennison's Opaque URIs != Unreadable
+  URIs post from back in 2009. I think I meant to comment at the time but forgot and
+  now comments are closed so doing it here instead... Best start by saying I agree
+  w...
+wordpress_id: 53623642
+wordpress_url: http://smethur.st/a-comment-for-node114
+date: '2011-05-19 00:00:00 +0100'
+date_gmt: '2011-05-18 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 39
+  author: frankieroberto
+  author_email: ''
+  author_url: http://twitter.com/frankieroberto
+  date: ''
+  date_gmt: ''
+  content: 'A delayed comment from me (only just discovered your blog), but I agree
+    with your conclusion - maintaining human-language IDs is hard. The contexts where
+    it is more doable seem to be mainly ''article'' based sites, where the title is
+    fairly intrinsic to the content, and so less likely to change (e.g. Wordpress
+    sites, the Guardian, Wikipedia) - and where the software is sufficiently evolved
+    to cope with the occasional change.I''ve always maintained though that getting
+    the path part of the URL right, and stable, is harder and more important than
+    the identifier. To take the /schools/ID example - what do you do if we want to
+    start including things that aren''t called ''schools'', such as universities,
+    academies, work-placement-schemes, or something else? Do you stick with an outdated
+    path, or set up a redirect to some new word?  What about internationalisation?  One
+    way to solve this would be to ditch the path altogether, and have urls that look
+    like /A[:id] /B[:id] (where ''A'' and ''B'' identify different concepts without
+    naming them). This is in fact what the ''DNA'' software that Digital Village (h2g2)
+    invented (subsequently bought by the BBC). It''s a further compromise of stability
+    over readability - and usually I think a compromise too far.As to the benefits
+    of human-readable URLs: one of the supposed benefits is that, as they''re displayed
+    within SERPs, they can help increase user confidence and thus click-throughs.
+    I''ve never seen any direct evidence for this, though Google presumably have,
+    otherwise why would they bold them?'
+- id: 40
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: 'Hi FrankieNot sure whether being article based makes things any easier.
+    Suspect it''s more to do with the volume of new page creation. Obviously in news
+    article publishing there''s the additional problem of possibly introducing libel
+    into human readable urls :-/Didn''t really deal with the path part in this post
+    but you''re right: it is even more difficult to get right. Guess it''s mainly
+    about modelling at a high enough level of abstraction and recognising cross-overs
+    (hence /programmes, not /tv or /radio). Organisations?!? Internationalisation
+    makes things even more difficult unless you take the lazy route and provide different
+    language versions at different URLs. Which most people seem to do. Tbh I have
+    no idea how Google et al treat language variants based on accept headers...The
+    SEO point oftens confuses things. Some people seem to suggest that keywords in
+    URLs push you up the rankings. Google have told us this isn''t true (but who really
+    knows?). But the other argument is it doesn''t increase your rank but highlighting
+    of URLs on SERPs makes it more likely you''ll get click throughs. Never seen the
+    stats on that. I''m not sure how wedded Google are to url display in general.
+    There''s been &lt;a href=&quot;http://thenextweb.com/google/2011/02/20/google-reportedly-axing-chromes-url-bar/&quot;&gt;some
+    talk of them removing the url bar from chrome&lt;/a&gt; and &lt;a href=&quot;http://googlesystem.blogspot.com/2011/06/google-experiments-with-removing-urls.html&quot;&gt;experimenting
+    with removing url display from serps&lt;/a&gt; so maybe that''s one bit of confusion
+    that might go away?'
+---
+<p>This is a long, long delayed comment to <a href="http://www.jenitennison.com/">Jeni Tennison</a>'s <a href="http://www.jenitennison.com/blog/node/114">Opaque URIs != Unreadable URIs</a> post from back in 2009. I <em>think</em> I meant to comment at the time but forgot and now comments are closed so doing it here instead...</p>
+<p>Best start by saying I agree with Jeni but think the post <em>might</em> be subject to misinterpretation and, in my view at least, some of the commenters have misinterpreted.</p>
+<p>First off Jeni separates out URI opacity from URI readability. She points out that URI opacity is already claimed as a term in web architecture, which states that, web applications must not try to pick apart URIs in order to work out information from them, or, roughly, machines shouldn't guess. For discussions about the readability of URIs she suggests replacing 'opaque' with 'obfuscated', which makes some sense to me. Certainly if the label opaque is already used to identify one concept reusing for another will probably just cause confusion. And because this is all about labels in context as identifiers...</p>
+<p>I think it's probably also useful to separate out human readable from human meaningful. In my mind human readable at least <em>implies</em> natural language. Or at least that's the way it tends to be used in conversations around this topic. In contrast W1A 1AA is not natural language (it's not in a dictionary) but it is human meaningful (especially to a certain generation). But that meaning doesn't stretch that far outside the context of the UK.</p>
+<p>Anyway, Jeni goes on to discuss possible URI designs for a school and suggests 3 possible options:</p>
+<blockquote cite="http://www.jenitennison.com/blog/node/114"><ol>
+<li>the name of the school</li>
+<li>the unique reference number for the school</li>
+<li>the record number for the school in the database that is being published on the web</li>
+</ol>
+</blockquote>
+<p>The first option is, I think, what most people mean when they say human readable as opposed to opaque or obfuscated. Jeni dismisses it by pointing out that school names can change over time so persistence is a problem. The other obvious problem is that school names aren't unique. I have no idea how many St Mary's schools there might be in the UK but I'd guess that /schools/st-marys would return a fair few results. Again in my head, an identifier is a label that's guaranteed unique in some defined context. <a href="http://www.jenitennison.com/blog/node/114#comment-5068">@Dmitry picks up on this in the comments</a> suggesting that a desirable URI for a school should include type/class identifier 'school', school name, city/..., state/province/..., and country which is not dissimilar to a database composite key combining the identifier for the thing with some facet identifiers to add just enough context to guarantee uniqueness. It looks like a nice, desirable solution but it doesn't solve the original problem of school names changing and it introduces a whole new set of problems of its own. Firstly it implies that the world is a mono-hierarchical taxonomy of things when the world is more like a giant set of many-to-many relationships. The world is not a filing system or indeed a set of Russian dolls. Secondly it compounds the changing school name problem by introducing a whole set of other labels that are also subject to change. And thirdly it assumes where mono-hierarchical taxonomies do exist they remain stable over time.</p>
+<p>The classic example of this is the Linnaean taxonomy and the use of genus and species labels as a composite key to identify a species. In practice it's fraught with difficulties as biologists constantly re-classify species into genus. As <a href="http://twitter.com/nicferrier">my old master</a> would say, never build your taxonomies into your URIs because they will become unmaintainable and make you cry.</p>
+<p>For now I'll skip over the second option and come back later. Option three is to use the database record number for the school. So basically publish the primary key of the database row as the web identifier. Which is a fairly common solution to the problem and common enough to be the default pattern for a Ruby on Rails app where the out of the box URI for a 'thing' page is /:table_name/:primary_key. And I'd guess this is what the 114 is in the URI of Jeni's blog post. It's also how <a href="http://dbpedialite.org/">dbpedia lite</a> mints its URIs using the primary key from the Wikipedia table row. Back when I was a lad there used to be a standard warning accompanying any plans to use database primary keys in URIs: what happens if your database drops for some reason and you have to resurrect it and it gets resurrected in some different order with primary keys assigned to different things. Although I've never seen that happen in practice...?</p>
+<p>So if publishing with composite keys has problems and publishing primary keys is frowned upon the only other option is the surrogate primary key: a column in your database table that's guaranteed unique across that table but isn't the primary key. Which is pretty much what a MusicBrainz 36 character UUID is in <a href="http://musicbrainz.org/artist/d5da1841-9bc8-4813-9f89-11098090148e">http://musicbrainz.org/artist/d5da1841-9bc8-4813-9f89-11098090148e</a>. And also what the 8 character PID is in <a href="http://www.bbc.co.uk/programmes/b006mw1h">http://www.bbc.co.uk/programmes/b006mw1h</a>. (Although at least some PIDs are actually 2-way transforms between Freeview broadcast CRIDs (non-HTTP URIs) but that's a different story.)</p>
+<p>Back to Jeni's option 2 then, which again is a surrogate primary key. She makes the distinction between primary key and surrogate key by saying:</p>
+<blockquote class="posterous_medium_quote"><p>Using the record number for the school within the particular database that's being published is entirely non-human-readable because there is simply no way of finding out what that would be for a given school. The unique reference number for the school, on the other hand, may be an obscure series of digits, but it is a meaningful one which renders the URI readable and hackable.</p>
+</blockquote>
+<p>The obvious point is that the school reference number might be readable (though isn't natural language) and it might be meaningful. But it's only really more meaningful than a primary key to a very select group of school administrators.</p>
+<p>The other point is that you can only reuse "real world" identifiers as your surrogate key if "real world" identifiers exist in the domain you're working in. Using real world identifiers is really more a case of outsourcing your obfuscation because someone else has done the work already and, as ever, it's best to reuse and recycle. Meaningful to some is better than meaningful to none.</p>
+<p>But "real world" identifiers tend to exist where there's administrative benefits around transactions (car registration plates, ISBNs, catalogue numbers, DOIs, National Insurance numbers, TV Licence numbers...). And they tend to only act as identifiers within that administrative framework. As <a href="http://www.frankieroberto.com/">Frankie</a> <a href="http://www.jenitennison.com/blog/node/114#comment-5068">picks up in the comments</a> ISBNs are useful, can be meaningful / recognisable to some people and do have structure. But without wishing to disappear down a FRBR shaped rabbit hole they're about editions / saleable items. And there are no similar "real world" identifier frameworks for works. Or the usual problem that <a href="http://www.bbc.co.uk/programmes/b00shgb3">this</a> is not a dramatisation of <a href="http://bnb.bibliographica.org/entry/GB8425005">this</a>, <a href="http://bnb.bibliographica.org/entry/GB8626384">this</a> or <a href="http://bnb.bibliographica.org/entry/GBA012094">this</a>. It's a dramatisation of something that no one's ever bothered to give a real world identifier to because there's no administrative / transactional benefit in them doing so.</p>
+<p>So using real world IDs as surrogate keys is useful and adds meaning for <em>some</em> users but it's only possible where real world identifiers already exist. Otherwise you end up having to mint your own.</p>
+<p>Which does open up the option of making your surrogate keys human readable / natural language URI slugs (as posterous does to this post). Given enough people to throw at the problem any site can generate human readable / natural language. It really depends on the throughput of data, the number of new pages that results in, the friction it introduces and the cost.</p>
+<p>And I think cost is the <em>big</em> factor in all of this. For large data volumes you need human intervention to allocate URL keys. And human intervention is expensive. And human's make mistakes and change their minds. So you need to start storing history to generate redirects. Which adds storage and code complexity and makes things more expensive.</p>
+<p>I'm still unconvinced that anyone outside "the industry" cares about any of this. No-one stops using twitter because a tweet URI is obfuscated. Amazon still makes a profit despite its use of obfuscated product IDs. I've sat through a fair few user-testing sessions and I've never seen anyone hack the URL or even look at it unless the task being tested is sharing in which case they copy and paste and send.</p>
+<p>Which is not to say I wouldn't by preference make URIs human readable, human meaningful, natural language and hackable. Mostly because it seems polite. If I was building a website for my local restaurant then I'd definitely go for /drinks/wines/pink/sparkling or whatever. But for a site of any real complexity, based on any real amount of data / content, human readable / meaningful / natural language / hackable costs money (in admin, in storage, in code complexity for redirects). I'm going to kick myself for using 'return on investment' but I struggle to see where it lives in this case.</p>

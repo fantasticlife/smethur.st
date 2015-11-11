@@ -1,0 +1,113 @@
+---
+layout: post
+status: publish
+published: true
+title: Stop testing the wrong things
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Or at least start testing the right things. Lots of chat about Test Driven
+  Development and a brief flurry of tweets with @rarepleasures left my bicker button
+  feeling unfulfilled so this is just another rant that wouldn't fit into 140... Why
+  I don'...
+wordpress_id: 94863518
+wordpress_url: http://smethur.st/stop-testing-the-wrong-things
+date: '2012-01-18 00:00:00 +0000'
+date_gmt: '2012-01-18 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 67
+  author: Anthony Green
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: I doubt anyone who affiliates themselves with TDD would dispute that the
+    'building the right thing' is as central to our concerns as 'building the thing
+    right'; that most important test to pass is  user satisfaction. We want to delight,
+    inspire, enable and empower people. Moreover from pre-XP methodologies through
+    to modern lean thinking we've actively sought to facilitate it. By removing complexity
+    from the production system, by delivering iteratively, by reducing and strengthening
+    the feedback loop, by conducting root value analysis, and by exploring how we
+    can help measure and quantifying success with our clients and users. By targeting
+    the constraints in the system of production, be they in communication, delivery
+    or monitoring, the agile/xp family of practices has sought more than most to deliver
+    meaningful software.If people are genuinely interested in this topic I encourage
+    them to engage with the some of the leading contributors in this area:Eric Reiss
+    http://www.startuplessonslearned.comJanice Fraser http://www.slideshare.net/clevergirlChris
+    Matts http://theitriskmanager.wordpress.comDan North http://dannorth.netLiz Keogh
+    http://lizkeogh.comGojko Adzic http://gojko.net
+- id: 68
+  author: aidy_lewis
+  author_email: ''
+  author_url: http://twitter.com/aidy_lewis
+  date: ''
+  date_gmt: ''
+  content: Not sure what any the above has to do with TDD.
+- id: 69
+  author: AnthonyCGreen
+  author_email: ''
+  author_url: http://twitter.com/AnthonyCGreen
+  date: ''
+  date_gmt: ''
+  content: Elisabeth Hendrickson makes a similar point http://testobsessed.com/blog/2012/01/05/what-software-has-in-common-with-schrodingers-cat
+    but argues that agile methodologies help us get there.
+- id: 70
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@anthony - in complete agreement with elizabeth. but arguing with your
+    &quot;but&quot;. i also agree that agile / continuous delivery helps us get there
+    and thought i'd made that clear in my post. as i said on twitter my worry about
+    tdd is it easily becomes a proxy for real users in the same way the old user centred
+    design process became a proxy for real users / usage"
+- id: 71
+  author: AnthonyCGreen
+  author_email: ''
+  author_url: http://twitter.com/AnthonyCGreen
+  date: ''
+  date_gmt: ''
+  content: The purpose of testing is to get a working application continually in front
+    of users as quickly as possible.  That is without flaws that distract from a informed
+    judgement and stable enough to allow time to collate and measure the feedback.
+- id: 72
+  author: whomwah
+  author_email: ''
+  author_url: http://twitter.com/whomwah
+  date: ''
+  date_gmt: ''
+  content: "*punches the air* love-it!"
+- id: 73
+  author: Anthony Green
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: To support my point heres Jez Humble presenting on Continuous Delivery:http://yow.eventer.com/events/1004/talks/1062
+---
+<p>Or at least start testing the right things.</p>
+<p>Lots of chat about <a href="http://en.wikipedia.org/wiki/Test-driven_development">Test Driven Development</a> and a brief flurry of tweets with <a href="http://twitter.com/rarepleasures">@rarepleasures</a> left my bicker button feeling unfulfilled so this is just another rant that wouldn't fit into 140...</p>
+<h2>Why I don't really like test driven development</h2>
+<ol>
+<li>Because the minute you add a label to an approach, within a week it becomes a "process", within a month someone will organise a conference and within six months its just more dogma and doctrine. But that aside...</li>
+<li>There's a chain. At one end are the people somewhat pompously referred to as "the business". At the other end an assortment of developers and designers patronisingly referred to as "geeks" and "creatives". The people at "the business" end want to solve a problem; the people at the building stuff end generally help to solve problems. The more links in the chain, the more noise gets introduced until you end up with requirements and "user stories" as chinese whispers. Professionalising a class of people into business analysts and product managers doesn't stop chinese whispers being chinese whispers.</li>
+<li>
+<p>As <a href="http://dannorth.net/">Dan North</a> says in his <a href="http://dannorth.net/whats-in-a-story/">What's in a story</a> post:</p>
+<blockquote cite="http://dannorth.net/whats-in-a-story/"><p>Usually, the business outcomes are too coarse-grained to be used to directly write software (where do you start coding when the outcome is "save 5% of my operating costs"?) so we need to define requirements at some intermediate level in order to get work done.</p>
+</blockquote>
+<p>The point being that by the time any of this stuff hits the designer / developer it's usually passed through the hands of several intermedaries and been reduced to some requirements / user stories. But requirements don't matter. They're just an abstraction to make it easier to start writing code. What matters are the "business" objectives. Or, without wanting to sound too New Labour, the "outcomes".</p>
+<p>The usual pattern is to explain the what to the developer / designer and leave the how to them. Which might be fine. But explaining the why is probably more important. Who knows, they might even have an opinion on the what. Stranger things have happened.</p>
+<p>Anyway, the more you separate developers and designers from the "why" the more we head back to the bad old days of waterfall, with the people doing the work sat at the end of the process being drip-fed user stories and expected to lay golden feature eggs.</p>
+</li>
+<li>Requirements are fine as a starting point for code and using those requirements to generate tests for that code makes sense but you're only testing the code against the requirements. You're not testing the service / product / let's-just-call-it-a-website against business objectives and outcomes.</li>
+<li>
+<p>Businesses have all kinds of ways of measuring performance. That's what the final slide of the boss people's presentation on "KPIs" is all about. And anything that can be measured can be tested. The main problem is they usually get measured six months after the fact.</p>
+<p>The objective might be to get more registered users; the requirement might be a simplified registration process and / or the ability to authenticate with 3rd party accounts. The objective might be less abandoned shopping carts; the requirement simplified checkout and / or one click purchase. You can measure any of these objectives / outcomes so you can test them. But software tests only test software against requirements and...</p>
+</li>
+<li>...<em>code does not live in isolation</em>. Until real code meets real data and real content and real copywriting and real design and <em>real users</em> with real needs (and probably a real marketing campaign) you can't measure the changes you make against real objectives.</li>
+<li>It's fine to have those screens in development corner that show regression tests passing and failing with green and red lights. But it would be good to see other screens showing real registration rate data, real close account rate data, real buy / play / consume button data, real abandoned shopping cart data, real inbound traffic from search engines or social media or whatever data.</li>
+<li>If you're measuring the impact of your work against real usage you can make tiny, tiny changes very, very quickly; isolate those changes from other changes in the system and see how they work for real people. Test code against requirements by all means but don't assume your tests tell you anything meaningful.</li>
+</ol>

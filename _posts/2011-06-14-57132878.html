@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: Impolite personalisation - impotent in the face of inference
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: I'm not a massive fan of cars. Never having learnt to drive, their design
+  pretty much passes by. But a wife working at BBC Magazines means a bathroom floor
+  covered with old copies of Top Gear. Yesterday I came across a review of the Audi
+  A1 (I'd l...
+wordpress_id: 57132878
+wordpress_url: http://smethur.st/impolite-personalisation-impotent-in-the-face
+date: '2011-06-14 00:00:00 +0100'
+date_gmt: '2011-06-13 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 13
+  author: Si Lumb
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: 'I remember these viewpoints coming out and I still stand by something
+    inspired by the work of @tomskitomski when he was at the BBC, that hate is as
+    important as love in responding to content. These days we only ever see &quot;like&quot;
+    or similar recommendation models where the everything else is assumed as indifferent.
+    I once suggested a model for YouView where the only buttons on the remote control
+    were &quot;Suggest&quot;, &quot;Love&quot; and &quot;Hate&quot;.If you wanted
+    to watch something you just pressed &quot;suggest&quot; and it would find you
+    something. You could play with the UI to allow it to be fun and to show you whether
+    it was being random, selecting from editorial, social or algorithmic suggestion
+    boxes. If you watch and want to skip, you just hit suggest again. If you love
+    it, press love. If you hate it press hate. The system should learn.Also thought
+    about how to revolutionise TV &quot;ratings&quot; - which are based on a selected
+    group paid for their opinions and count success as numbers watched rather than
+    what they thought. I always thought &quot;ratings&quot; was a bit of a stretch
+    for something that measures a person who left their set top box on accidentally
+    and someone who tuned in deliberately as equally engaged. Would it be better to
+    simply ask at the end of the show, during the continutiy - &quot;did you enjoy
+    this?&quot; that would give us a whole new dimension to overnights: watched and
+    liked, watched and didn''t, watched and didn''t have an opinion. I mean, if 1
+    million watched and loved, is that worth more than 2 million that watched and
+    didn''t respond?'
+---
+<p>I'm not a massive fan of cars. Never having learnt to drive, their design pretty much passes by. But a wife working at BBC Magazines means a bathroom floor covered with old copies of Top Gear. Yesterday I came across a review of the Audi A1 (I'd link but topgear.com just returns a 500) which said:</p>
+<blockquote class="posterous_medium_quote"><p>Even its stop/start system is behind the Mini's - it keeps finding reasons not to stop at all. Not that it gives you its excuses, so I don't know how I can alter my driving style to make it more active. Too warm? It's not summer yet. Too cold? The coming of spring made no difference. Battery low? Shouldn't be. Aircon or heater on? Nope, have been careful to avoid that. Lights on? That changes nothing.</p>
+</blockquote>
+<p>This struck a cord with a <a href="http://twitter.theinfo.org/80162133916135424">conversation going on on Twitter about personalisation and personalised recommendation</a>. Which had been triggered by an <a href="http://en.wikipedia.org/wiki/Eli_Pariser">Eli Pariser</a> article in <a href="http://www.guardian.co.uk/technology/2011/jun/12/google-personalisation-internet-data-filtering?CMP=twt_gu">The Guardian</a> which said, roughly:</p>
+<blockquote cite="http://www.guardian.co.uk/technology/2011/jun/12/google-personalisation-internet-data-filtering?CMP=twt_gu"><p>the increasing personalisation of information [..] threatens to limit our access to information and enclose us in a self-reinforcing world view.</p>
+</blockquote>
+<p>The opposing view was taken in a <a href="http://www.thisunrealcity.com/blog/?p=4956506180">post</a> by <a href="http://www.thisunrealcity.com/blog/?author=1">Better the Mask</a> saying, roughly:</p>
+<blockquote cite="http://www.thisunrealcity.com/blog/?p=4956506180"><p>A lot of this article, I think, reads like a digital complement to the Reithian view on broadcasting - that it should be public service, give people what they need not what they want. High-minded, certainly, and noble in a certain light, but also highly problematic. Who decides what "we" as a community need?</p>
+</blockquote>
+<p>Much of the debate seemed to centre on the usual paternalist reading of Reith with "low culture" as the sugar to make the "high culture" pill go down. I'm not sure that's entirely accurate. I don't remember ever seeing "inform, educate and entertain" rendered with bolds or italics. And as Tony Ageh might say, scheduling <a href="http://www.bbc.co.uk/programmes/b00704hg">Top of the Pops</a> next to <a href="http://www.bbc.co.uk/programmes/b006t14n">Panorama</a> was as much about exposing Top of the Pops to Panorama viewers as it was about exposing Panorama to Top of the Pops viewers.</p>
+<p>I'd probably go further and say <a href="http://en.wikipedia.org/wiki/Modern_Review_(London)">any attempt to break down culture into high and low is itself paternalistic</a> and just leads to the usual sneering at the poor old Daily Mail reader. It also ignores the connections between things. It's usually not that many skips of the graph from "low" to "high"; there are no continents in culture.</p>
+<p>And from a personalised recommendation perspective all the anecdotal evidence of user testing I've seen seems to suggest that people value recommendations outside of their bubble. Obviously that doesn't mean recommending <a href="http://www.bbc.co.uk/programmes/b006sgsh">Bells on Sunday</a> to <a href="http://www.bbc.co.uk/programmes/b0082kyx">Westwood</a> fans (or vice versa). But neither does it mean recommending <a href="http://www.bbc.co.uk/programmes/b006m8wd">Casualty</a> from <a href="http://www.bbc.co.uk/programmes/b006mhd6">Holby City</a>. People like to be surprised by recommendations, not locked into content ghettos.</p>
+<p>All that said, there is one thing that bothers me about "personalised" content services. Recommendation engines take a large graph of data and compress it into a smaller set of one to many recommendations; compression for recommendation is just some inference over a data set to reduce too much choice to some choice. For personalised recommendation, part of the original graph is the user's past activity. There's some truth in the adage that, if you don't know your past, you don't know your future (who am I to disagree with Chuck D) and basing recommendations for future behaviour on observed past behaviour makes some sense.</p>
+<p>The problems come when some system starts making inferences and you have no idea why. Like the Audi A1 stop/start system if you can't tell why a system is making some assumption you can't tweak your behaviour to change those assumptions and the whole thing just becomes frustrating. For recommendation engines the metric of measurement tends to be about <em>what</em> is returned. But for a useful and usable system <em>why</em> is equally important. And too often <em>why</em> becomes a black box with the intercession of magic. A polite, useful system would explain the assumptions it's making and the logical leaps it's taking. And allow you to help it to help you.</p>
+<p>So given a standard e-commerce application I might be recommended products on the basis of products I've bought in the past. Which might work until the point that somebody else uses my account to buy things. At which point I start getting recommendations for things I have no interest in. Same deal for a TV recommender based on my past consumption.</p>
+<p>All this is fine if I can see and <em>modify</em> any data that's been collected about me; so long as I can tell the system, "no, I didn't buy or watch that so please stop recommending me stuff on the basis that I did." Or, "yes, I did watch that, but my tastes have changed / it was crap."</p>
+<p>But too often the data collected about me is hidden from view and when it is exposed I can't change it. But this is probably just me banging on about <a href="http://twitter.com/#!/search/%23userowneddata">#userowneddata</a> again...</p>

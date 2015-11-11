@@ -1,0 +1,511 @@
+---
+layout: post
+status: publish
+published: true
+title: Designing a URL structure for BBC programmes
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135860
+wordpress_url: http://smethur.st/?p=176135860
+date: '2014-09-25 10:06:32 +0100'
+date_gmt: '2014-09-25 09:06:32 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 189
+  author: 'Bookmarks for September 25th from 19:49 to 22:19 : Extenuating Circumstances'
+  author_email: ''
+  author_url: http://danhon.com/2014/09/26/bookmarks-for-september-25th-from-1949-to-2219/
+  date: '2014-09-26 08:00:25 +0100'
+  date_gmt: '2014-09-26 07:00:25 +0100'
+  content: "[&#8230;] Designing a URL structure for BBC programmes | Smethurst &#8211;
+    This is a post I&rsquo;ve been meaning to write for the last 7 years. In the circumstances
+    it might be more of a eulogy than a birth announcement but since the&hellip; [&#8230;]"
+---
+<p>This is a post I've been meaning to write for the last 7 years. In the circumstances it might be more of a eulogy than a birth announcement but since the subject still occasionally raises its head I figured it was finally worth typing.</p>
+<p>Thanks to <a href="http://rland.me.uk/">David Marland</a>, <a href="https://twitter.com/rjolly">Richard Jolly</a>, <a href="http://raimond.me.uk/">Yves Raimond</a> and <a href="https://twitter.com/zillahwatson">Zillah Watson</a> for idiot checking / making it to the end.</p>
+<h2 id="background">Some background</h2>
+<p>The story starts with a small team of researchers (<a href="https://twitter.com/tomcoates">Tom Coates</a> and <a href="http://berglondon.com/studio/matt-webb/">Matt Webb</a>) and developers (<a href="https://twitter.com/mattb">Matt Biddulph</a> and <a href="https://twitter.com/ph">Paul Hammond</a>) in what was BBC Radio and Music Interactive. Other people from across the BBC were involved; both <a href="http://www.mildlydiverting.com/">Kim Plowright</a> and <a href="https://twitter.com/zzgavin">Gavin Bell</a> spring to mind. But if your name's not here and you think it should be, please blame my ignorance and not any intentional slight.</p>
+<p>Sometime around 2006 the team began to look at how programme pages should work in a world of blogs and social software. Up until that point online programme support had been sporadic with big budget programmes getting dedicated "websites" and low profile programmes often getting nothing. The PIPs (Programme Information Pages) project aimed to solve this problem by providing a baseline web page for all programmes which could be enhanced where time, budget and user demand dictated.</p>
+<p>The team working on PIPs were keen to ensure that PIPs generated pages worked with the wefts and seams of the web; that all the important things had pages and were linkable and pointable at. Tom Coates in particular had given a great deal of thought about how the web was evolving the use of links to disambiguate and add meaning. In 2006 he published the seminal <a href="http://plasticbag.org/archives/2005/04/the_age_of_pointatthings">The Age of Point-at-Things</a>. If you've not read it you should.</p>
+<p>Taking linkability as a starting point, the first job was to establish what the important things were. At the BBC programme is a stretchy word. It can be used to mean all episodes of Eastenders ever or this particular episode of Eastenders or even tonight's broadcast of this particular episode of Eastenders. Pre-PIPs hand-crafted programme support was inconsistent: most would have overarching programme pages (the "programme homepage"), some would have episode guides, some would have episode pages, some would have series pages, some would have character pages. And there was no real definition of what the important things were or how they related. It's a hand-wavey generalisation but the important things in any broadcast chain tend to the asset (piece of media) to be transmitted and the broadcast slot to put it in. The PIPs insight was that neither the asset version nor the broadcast slot were interesting to users; the thing people talk about is the more platonic "episode". So that episode of Eastenders might have a British Sign Language version or an Audio Described version or might be edited for duration and all of those versions might be broadcast many times but to the user who wants to find, find out about and share they're all the same thing. Or they all share the same "editorial intent".</p>
+<p>So the core object of PIPs was the episode. Every episode was part of a larger programme grouping and every programme grouping (although it might be broadcast on many networks) <em>belonged</em> to one network. Which lead to the original PIPs URL structure of:</p>
+<p>/:owning-network/:programme-group/pip/:episode/</p>
+<p>or:</p>
+<p><a href="http://www.bbc.co.uk/radio3/freethinking2006/pip/132yy/">/radio3/freethinking2006/pip/132yy/</a></p>
+<p>The <em>132yy</em> part was referred to as a PIP key and uniquely identified a single episode. Tom explains the reasoning behind this pattern in his post on <a href="http://plasticbag.org/archives/2004/06/developing_a_url_structure_for_broadcast_radio_sites">Developing a URL structure for broadcast radio sites</a>. Everything in that post is still true and, since there's no point in retyping all of it, needs to be read before any of the rest of this makes sense.</p>
+<p>So the intent of PIPs was to provide a persistent (or persistent as possible) URL for every episode. The interesting part of doing that is not how you construct the URL but what you're forced to leave out: no broadcast date or time because there might be many (or might be none), no genres (same reason) etc.</p>
+<h2 id="pips1+2">So what happened to PIPs version 1 and 2?</h2>
+<p>PIPs version 1 was designed to automate programme pages for Radio 3. PIPs version 2 took the same model and attempted to roll it out over the rest of the national radio networks. Both versions were a single system with 3 parts: data storage, management and publishing. Both predated any BBC dynamic publishing infrastructure by several years and relied on "compiling" pages and parts of pages offline to be FTPed to the live servers (the kind of architecture platforms like <a href="http://jekyllrb.com/">Jekyll</a> have recently returned to). But the programme data model can get quite complicated and broadcasting in general is subject to lots of last minute changes (a football match overruns and the schedule is juggled to accommodate). Working out what had changed and which pages and parts of pages that change would affect became increasingly complicated. Sometimes a change would happen in the data and the results would be published in seconds; sometimes a change would go into the system and only emerge on the website a couple of days later. And no-one really knew how the internals of the system worked.</p>
+<p>So PIPs version 3 was born and the acronym changed from Programme Information Pages to Programme Information Platform. PIPs would no longer be responsible for providing data management and editing facilities and would no longer be responsible for publishing pages. It would just be a data store from which other services would take data and publish.</p>
+<p>All of this was around the time that iPlayer was gestating. And around the time that <a href="http://www.tomski.com/archive/new_archive/000063.html">Tom Loosemore was proposing BBC 2.0</a> and automated programme support across radio and TV. The former obviously became <a href="http://www.bbc.co.uk/iplayer">iPlayer</a> and the latter became <a href="http://www.bbc.co.uk/programmes">/programmes</a>. I think when we first worked on /programmes we all thought there'd be an "iPlayer inside" type model; where an episode was available to play it would be available on the episode page and where it wasn't there wouldn't. Certainly <a href="https://www.flickr.com/photos/mildlydiverting/4826239343/">Kim's wireframes</a> suggested that and I think we all thought that was what we were working toward. Given the BBC has so many brands it felt like adding another one for ondemand programme viewing would just add confusion. Which shows how little we knew about branding. Back to the story...</p>
+<p>Because the BBC had (and still has) no single store of programme information the data needed to populate PIPs came back in from outside the BBC. Programme teams and schedulers would send information to <a href="http://www.redbeemedia.com/">Red Bee</a> who would structure it in a system called SID (acronym expansion lost in the mists of time but possibly Schedule Interface for DSAT), then send it back into PIPs as XML. The incoming data just reflected schedule events; there were no programme IDs and event IDs rolled over. PIPs had a set of heuristics to identify episodes, mostly based on textual repeat tags, such as "[Rpt Fri 4pm]" or "[Rpt of Mon 4pm]". These were parsed and used to infer the episode structure. The format of repeat text was not exactly consistent so there was an editorial interface to confirm the identification and assign the brand. Episodes were coerced into a brand/series/episode structure with dummy brands and series labelled UNKNOWN R3 and UNKNOWN R4.</p>
+<p>The SID feed had a very thin data model lacking the ability to describe programme structures accurately. And PIPs v1/2 had a very rich data model based on <a href="http://www.bbc.co.uk/guidelines/smef/" title="Standard Media Exchange Framework">SMEF</a>. Populating PIPs with SID was like attempting to paint a cathedral with a humbrol paint brush. There just wasn't enough data to know how to fill all the gaps. There were more empty tables in the PIPs database than populated ones. And many of those that were populated were filled with dummy data to fill in the gaps in the model.</p>
+<p>So given details of a new episode from a new programme there was no way to know whether that episode was a one-off, stand-alone episode (like a film) or the first of many. For that reason all episodes in PIPs v1/2 were assigned to programme groups whether or not those groups existed or would ever exist. For the original PIPs URLs this was a bonus. The grouping was always guaranteed to exist and that grouping belong to an owning network. But as iPlayer was developed people realised that the SID feed wasn't rich enough to drive the developments envisaged. So PIPs 3 switched from taking data feeds from SID to Red Bee's Teleview via a <a href="https://en.wikipedia.org/wiki/TV-Anytime">TV Anytime</a> XML feed.</p>
+<p>The Teleview model was much more descriptive and didn't introduce phantom grouping objects. So a one-off film would be modelled as an orphan episode with no higher level grouping of series or "brand". Which meant that the PIPs v1/2 style URLs of:</p>
+<p>/:network/:group/pip/:episode/</p>
+<p>would no longer work for at least some episodes. Given that <a href="#unstable-tleos">programme structures can change over time</a> and that pilot episodes get commissioned which may or may not lead to series commissions, building grouping hierarchies into the URLs was not an option if we wanted to maximise persistency and mimimise the management of redirects.</p>
+<h3 id="pip-key">What happened to the PIP keys?</h3>
+<p>So what happened to the PIP key and the old PIPs v1/2 URLs? Pretty much they stayed published. I'm not sure how many pages are still live from the old PIPs system and I'm not sure how you'd find out but quite a few are still out there: <a href="http://www.bbc.co.uk/radio3/discoveringmusic/pip/dxbnb/">here's one for an electronic music episode of discovering music</a> from 2008.</p>
+<p>There was a plan to migrate the PIPs v1/2 data to PIPs 3, make new /programmes pages and redirect the old static pages. But unfortunately that never happened.</p>
+<h2 id="pips3">PIPs v3, iPlayer and /programmes</h2>
+<p>So from earlyish 2007 we had a new and shiny programme data store in <a href="http://www.bbc.co.uk/blogs/legacy/bbcinternet/2009/02/what_is_pips.html">PIPs v3</a> but no way to write to that store and no way to publish from it. Radio and Music took on two pieces of work to plug those gaps. The Programme Information Tool provided an admin interface to read from and write to PIPs and turned into one of those projects where people still bear the scars. And <a href="http://derivadow.com/2007/10/18/programme-support/">in October 2007 we went live with the first release of /programmes</a> which published a page for every episode, series, brand, schedule, genre, format etc in PIPs.</p>
+<p>In December of that year the first streaming version of iPlayer was released. For a whole variety of reasons the "iPlayer inside" (/programmes) model never came about and instead iPlayer became a destination in its own right. But both iPlayer and /programmes were based on PIPs and both use PIDs in their URLs:</p>
+<p>http://www.bbc.co.uk/iplayer/episode/<strong>b04dzswb</strong>/the-kate-bush-story-running-up-that-hill</p>
+<p>http://www.bbc.co.uk/programmes/<strong>b04dzswb</strong></p>
+<p>So while we got to one-thing-per-page we never quite got to one-page-per-thing. Though it's worth pointing out that iPlayer episode (sometimes called item) pages only exist while an episode is available (or due to be available shortly). Once the catch-up availability window closes the iPlayer page redirects to the /programmes page. Although since the episode might be repeated and consequently the availability window might reopen this redirect is a <a href="https://en.wikipedia.org/wiki/HTTP_302">302</a> (temporary) rather than a <a href="https://en.wikipedia.org/wiki/HTTP_301">301</a> (permanent).</p>
+<h3 id="pips-to-public">From PIPs to public</h3>
+<p>Before we could start work on /programmes we had two problems to solve: how to get PIPs data in a suitable shape for publishing and how to publish it dynamically.</p>
+<p>In late 2006 the BBC had no dynamic publishing infrastructure. PIPs v1/2 had proved that offline processing to generate flat pages to be FTPed to the web servers wasn't a great idea. And the BBC's technical infrastructure back then was pretty much limited to static files and a slightly forked version of Perl. So Paul Clifford spent a couple of weekends making a <a href="http://www.bbc.co.uk/blogs/legacy/radiolabs/2007/11/perl_on_rails.shtml">Perl MVC framework that echoed some of the design patterns of Ruby on Rails</a>. Which worked fine even if talking about it did generate a blog post with the memorable title of <a href="http://mattjon.es/blog/2007/12/perl-on-rails-why-the-bbc-fails-at-the-internet">Why the BBC fails at the internet</a>.</p>
+<p>The second problem was harder to solve. PIPs data is heavily normalised (or at least heavily abstracted). It's a relational database but the parent child relationships are managed through a table called pip_pip which relates one thing with a PID to another thing with a PID via some relationship, rather than by foreign keys between tables. Theoretically to allow for multiple parents, a feature that was never used and eventually deprecated although the modelling remained. PIPs is optimised for data storage but not for publishing so we had to transform it to allow for the queries we needed to build the pages we wanted.</p>
+<p>So the first thing <a href="http://whomwah.com/">Duncan Robertson</a> built was called the Green Box - because it was first drawn with a green pen on a whiteboard. Slightly later it got called the Trickle Application (because it trickled data from PIPs to the /programmes database) and soon after that got shortened to the TAPP. The green box denormalised data to make the queries we needed to run easier and faster. It still exists today, piping data through from PIPs into the original /programmes database. Which feeds the 'Perl on Rails' application which these days only publishes data views. The new /programmes PHP front-end consumes the JSON from the old /programmes application, together with some data from Dynamite (the application built to serve iPlayer). Requests for data views are channeled through to the old /programmes application. At some point soon both /programmes and iPlayer will run off the new Nitro backend and the green box and old /programmes application will be turned off and the data views will no longer work.</p>
+<p><a href="/assets/2014/09/dataflow.png"><img src="/assets/2014/09/dataflow.png" alt="Data flow from PIPs to /programmes" width="887" height="474" class="aligncenter size-full wp-image-176135862" title="Data flow from PIPs to /programmes" /></a></p>
+<h3 id="pid">What is a PID?</h3>
+<p>The PID acronym gets expanded in one of two ways. Usually people expand it to "Programme Identifier" which makes the most sense in most cases. Occasionally it gets expanded to "PIPs Identifier" which is less useful in most conversations but probably more accurate since any object (genres, formats, contributors, characters) in PIPs can have a PID and not just "programme" objects. No matter what the <a href="http://www.bbc.co.uk/commissioning/radio/production-and-delivery/programme-information-guide/glossary.shtml#PID">commissioning pack</a> says it definitely does not stand for Packet Identification number which is <a href="https://en.wikipedia.org/wiki/MPEG_transport_stream#Packet_Identifier_.28PID.29">a very different thing</a>.</p>
+<p>In PIPs database terms a PID is something like a non-domain native surrogate key for any object. More or less every row in every table has a PID and those tables might be describing programme objects (brands, series, episodes, clips, versions, segments); higher level programme groupings (seasons, franchises, collections); programme availability objects (broadcasts, ondemands); or non-programme objects (characters, contributors, genres, formats etc). Usually PIDs are described as opaque identifiers for PIPs objects; though the term <a href="http://www.jenitennison.com/blog/node/114">obfuscated has been suggested</a> but since they're not substituting for any more "natural" identifier I'll stick with opaque.</p>
+<p>So PIDs are not designed to be human readable or meaningful. They're a lower-case, alpha-numeric string of 8 (or potentially / occasionally more) characters with vowels excluded to prevent inadvertent swearing (although occasionally a swear does creep through; <a href="http://www.bbc.co.uk/programmes/b0110ck3">in this case</a>, one suspects, <a href="https://en.wikipedia.org/wiki/Colemanballs">deliberately</a>).</p>
+<p>The only character in a PID that is "meaningful" is the first one which denotes the authority of the PID (the people responsible for creating it). For PIDs starting b the generating authority is Red Bee, for PIDs starting p it's PIPs, for w it's the old World Service scheduling system. Other leading character / authorities exist for partner data but those are the main ones you'll see. For Red Bee generated PIDs there's a two-way transform between the PID and the <a href="https://en.wikipedia.org/wiki/Content_reference_identifier" title="Content Reference Identifier">CRID</a> used in the Red Bee Teleview system. CRIDs are a form of non-HTTP URI defined as part of the TV-Anytime spec and are the identifiers that make series record work on your Freeview box. Although in this case the CRIDs are internal to Teleview and are <strong>not</strong> the same CRIDs as used by <a href="https://en.wikipedia.org/wiki/Digital_Video_Broadcasting" title="Digital Video Broadcasting">DVB</a> so you can't reverse engineer PIDs to do any useful hacking with Freeview.</p>
+<p>Because World Service programme information doesn't travel through Red Bee they self-provision programme data into PIPS which lead to their early PIDs looking slightly different to most, being 11 characters, not 8:</p>
+<p><a href="http://www.bbc.co.uk/programmes/wcr5dr3dnl3">http://www.bbc.co.uk/programmes/<strong>wcr5dr3dnl3</strong></a></p>
+<p>I'm not sure when the changeover happened but these days World Service PIDs are generated as p PIDs with a PIPs authority and are 8 characters long.</p>
+<h2 id="data-model">The data model and the URLs</h2>
+<p>Hopefully, this at least partly explains why the URL structures changed between PIPs v1/2 and /programmes and iPlayer (and if it doesn't hopefully the rest of this post will). But to explain why we ended up with the URLs /programmes ended up with unfortunately you need to understand something of the PIPs data model. So...</p>
+<h3 id="episodes-versions">Episodes and versions (and clips)</h3>
+<p>The core of the PIPs data model is the episode. As explained above this is not the broadcast or the media asset but the more platonic grouping of media assets. I've heard this described in many ways from assets / broadcasts with the same "editorial intent" to assets / broadcasts telling the same "story". So for example the Today Programme is a 3 hour broadcast on FM but a 2.5 hour broadcast on LW (the last 30 minutes make way for Yesterday in Parliament) but they're recognisably the same episode. Or an episode of Casualty might have a <abbr title="British Sign Language">BSL</abbr> version and a non-BSL version but they're recognisably the same episode. Or an episode of Merlin might get recut to be suitable for broadcast on CBBC but it's recognisably the same episode / tells the same story. In theory at least (although not to my knowledge in practice) a Prom concert might be simulcast on Radio 3 and BBC Four so would be two media assets (one with moving pictures, one without) grouped into a single episode. (Though in reality, Red Bee are not contracted to recognise simulcasts which is why there's <a href="http://www.bbc.co.uk/programmes/b03bsn8j">a BBC One Match of the Day 2 Extra</a> and <a href="http://www.bbc.co.uk/programmes/b03bdp16">a Five Live Match of the Day Extra 2</a>.)</p>
+<p>This asset grouping is handled in PIPs with episodes and versions. An episode can have one or many versions (but always at least one) with one of those marked as the "canonical" version. And a version always belongs to one and only one episode (actually versions can belong to clips too but let's ignore that for a minute). Versions are probably the closest mapping in the model to media assets although the complications of delivering A/V online mean a version in iPlayer can have many different media files. And versions can have types. Aside from the canonical (default) version there might be versions with increased duration (the "repeat" of Desert Island Discs is longer), decreased duration (the LW version of the Today Programme) and, for TV, versions with BSL or audio description. So versions handle two aspects of change: editorial versioning (recuts) and accessibility versions.</p>
+<p>Attached to a version there might be "publication events": broadcasts and "ondemands". A version might have zero, one or many broadcasts. Each of which might be on a different radio network or TV channel (e.g. Eastenders on BBC One and BBC Three). Networks and channels are modelled as "services" in PIPs because there isn't a common "natural" word so SMEF went with service. And a version might have zero, one or many ondemands which determine if a version is available for iPlayer streaming or download for a given time period, territory, platform etc. Ondemands are mapped to availability types (like iPlayer international desktop streaming or iPlayer UK download) which again are modelled as services. Importantly (for URLs anyway) an episode may have no broadcasts on any of its versions. This isn't the most common case but it's becoming more common and will probably become more common still when BBC Three moves off broadcast and onto the web.</p>
+<p>Episodes and versions are probably the trickiest part for people starting to work with PIPs data. Although iPlayer and /programmes are (largely) episode centric the original PIPs v3 data model had most description around versions. Because an episode could be recut and the duration altered lots of things about that episode have the potential to change between versions. So the segments / running order / music played and contributors might change which is why they were modelled at version level. Or the episode might be recut to make it suitable for a younger audience and because "Children's" is a <a href="http://www.bbc.co.uk/programmes/genres">genre</a> the genre was set at version not episode level. And the same for <a href="http://www.bbc.co.uk/programmes/formats">formats</a>. It meant that Match of the Day in its entirety was not assigned to the Sport - Football genre but every version of every episode of every series was. In the <a href="#pips-to-public">green box</a> we propagated genres and formats up from versions, through episode to series and brands just to make it possible to build useful aggregations. But it was all a bit of a workaround. These days the PIPs model has changed and things like genres, formats and contributors are assigned at the top level and cascade down in an "inheritance with override" fashion. So an episode looking for its genres will look to see if it has any genres directly assigned and if it doesn't will look to its parent and onwards and upwards.</p>
+<p>But segments are still set at version level so if you're looking at an episode page and see, for example, a tracklist, that list is a list of segments set on the version. So an episode page is actually something of a hybrid between the data from the episode (and its associations) and data from the <strong>canonical</strong> version. If you're trying to work with <a href="#data-views">/programmes data views</a> like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04g708d.xml">http://www.bbc.co.uk/programmes/b04g708d.xml</a></p>
+<p>and wondering why the episode page shows contributors and a tracklist but they aren't shown in the data, you need to look for the version marked canonical:</p>
+<p><code></p>
+<pre>
+
+		&lt;versions>
+
+			&lt;version <strong>canonical="1"</strong>>
+
+				&lt;pid>b04g708b&lt;/pid>
+
+				&lt;duration>1800&lt;/duration>
+
+				&lt;types>
+
+					&lt;type>Original version&lt;/type>
+
+				&lt;/types>
+
+			&lt;/version>
+
+			&lt;version canonical="0">
+
+				&lt;pid>p025j01q&lt;/pid>
+
+				&lt;duration>1800&lt;/duration>
+
+				&lt;types>
+
+					&lt;type>Dubbed Audio Described&lt;/type>
+
+				&lt;/types>
+
+			&lt;/version>
+
+		&lt;/versions>
+
+	</pre>
+<p></code></p>
+<p>construct a link to that version:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04g708b.xml">http://www.bbc.co.uk/programmes/<strong>b04g708b</strong>.xml</a></p>
+<p>where you'll find the contributor and segment (tracklist) details:</p>
+<p><code></p>
+<pre>
+
+		&lt;contributors>...&lt;/contributors>
+
+		&lt;segment_events>...&lt;/segment_events>
+
+	</pre>
+<p></code></p>
+<p>Or... you could just <a href="#ids-anchors">request the episode URL and tack on /segments</a> which is a damn sight simpler but not as useful an explanation...</p>
+<p>Finally clips. Clips were a later addition to the PIPs model and describing them is hard. Importantly they are not (as the name might suggest) necessarily bits clipped from full length episodes. Although they might be. They might also be a trailer for an episode, a trailer for a series, a recap of a series, a best-bits highlight package of a series, additional footage or outtakes from an episode or something else entirely. It's maybe best to think of them as meta-programmes; "programmes" about programmes. In some way.</p>
+<p>From the data model point of view clips are pretty much identical to episodes. They have all the same attributes and also have at least one, sometimes many versions. The only real difference is that a clip can belong directly to an episode or a series or a brand, unlike episodes which can only belong to a series or a brand. And not another episode. Obviously.</p>
+<p>Which brings us to...</p>
+<h3 id="brands-series">Brands and series</h3>
+<p>So a few episodes exist in isolation. Films are the obvious example of episodes that stand-alone (although I guess franchises like The Godfather or Star Wars or Home Alone could be grouped together). And occasionally (fairly often on Radio 4) there are single episode documentaries or dramas which are not grouped into a wider series. And at the risk of repetition PIPs v3 (unlike v1/2) allows episodes to be orphans with no parent brand or series).</p>
+<p>More commonly episodes are not orphaned and are grouped by a brand or a series (which may in turn be grouped by a brand or a series). At this point it all gets a bit complicated. An episode may be an orphan. Or it might belong to a series. Or it might belong to a brand. And a series might belong to another series. Or might belong to a brand. Or might be an orphan. And a brand is always an orphan. The possible combinations are shown below:</p>
+<p><a href="/assets/2014/09/hierarchy.png"><img src="/assets/2014/09/hierarchy.png" alt="Brand, series, episode hierarchy" title="Brand, series, episode hierarchy" width="366" height="245" class="aligncenter size-full wp-image-176135863" /></a></p>
+<p>(It's probably worth pointing out that series here is the UK (possibly antiquated) use of the word and is what Americans refer to as a season. Since PIPs v3 and /programmes were designed it feels like many more UK people (inside and outside the BBC) use season to mean what PIPs means by series. Though a season in PIPs terms is <a href="#collections">quite a different thing</a>.)</p>
+<p>Use cases should be fairly obvious. Orphan episodes I've described. The Series > Episode structure is usually used for short running series. (The Series > Series > Episode structure is theoretically possible but not seen in practice.) The Brand > Episode structure is used for long running programmes which aren't broken into series (like the Today Programme or Eastenders or The Archers). Brand > Series > Episode is the classic case where long running programmes are split into series (like Doctor Who). And the Brand > Series > Series > Episode is only occasionally used for programmes split into series split into storylines where a storyline takes place over two episodes (the Waking the Dead edge case).</p>
+<p>It's also a mixed content model so a brand for example can have both series and episodes as children. So you might have Doctor Who as a brand, with series 1 inside, then the Christmas special as an orphan episode, then series 2 etc.:</p>
+<p><a href="/assets/2014/09/mixed.png"><img src="/assets/2014/09/mixed.png" alt="Mixed model of series and episodes" title="Mixed model of series and episodes" width="426" height="191" class="aligncenter size-full wp-image-176135864" /></a></p>
+<p>So if series can be the top item in any family tree what's the difference between series and brands? In all honesty I'm not sure and I never have been. The series / brand distinction is a hangover from SMEF and nobody seems to remember why it was invented. There was some talk of a brand being a series with marketing value but why that isn't just a decorated series rather than a separate class of object I'm not sure. People new to PIPs tend to assume the object at the top of the tree is always a brand and talk about brand and series pages but in truth no /programmes code takes any notice of the brand / series distinction; the only important thing is how far down the family tree you're looking.</p>
+<p>To patch over the language difficulties of brands and series and no-one knowing the difference and the difference not mattering anyway, we invented a new term to describe all the objects at the top of their trees: Top Level Editorial Objects (TLEOs) (for which I'm truly sorry):</p>
+<p><a href="/assets/2014/09/tleo.png"><img src="/assets/2014/09/tleo.png" alt="The set of TLEOs" title="The set of TLEOs" width="366" height="245" class="aligncenter size-full wp-image-176135868" /></a></p>
+<p>(Top Level Editorial Containers (TLECs) is also occasionally used to refer to the subset of TLEOs which are brands and series (i.e. not orphan episodes)).</p>
+<p>One of the most common questions asked about /programmes URLs goes something like:</p>
+<blockquote cite="http://www.bbc.co.uk/blogs/legacy/radiolabs/2007/11/urls.shtml#c4515006">
+<p>I'd be interested to hear why you rejected the "brand/parent/series/episode" format.</p>
+<p>What's simpler than www.bbc.co.uk/programmes/heroes/s01/e20 ?</p>
+</blockquote>
+<p>To which the answer is: not all episodes belong to series, not all episodes belong to brands, not all series belong to brands. The other answer is...</p>
+<h4 id="unstable-tleos">Unstable TLEOs</h4>
+<p>Building hierarchy into URLs always feels like a neat thing to do. It makes them readable and hackable and human guessable. At least for the subset of people who look at and manipulate URLs. But building in hierarchy is painful when the hierarchies change over time. And the PIPs hierarchy is not stable. Things which were orphans acquire parents as new series get made. So there might be a pilot episode that gets produced and broadcast. If it sinks like stones it will probably remain an orphan. But if the pilot works out, a series will follow and the pilot episode and the series will be wrapped into a brand (or the pilot episode made into episode 1 of the new series).</p>
+<p>And it's the same with recommissions of short series. When the first series of Sherlock was made it was created as a series with 3 episodes. When the second series came along a new brand was created, the first series placed into that brand alongside the new series again with 3 episodes:</p>
+<p><a href="/assets/2014/09/sherlock.png"><img src="/assets/2014/09/sherlock.png" alt="Sherlock programme structure evolution over time" title="Sherlock programme structure evolution over time" width="670" height="184" class="aligncenter size-full wp-image-176135867" /></a></p>
+<p>The unstable TLEO issue raises a few problems. Taking Sherlock as an example, because Series 1 had been around on the web for much longer than the Sherlock brand and because for most of its lifetime it represented both the first series of Sherlock <strong>and</strong> the entirety of the known Sherlock programme universe, it picked up lots of inbound links mostly titled "Sherlock" (and not Series 1). Before the brand came along this was good as the Page Rank gained from all those links pushed that page to the top of searches for Sherlock. But when the second series came along and the brand came into existence, the search engines still saw Series 1 as the URL with most of the 'Sherlock' titled inbound links so Series 1 still topped the search listings and the brand page promoting Series 2 was nowhere to be seen. Over time this problem irons itself out as the web rebalances and more links head toward the brand URL but it's still awkward to explain why second series take a while to establish.</p>
+<p>The second problem is more about user subscriptions. If a user subscribes to a URL for RSS or calendar feeds to get updates on the programme, until the second series and brand come along they'll actually be subscribing to a subsidiary resource of Series 1. So when Series 2 comes along the RSS or ICS feeds they receive won't include any information about the new episodes.</p>
+<p>And the third problem is less visible. Many external systems (inside and outside the BBC) store TLEO PIDs to reference programmes. So a user might favourite a programme group and the thing that gets favourited is the Series 1 PID (because the brand doesn't exist yet and may never exist). Again Series 2 comes along and they don't get updates. Most of these problems are possible to work around but they're always worth bearing in mind if you're working with programme data.</p>
+<p>In addition to intentional changes in the hierarchy, objects can also move when the PIPs data gets tidied. When we first started work on /programmes it was fairly common for an episode of one programme to be added to a brand / series of another. So an episode of Blue Peter in the middle of Doctor Who for example. Or just not added to any brand or series and left as an orphan object. If / when PIPs housekeeping happened, unintentionally orphaned episodes would be moved back into the appropriate brand or series causing the hierarchy to shift. You can still see a few accidentally orphaned episodes if you look at <a href="http://www.bbc.co.uk/programmes/a-z/by/matchoftheday/all">this list of Match of the Day TLEOs</a>; some of the items listed are spin-off programmes (Match of the Day 2, Match of the Day Live, Match of the Day at 50) but most are accidentally orphaned episodes.</p>
+<p>So sometimes hierarchies don't exist and sometimes they change over time. Building them into URLs you expect to be persistent over years if not decades is a pretty bad idea.</p>
+<h3 id="masterbrands">"Masterbrands"</h3>
+<p>In case you thought brands were confusing... Masterbrands were introduced as a bit of a workaround for iPlayer. Given that a programme can have many episodes and each episode might be broadcast on multiple channels / networks (e.g. Eastenders is broadcast on BBC One and repeated on BBC Three) there was no way in the PIPs data model to associate a programme with an "owning" channel or network. It meant that iPlayer couldn't associate the correct channel / network branding, couldn't assign stats to the right place and couldn't display the appropriate channel or network 'ident' (the bit of video that plays at the start of an iPlayer episode). Masterbrands were introduced to assign a programme object to one and only one channel or network. So whilst an episode of Eastenders might be broadcast on both BBC One and BBC Three, the Eastenders brand has a masterbrand of BBC One to denote that that channel has "editorial ownership".</p>
+<p>In the original build of iPlayer, masterbrands were also used to generate A-Z listings by channel and network. So the BBC One programme listing for programmes beginning 'E' would feature Eastenders but the BBC Three listing wouldn't (A-Z by network no longer appears in iPlayer). /programmes only ever used masterbrand for styling and stats so Eastenders appears on both the BBC One and BBC Three aggregations. Although I'm told this is an expensive view to generate so that won't be the case soon and, slightly sadly, /programmes will move to scoping service and service type level aggregations by masterbrand. So no more Eastenders on the BBC Three A-Z.</p>
+<p>At first glance masterbrands look like they'd be good for inclusion into URLs. They're familiar to users (mostly TV channels and radio networks) and they're mono-hierarchical (a programme can have one and only one). But under the surface masterbrands are more complicated because different objects in a programme hierarchy can have different masterbrands. So the brand (TLEO) might (currently) have masterbrand BBC One whilst series one has masterbrand BBC Three and series two has masterbrand BBC One. <a href="http://www.bbc.co.uk/programmes/b006ml0g">QI</a> is one example; it started life on BBC Two, moved to BBC One and then moved back to BBC Two. Since it's fairly common for TV programmes to shift channels over time (or at least more common than for radio) programme groups with multiple masterbrands at different points of the hierarchy are an edge case but not an uncommon one.</p>
+<p>The other problem with using masterbrands as part of the URL is that channels and networks are subject to occasional marketing changes. So what was Five Live became 5 Live and the URL that was /fivelive became /5live.</p>
+<h3 id="programme-object-urls">Back to URLs</h3>
+<p>When we started to design the URLs for /programmes we had three aims in mind:</p>
+<ol>
+<li>They <strong>must</strong> be persistent (or redirectable without hideous amounts of human intervention)</li>
+<li>They <strong>should</strong> be human readable / meaningful</li>
+<li>They <strong>should</strong> be hackable so users could trim bits off the end of the URL or substitute bits of the structure and be reasonably confident of what they'd get back</li>
+</ol>
+<p>And since /programmes was one part of Tom Loosemore's BBC 2.0 project and that project had a set of <a href="http://www.tomski.com/archive/new_archive/000063.html" title="Tom Loosemore's fifteen web principles for BBC 1.0">principles</a> and principle 8 was <q>make sure all your content can be linked to, forever</q>, the greatest of these was and is persistence.</p>
+<p>In practice the requirement for persistence and the requirements for readability and hackability never played well together. In order for the URLs to be persistent (or at least reasonably persistent given best efforts) the constraints of the programme domain model (and the assorted data and workflows and legal agreements) meant that:</p>
+<ol>
+<li>The URL couldn't contain the broadcast date or time because lots of episodes have multiple broadcasts. Or none.</li>
+<li>The URL couldn't contain the broadcast channel or network because lots of episodes have multiple broadcasts across multiple channels and networks. Or none.</li>
+<li>The URL couldn't contain the genre because lots of episode have multiple genres. Or none.</li>
+<li>The URL couldn't contain the programme hierarchy because programme hierarchies are subject to change</li>
+<li>The URL couldn't contain the masterbrand channel or network because they were also subject to change</li>
+</ol>
+<p>Having eliminated the impossible you're left with URLs that can't be a composite key of properties but have to address each programme object (brand, series, episode, clip) individually either by a label or by a key. And generating human readable / meaningful labels for programmes is hard to impossible. No-one knows how many films or dramas or readings of Pride and Prejudice the BBC will ever broadcast given all the ones in the archive and all the ones in the future. And heading down the road of /prideandprejudice1 and /prideandprejudice2 felt like it would introduce confusion rather than reduce it. And still wouldn't solve the multiple types of shape shifting hierarchy problems.</p>
+<p>There's one more problem with human readable / meaningful labels generated from programme titles. Most programme data goes into PIPs 7-10 days pre-broadcast at which point programme titles are mostly stable. But some priority programmes are added to PIPs much earlier. In general the greater the gap before broadcast the greater the chance that the title will change in production.</p>
+<p>So we ended up with two requirements. Something in the URL to ensure that requests were directed to the /programmes application and something to uniquely identify a programme object. The first bit was solved by always including /programmes somewhere in the URL of every page we were responsible for generating (which is why we always described /programmes as more of a namespace than a "product"). The only other contender was /shows but whilst it felt comfortable to describe all programmes as programmes, describing some programmes (Today Programme, Newsnight, Panorama) as shows didn't feel quite right. And the second part was solved by using PIDs as the URL key for every programme object. So /programmes/:pid it became.</p>
+<p>There has been the occasional suggestion that it would somehow have been more "RESTful" to go with something like /:object-type/:pid, so /brands/:pid, /series/:pid, /episodes/:pid etc. Which always felt like the kind of understanding of REST that comes from using "RESTful APIs" that aren't actually RESTful. And since the brand and series distinction doesn't mean anything to us it definitely wouldn't mean much to users. Plus we had an extra requirement that came from my old teacher <a href="http://nic.ferrier.me.uk/">Nic Ferrier</a>: never hack back to a hole. So every time a user removes a bit from the end of a URL path never return a 404 and definitely never a 403. And hacking back to /episodes would have returned what? A list of all episodes ever?</p>
+<p>We did have a brief conversation about whether URLs should use singular or plural. So /programme/:pid or /programmes/:pid. Given the desire to make URLs hackable (at least where possible / for aggregations) we decided to go with plural so /things/:thing would be a thing page and /things would be a list of things or at least some routes to scoped lists of things. In practice it wouldn't have made much difference but it's good to be consistent.</p>
+<p>It's probably worth noting that requests for version URLs only return version information if you request <a href="#data-views">a data view</a>. Requests for HTML will just redirect you to the episode URL.</p>
+<h3 id="marketing-urls">Marketing URLS and redirects</h3>
+<p>URLs might have started life as web plumbing but they've long since escaped the browser. These days you're more likely to come across a URL on a poster or the side of a bus or read out on radio or shown on TV. And /programmes/:pid doesn't work particularly well for that. BBC Standards and Guidelines have a <a href="http://www.bbc.co.uk/guidelines/futuremedia/desed/urls.shtml">URL Requirements</a> document that says:</p>
+<blockquote>
+<p>3.2.1. Only a top level directory SHOULD be promoted in connection with BBC public service web sites. Therefore there MUST only be one slash after the hostname when promoted in print or on air.</p>
+<p>3.4.1. All BBC public service web sites and services MUST be promoted using the following syntax: bbc.co.uk/sitename</p>
+<p>3.4.2. The URL SHOULD be pronounced as: 'bbc dot co dot uk slash sitename'. The 'slash' element MUST NOT be read aloud as 'forward slash'.</p>
+<p>3.5.1. On television a URL MUST always be displayed on screen in the form: bbc.co.uk/sitename.</p>
+<p>3.6.1. Sub-directories of URLs MUST NOT be promoted.</p>
+<p>3.6.2. For example, the Radio 4 Today programme site MUST be promoted using the URL bbc.co.uk/today and NOT bbc.co.uk/radio4/today.</p>
+</blockquote>
+<p>It also says:</p>
+<blockquote>
+<p>3.3.1. A top level directory MAY be used to redirect a user to a subdirectory.</p>
+</blockquote>
+<p>So the marketing URL problem gets solved with redirects. A request for http://bbc.co.uk/archers will first 301 redirect to http://www.bbc.co.uk/archers (all requests missing the www get redirected) then 301 redirect to http://www.bbc.co.uk/archers/ (with a trailing slash - a legacy of the old static serving infrastructure) then 301 redirect to http://www.bbc.co.uk/programmes/b006qpgr.</p>
+<h3 id="trailing-slashes">Trailing slashes</h3>
+<p>Up until /programmes bbc.co.uk had been a static website with all content served from flat files on web servers (and not dynamically from an application server). Pages were built using <a href="https://en.wikipedia.org/wiki/Server_Side_Includes">server side includes</a> from .shtml files including .ssi or .sssi files. In standard UNIX fashion URLs for directories would have a trailing slash and URLs for files wouldn't. Most internal links were to a directory / folder on the web server so included a trailing slash like /radio4/. Given a request for a folder the web server would look inside for an index.shtml file, process any includes and serve it.</p>
+<p>With /programmes all pages were assembled dynamically so there were no files or folders sitting on web servers. We took the decision to drop all trailing slashes because denoting something was a folder when it wasn't didn't seem useful.</p>
+<p>Because we can't prevent people adding trailing slashes to links and to avoid splitting links (and <a href="http://googlewebmastercentral.blogspot.co.uk/2010/04/to-slash-or-not-to-slash.html">Google juice</a>) between URLs, when /programmes sees a request for a URL with trailing slash it 301 redirects to the same URL with no trailing slash.</p>
+<h3 id="keywords">Keyword stuffing</h3>
+<p>One fairly common question arising from the /programmes URL design is how the lack of readability / meaning affects search engines. <a href="http://moz.com/learn/seo/url">Standard SEO arguments</a> tend to stress the importance of keywords in URLs and there's long been a suggestion that URL keywords are one factor influencing search result prominence. Then again there are so many factors rumoured to affect search results it's hard to pick apart which factors are real and how much they count. Standard SEO arguments tend to be 6 years out of date attempts to second guess the better brains of Google. And since Google's "<a href="http://googleblog.blogspot.co.uk/2010/06/our-new-search-index-caffeine.html">Caffeine</a>" release in 2010 keywords in the URL have had very little influence on ranking.</p>
+<p>One thing we do know is the importance of links to Page Rank and if URLs move, links break and Page Rank evaporates. So given that we can't manage both persistence and readability the only option was to stuff the URL with additional keywords similar to the iPlayer approach:</p>
+<p><a href="http://www.bbc.co.uk/iplayer/episode/b04gr4l7/eastenders-02092014">http://www.bbc.co.uk/iplayer/episode/b04gr4l7/eastenders-02092014</a></p>
+<p>where:</p>
+<p><a href="http://www.bbc.co.uk/iplayer/episode/b04gr4l7">http://www.bbc.co.uk/iplayer/episode/b04gr4l7</a></p>
+<p>identifies the episode and:</p>
+<p>/eastenders-02092014</p>
+<p>is tacked on for the perceived benefit of search engines. We did think about doing this for at least 5 minutes but decided it felt like the worst of both worlds. Keyword stuffed URLs suggest to users that they're hackable when they aren't. So we didn't and /programmes doesn't seem to have suffered in the eyes of Google et al.</p>
+<h3 id="ids-anchors">Subsidiary resources, transclusion, IDs and anchor links</h3>
+<p>Many of the pages on /programmes (particularly brands, series, episodes and clips) are constructed from data from a whole variety of related objects. So an episode page might display core episode data (title, synopsis), data from its ancestors (brand and series titles) and data from its descendants (canonical version data and downwards). More concretely it might display a list of segments (actually a list taken from its canonical version) and a list of cast and crew (ditto). Where possible we tried to ensure that all subsidiary resources (lists of descendant things) were addressable at their own URL even if we didn't intend to link to them on desktop pages (although see the section on <a href="#mobile">mobile views</a>). <a href="http://rland.me.uk/">David Marland</a> has written an excellent post on how <a href="http://www.smashingmagazine.com/2014/05/02/responsive-design-begins-with-the-url/">responsive design begins with the URL</a>. And more particularly about how making subsidiary resources addressable makes it easy to swap and change what gets served as the core page and what gets AJAX transcluded depending on screen sizes etc.</p>
+<p>HTML IDs and anchor links tend to get neglected in URL design. When designing the /programmes URLs we tried to add IDs to all transcluded subsidiary resources even if we didn't intend to link to them. And we tried to keep the language used in those IDs consistent with the language used in the PIPs domain model and the URL of the subsidiary resource. So for an episode of Eastenders:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04gr4l7">http://www.bbc.co.uk/programmes/b04gr4l7</a></p>
+<p>adding #segments:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04gr4l7#segments">http://www.bbc.co.uk/programmes/b04gr4l7<strong>#segments</strong></a></p>
+<p>will anchor link you to the segment list (in this case a list of the music tracks played). And swapping out the hash for a slash:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04gr4l7/segments">http://www.bbc.co.uk/programmes/b04gr4l7<strong>/segments</strong></a></p>
+<p>will redirect you to the segment list resource nested under the canonical version URI (again because segments belong to versions not episodes):</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04gr4l3/segments">http://www.bbc.co.uk/programmes/<strong>b04gr4l3</strong>/segments</a></p>
+<p>This is particularly useful (and saves an extra request) if you want to work with tracklist data but only have episode PIDs to work with.</p>
+<p>In terms of URL hackability you <strong>should</strong> always be able to replace a hash with a slash and vice versa.</p>
+<h3 id="titling-problems">Some titling problems with the PIPs hierarchy</h3>
+<p>Several paragraphs earlier I mentioned that programme makers and schedulers don't tend to think in terms of brands, series and episodes. For them a programme gets commissioned, produced and broadcast in a slot on a network / channel. Often programmes are commissioned as a block (even an ongoing programme like Eastenders gets commissioned as a series) but that block doesn't always reflect how the programme is offered to the public (either through broadcast or maybe later as a DVD). Occasionally the public facing title of a programme reflects the broadcast slot and not the "content". So a play gets commissioned and broadcast as part of the Afternoon Drama slot on Radio 4 and gets placed into the Afternoon Drama brand in PIPs. In /programmes and radio iPlayer the title displayed will be generated by combining the titles of the brand and episode. But some time later the play might be rebroadcast in the evening outside the Afternoon Drama context. At which point you have to either make a new episode or live with the slightly misleading title.</p>
+<p>And there are similar problems with recontextualised TV repeats with episodes from <a href="http://www.bbc.co.uk/programmes/b006mkw3">Have I Got News for You</a> being largely the same as episodes from <a href="http://www.bbc.co.uk/programmes/b00877q4">Have I Got a Bit More News For You</a> but having to duplicate brands, series and episodes to cope with the titling requirements.</p>
+<p>There have been some conversations about modelling schedule specific override titles on broadcasts but for now we have brands, series and episodes and the titling is generated from that hierarchy.</p>
+<h3 id="segments">Segments and segment events</h3>
+<p>Back to the data model and all the other things... Episodes usually have a running order. In a news programmes these might be individual new stories, in a music programme the tracks played, in a football programme the matches covered. In PIPs the running order is modelled as a set of segments hanging off an episode version. Because a version can have many segments and a segment can be used in many versions, segments are joined to versions via segment events. Segment objects describe the editorial content of the segment and its duration. Segment events describe where the segment occurs in the version either by position (this is the third segment) or by the offset start time (how many seconds into the version the segment starts). This allows for segment reuse between different versions of the same episode or different versions of different episodes. So a segment of the canonical version of a Top Gear episode might be a review of a Ferrari and that same segment might be reused in the canonical version of the Top Gear Christmas special or might be reused in the canonical version of a clip:</p>
+<p><a href="/assets/2014/09/segments.png"><img src="/assets/2014/09/segments.png" alt="Segment reuse via segment events" title="Segment reuse via segment events" width="379" height="423" class="aligncenter size-full wp-image-176135866" /></a></p>
+<p>Though in practice only music tracks ever use this segment reuse across episode versions.</p>
+<p>If you look at the data view of a version with segments like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b04gr4l3.xml">http://www.bbc.co.uk/programmes/b04gr4l3.xml</a></p>
+<p>you'll find that both segments and segment events have PIDs:</p>
+<p><code></p>
+<pre>
+
+		&lt;segment_events>
+
+			&lt;segment_event>
+
+				&lt;title/>
+
+				&lt;pid><strong>p025pdv2</strong>&lt;/pid>
+
+				...
+
+				&lt;version_offset/>
+
+				&lt;position>1&lt;/position>
+
+				&lt;segment type="music">
+
+					&lt;pid><strong>p025pdv0</strong>&lt;/pid>
+
+					&lt;duration/>
+
+					...
+
+				&lt;/segment>
+
+			&lt;segment_event>	
+
+		&lt;segment_events>
+
+	</pre>
+<p></code></p>
+<p>Given that segments can belong to many versions we weren't able to nest them under version URLs and needed to give them a URL of their own. So we followed the standard pattern of /programmes/:pid. Like <a href="http://www.bbc.co.uk/programmes/p025pdv0">http://www.bbc.co.uk/programmes/p025pdv0</a>. Segment events were different though. A segment event belongs to one and only one segment and one and only one version so we could, theoretically, have nested them as either:</p>
+<p>http://www.bbc.co.uk/programmes/:version.pid/:segment_event.pid</p>
+<p>or:</p>
+<p>http://www.bbc.co.uk/programmes/:segment.pid/:segment_event.pid</p>
+<p>Given that segment events are not available as HTML pages but only as data views (at least at the time of writing) and the URLs were intended only for use as an API and that consumers of an API should be constructing URLs rather than hacking, making the URL dependent on a composite key of the segment event PID and another object would have added lookup complexity that wasn't needed. So again we did the simplest thing and went for /programmes/:pid.</p>
+<h3 id="collections">Collections, seasons and franchises</h3>
+<p>The final set of programme-type objects are collections, seasons and franchises. Collections provide a generic way to group any type of PIPs objects (brand, series, episode, clips, segments etc) although they're usually used to group episodes and clips into editorially coherent packages. They're basically a way to generate a random list of things with a similar theme (and I didn't even say "curate"). This <a href="http://www.bbc.co.uk/programmes/p025jt33">collection of John Betjeman episodes</a> from a variety of archive programmes would be a classic example.</p>
+<p>Seasons and franchises are specialised types of collection. A season is used to group "publications": broadcasts and iPlayer ondemands. Although, in practice, pretty much always broadcasts. They correspond to the traditional (UK) definition of a broadcast season where broadcasts of episodes from multiple programme groups are promoted as a themed season. So there might be multiple broadcasts of some Clint Eastwood film but <strong>this broadcast and only this broadcast</strong> is part of the Wild West season. The currently running <a href="http://www.bbc.co.uk/programmes/p01nb93y">World War One season</a> would be an obvious example.</p>
+<p>Franchises are intended to group "related" TLEOs (although see <a href="#unstable-tleos">unstable TLEOs</a>) usually by some narrative theme shared between original programmes and spin-offs. So you might want to call Doctor Who and Torchwood a franchise. Or Doctor Who and Sarah Jane. Or all the various Matches of the Day. Or Casualty and Holby City. Or Autumn Watch and Spring Watch. So far there are only 3 franchises in PIPs and /programmes: <a href="http://www.bbc.co.uk/programmes/p00ly0k7">Daily and Sunday Politics</a>, <a href="http://www.bbc.co.uk/programmes/p010gmql">UK Black</a> and <a href="http://www.bbc.co.uk/programmes/p010gnbf">Desi Download</a>.</p>
+<p>When it comes to designing URLs, collections, seasons and franchises come with the same problems as the rest of the PIPs model. They are top-level objects (they don't belong to anything) and there's nothing to stop people from publishing a John Betjeman collection  this year and a different John Betjeman collection next year. So again, titles don't help much with URL generation. To keep things simple and consistent we decided to stick with the same pattern and publish seasons, collections and franchises at /programmes/:pid.</p>
+<h2 id="aggregations">Aggregation URLs</h2>
+<p>Heading back to Tom Loosemore's 15 web principles for the BBC, principle 10 said:</p>
+<blockquote>
+<p>Maximise routes to content: Develop as many aggregations of content about people, places, topics, channels, networks &amp; time as possible. Optimise your site to rank high in Google.</p>
+</blockquote>
+<p>So we did. Or at least tried to. There are (or were) five main types of aggregation in /programmes:</p>
+<ol>
+<li>Schedule views (in the usual <a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm">network / channel fashion</a> but also schedules by <a href="http://www.bbc.co.uk/programmes/genres/comedy/schedules">genres</a>, <a href="http://www.bbc.co.uk/programmes/formats/documentaries/schedules">formats</a> and tags)</li>
+<li>A-Z views</li>
+<li>Genres (the rough subject matter of a programme)</li>
+<li>Formats (the style of a programme)</li>
+<li>Tags (more granular descriptions of the subject matter of a programme based on <a href="http://dbpedia.org/About">DBpedia</a> tags) - sadly now removed</li>
+</ol>
+<p>Aggregations present none of the problems of programme objects when it comes to designing URLs. For a start there are far fewer of them and their structure is more stable over time. So whereas we sacrificed readability and hackability for brands and series and episodes etc, we were able to make aggregation URLs that were persistent (or persistent enough / easily redirectable), readable, meaningful and hackable.</p>
+<h3 id="schedules">Schedules</h3>
+<p>Before /programmes the BBC generated online radio and TV schedule listings through a service called WhatsOn. This was completely isolated from programme pages except where programme teams manually added a link to their hand-rolled programme home page. Where these links were added you couldn't get directly to the details of the episode being broadcast but only to the overarching page about the programme. In addition to programme pages for brands and series and episodes, /programmes was designed to replace WhatsOn powered schedules with listings linking directly to the episode concerned. Though no longer linking to the TLEO page also took some debate.</p>
+<p>Radio network and TV channel schedules are nested under the top-level directory for the network or channel (or service in PIPs language) concerned at:</p>
+<p>http://www.bbc.co.uk/:service/programmes/schedules</p>
+<p>Again the /programmes part is just there to make sure the BBC web servers know to send the request to the /programmes application. There was some debate about whether networks / services (let's stick with services for the sake of typing) should live inside the top-level directory for the service or whether, in old iPlayer style, the service should live under /programmes like:</p>
+<p>http://www.bbc.co.uk/programmes/radio1/schedules</p>
+<p>At the time the BBC was <a href="http://www.bbc.co.uk/blogs/legacy/bbcinternet/2011/01/putting_quality_first_halving.html">keen to cut down on the number of top-level directories</a> (for reasons I've never quite understood) but we were pretty sure that the service directories wouldn't be deleted. For about five minutes I campaigned to have all radio aggregations under /radio and all TV aggregations under /tv but people scowled when I mentioned slash radio slash four. So service first, then /programmes as a namespace, then schedules.</p>
+<p>Usually if you navigate to:</p>
+<p>http://www.bbc.co.uk/:service/programmes/schedules</p>
+<p>you'll get a list of today's broadcasts. But some services have different schedules depending on transmission method and / or location. So Radio 4 has a Long Wave schedule and an FM schedule. And BBC One and Two have a whole host of different regional schedules (and different regions for that matter). In PIPs (and SMEF) language these variations are referred to as outlets. So when you request the /schedules URL for a service with outlets you get a list of outlets rather than a day schedule and the schedule page is found at:</p>
+<p>http://www.bbc.co.uk/:service/programmes/schedules/:outlet</p>
+<p>Navigating between days expands the URL to include year, month and day:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014/09/04">http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014/09/04</a></p>
+<p>Removing the day returns a calendar month view:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014/09">http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014/09</a></p>
+<p>and removing the month returns a calendar year view:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014">http://www.bbc.co.uk/radio4/programmes/schedules/fm/2014</a></p>
+<p>We also made week view schedules (mostly I think because that's what Radio 3 had always had and that's what they still wanted to have) with URLs like:</p>
+<p>http://www.bbc.co.uk/:service/programmes/schedules/:outlet/:year/w:week-number</p>
+<p>where the week number is the ISO week number (although some people did request we used "BBC week numbers" because the BBC has its very own week numbering system...). So you'll find a week schedule for Radio 3 at:</p>
+<p><a href="http://www.bbc.co.uk/radio3/programmes/schedules/2014/w12">http://www.bbc.co.uk/radio3/programmes/schedules/2014/w12</a></p>
+<p>should you ever need such a thing.</p>
+<p>There was some bickering about what kind of day a day schedule should represent. Stakeholders seemed to want a schedule day to represent a broadcast day (~ 6am to 6am) but we thought it would be odd to create a link to a schedule saying something like 'Broadcast on Thursday September 4th at 3:30' and a link to a schedule labelled 'Wednesday September 3rd'. So we compromised and schedule days run from midnight to 6am the next day.</p>
+<p>It's also worth noting that for today's schedule you can anchor link to the current broadcast. So add #on-now to today's schedule URL and the page will scroll to the current broadcast:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm#on-now">http://www.bbc.co.uk/radio4/programmes/schedules/fm<strong>#on-now</strong></a></p>
+<p>Whilst not quite keeping with the pattern of making hash URLs and slash URLs consistent, you can also add /now to a schedule view like:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/now">http://www.bbc.co.uk/radio4/programmes/schedules/<strong>now</strong></a></p>
+<p>which 302 redirects to the episode page of the current broadcast. Currently this only works for the 'default' schedule (e.g. FM for Radio 4) and doesn't work if you specify a particular outlet. But there are plans to improve this to work with outlets and bring the naming in line with the anchor link. Even without improvements it's a handy way to get quickly to details of the programme now being broadcast.</p>
+<p>Finally (and this is edging into <a href="#data-views">data views</a> territory) in July 2008 <a href="http://whomwah.com/">Duncan Robertson</a> added <a href="http://www.bbc.co.uk/blogs/legacy/radiolabs/2008/07/some_ical_views_onto_programme.shtml">calendar data views to the schedules</a>. Add .ics to any schedule URL, subscribe to that URL in the calendar application of your choice and you'll be able to see what's on for the next 7 days without ever having to visit the website.</p>
+<h4 id="schedule-helpers">Schedule helper URLs</h4>
+<p>Service schedules have a couple of other hidden URLs that occasionally prove useful:</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/yesterday">http://www.bbc.co.uk/radio4/programmes/schedules/fm/yesterday</a> will show yesterday's schedule</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/today">http://www.bbc.co.uk/radio4/programmes/schedules/fm/today</a> will show today's schedule</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/tomorrow">http://www.bbc.co.uk/radio4/programmes/schedules/fm/tomorrow</a> will show tomorrow's schedule</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/last_week">http://www.bbc.co.uk/radio4/programmes/schedules/fm/last_week</a> will show last week's schedule</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/this_week">http://www.bbc.co.uk/radio4/programmes/schedules/fm/this_week</a> will show this week's schedule</p>
+<p><a href="http://www.bbc.co.uk/radio4/programmes/schedules/fm/next_week">http://www.bbc.co.uk/radio4/programmes/schedules/fm/next_week</a> will show next week's schedule</p>
+<p>The decision to use underscores and not hyphens was mine and was the wrong one. And the helper URLs should probably redirect but...</p>
+<h3 id="a-z">A-Z</h3>
+<p>A-Z views are fairly simple. They live at:</p>
+<p><a href="http://www.bbc.co.uk/programmes/a-z">http://www.bbc.co.uk/programmes/a-z</a></p>
+<p>and list TLEOs (including accidentally orphaned episodes). The only interesting point to note is they're cross-listed so The Archers will appear under both T and A. At least for now. Although I'm told the new platform /programmes is moving to doesn't support this, so probably not for much longer. If that move has happened before you read this and you can't find The Archers, you might want to look under T.</p>
+<h4 id="programme-lookup-urls">Programme lookup URLs</h4>
+<p>Another slightly undocumented feature is the quick programme lookup URL. Although we couldn't make the TLEO URLs readable and meaningful we still wanted a way to hack the URL to find programmes by title. So we added:</p>
+<p>http://www.bbc.co.uk/programmes<strong>/:programme-title</strong></p>
+<p>What happens is:</p>
+<ol>
+<li>
+<p>You hack the URL to include the programme title (or a bit of the programme title) like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/some-text">http://www.bbc.co.uk/programmes/<strong>some-text</strong></a></p>
+</li>
+<li>The /programmes application first checks to see if the bit after the final slash matches the PID pattern. If it does match the PID pattern the /programmes application looks for a TLEO with that PID. If it finds one it serves the TLEO page. If it doesn't find one it returns a 404.</li>
+<li>
+<p>If it doesn't match the PID pattern the application checks to see how many TLEOs have the string you've typed as a substring of the title.</p>
+<ol>
+<li>
+<p>If no TLEO titles match that pattern the application returns a 404:</p>
+<p><a href="http://www.bbc.co.uk/programmes/this-is-the-most-boring-thing-ive-ever-read">http://www.bbc.co.uk/programmes/<strong>this-is-the-most-boring-thing-ive-ever-read</strong></a></p>
+</li>
+<li>
+<p>If only one TLEO title matches that pattern the application returns a 302 redirect to that TLEO PID:</p>
+<p><a href="http://www.bbc.co.uk/programmes/sharedplanet">http://www.bbc.co.uk/programmes/<strong>sharedplanet</strong></a> > <a href="http://www.bbc.co.uk/programmes/b02xf2qg">http://www.bbc.co.uk/programmes/<strong>b02xf2qg</strong></a></p>
+</li>
+<li>
+<p>If many TLEO titles match that pattern the application returns a 302 redirect to a list of those TLEOs:</p>
+<p><a href="http://www.bbc.co.uk/programmes/thearchers">http://www.bbc.co.uk/programmes/<strong>thearchers</strong></a> > <a href="http://www.bbc.co.uk/programmes/a-z/by/thearchers/all">http://www.bbc.co.uk/programmes/a-z/by/<strong>thearchers</strong>/all</a></p>
+</li>
+</ol>
+</li>
+</ol>
+<p>(302s are used for redirects because you never know when a similar titled programme / spinoff might come along.)</p>
+<p>The /by/ bit of the listing URL is a bit of a puzzler. Memory suggested it was a clever bit of namespacing to fence off the title lookup from the listings but lots of curling suggests that doesn't seem to be the case. I <em>think</em> it was maybe added because we first added the programme lookup or list logic to /programmes/a-z/.. and wanted to separate that from the URL that only ever brought back lists: /programmes/a-z/by/.. It seems to be redundant now that /programmes/some-text does the TLEO or title match or title list logic.</p>
+<h3 id="genres-formats-tags">Genres, formats and tags</h3>
+<p>PIPs has (or at least had) three different category schemes for programmes:</p>
+<ol>
+<li>Genres describe the rough subject matter of the programme. They were originally populated by Red Bee only on versions but propagated up to TLEOs by the <a href="#pips-to-public">green box</a>. And now they can be set on any programme object and inherit down unless they're overridden.</li>
+<li>Formats describe the way the programme has been made: a film and / or a documentary for example. Again they were originally populated by Red Bee on versions but now can be on any object and inherit with override.</li>
+<li>Tags were assigned by BBC staff to episodes and clips. They were based on DBpedia URLs so a programme could theoretically be "tagged" with any concept with a Wikipedia URL allowing for more granular description of the subject matter of a programme: who, where, when and what.</li>
+</ol>
+<p>Tags were always something of a difficult sell to production staff; there were never quite enough to expose tag navigation properly and without navigation being exposed it was difficult to persuade people to add them. Given the number of iPlayer available episodes at any one time they were probably also a little too granular to be useful to users. Often there was only one available episode with a given tag at any one time so they didn't really help with sideways navigation. Anyway, tags have been removed now though the data still exists somewhere. Maybe they'll return as the number of available episodes increases.</p>
+<p>One final point on tags. Whilst it was possible to assume that all episodes under a TLEO would share the same genres and formats it wasn't possible to assume the same of tags. So whilst genre and format aggregations link to the TLEO homepage, tag aggregations used to link to an episode aggregation under the TLEO like:</p>
+<p>http://www.bbc.co.uk/programmes/:tleo/episodes/topics/:tag</p>
+<p>/programmes treated genres, formats and tags as types of "category" and the code to handle them was identical. The only major difference was that genres could have child genres to three levels whilst formats and tags were flat:</p>
+<p><a href="http://www.bbc.co.uk/programmes/formats/films">http://www.bbc.co.uk/programmes/formats/films</a></p>
+<p><a href="http://www.bbc.co.uk/programmes/genres/music/jazzandblues/blues">http://www.bbc.co.uk/programmes/genres/music/jazzandblues/blues</a></p>
+<p>The URL keys for formats and genres didn't exist in PIPs so were created in the green box. I think it was my decision to concatenate them (jazzandblues) but in retrospect they probably should have been hyphen separated (jazz-and-blues).</p>
+<p>The tag URL keys were taken from DBpedia which in turn takes them from Wikipedia. This presents a real challenge for URL persistence because Wikipedia URLs change as Wikipedia page titles change and that causes DBpedia to change and that caused our tags to change. If we were starting this now we'd probably use Wikidata IDs rather than DBpedia URL keys.</p>
+<p>Anyway, the main genre, format and tag URLs listed TLEOs filterable by <a href="#availability-filters">availability</a> and <a href="#service-filters">service / service type</a> but there were also day schedule views like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/genres/sport/football/worldcup/schedules">http://www.bbc.co.uk/programmes/genres/sport/football/worldcup/schedules</a></p>
+<p>Like service schedules, clicking on another day expands the URL to include month and day like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/genres/sport/football/worldcup/schedules/2014/07/13">http://www.bbc.co.uk/programmes/genres/sport/football/worldcup/schedules/2014/07/13</a></p>
+<p>Unfortunately whilst the URL is fairly readable / meaningful it isn't quite hackable. Unlike service schedules if you remove the day or the day and the month you get a 404 rather than a calendar view. It was always tricky to agree on what counted as the "definition of done". Persuading a project manager that some view that users can only get to if they hack the URL or some serialisation that only a few geeks will ever use has to be made before the box gets ticked is hard when there's other, more visible, work on the list.</p>
+<p>Like service schedules, genre and format schedules are available as .ics so if you want a calendar of films on the BBC in your Apple or Google calendar you can subscribe to:</p>
+<p><a href="http://www.bbc.co.uk/programmes/formats/films/schedules.ics">http://www.bbc.co.uk/programmes/formats/films/schedules.ics</a></p>
+<p>Unlike service schedules there's no week view but there is a paginated list of all upcoming broadcasts (not split by day) at:</p>
+<p><a href="http://www.bbc.co.uk/programmes/formats/films/schedules/upcoming">http://www.bbc.co.uk/programmes/formats/films/schedules/upcoming</a></p>
+<p>Which isn't currently linked to but is also available as ICS.</p>
+<p>We did have half a plan to allow cross-pollination of genre and format URLs so you could query by combinations like:</p>
+<p>http://www.bbc.co.uk/programmes/genres/sport/football/formats/performancesandevents</p>
+<p>for all live football across the BBC or:</p>
+<p>http://www.bbc.co.uk/programmes/genres/sport/football/formats/phoneins</p>
+<p>for all football phone-ins across the BBC. But that never quite happened.</p>
+<h3 id="availability-filters">Availability filters</h3>
+<p>A-Z, genre, format and (in their day) tag aggregations could all be scoped by programme availability:</p>
+<ol>
+<li>Adding /player returns only TLEOs which have (or are) episodes available to stream</li>
+<li>Adding /current returns TLEOs which have (or are) episodes available to stream <strong>and / or</strong> have been / will be broadcast in a 7 / 7 day window</li>
+<li>Adding /all returns all TLEOs</li>
+</ol>
+<p>Current was added so network / channel listings would show programmes currently being promoted but which might not (yet) have episodes available to stream.</p>
+<p>For genres and formats (but not A-Z) there's also a /player/episodes URL like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/genres/sport/player/episodes">http://www.bbc.co.uk/programmes/genres/sport/player/episodes</a></p>
+<p>which lists all episodes currently available (not grouped into TLEOs). This was only ever meant to serve RSS / Atom and never meant to be linked to as an HTML page. We built the HTML view just to test the queries and in case a user removed the .rss from the URL. Unfortunately we never got round to adding an RSS serialisation. And the page got linked to in lieu of a TLEO listing sortable by latest episode broadcast time.</p>
+<h3 id="service-filters">Service type and service filters</h3>
+<p>A-Z, formats, genres and (again when they existed) tags could all be filtered by service-type (TV or radio) or by service (TV channel or radio network). These URLs were designed to fit into existing top level directories so you can get all football programmes with available episodes across the BBC:</p>
+<p><a href="http://www.bbc.co.uk/programmes/genres/sport/football/player">http://www.bbc.co.uk/programmes/genres/sport/football/player</a></p>
+<p>or all football programmes with available episodes on radio:</p>
+<p><a href="http://www.bbc.co.uk/radio/programmes/genres/sport/football/player">http://www.bbc.co.uk/<strong>radio</strong>/programmes/genres/sport/football/player</a></p>
+<p>or all football programmes with available episodes on 5 Live:</p>
+<p><a href="http://www.bbc.co.uk/5live/programmes/genres/sport/football/player">http://www.bbc.co.uk/<strong>5live</strong>/programmes/genres/sport/football/player</a></p>
+<p>which leads to probably the most readable, hackable and definitely longest URLs in /programmes:</p>
+<p><a href="http://www.bbc.co.uk/bbcone/programmes/genres/sport/football/worldcup/schedules/2014/07/13">http://www.bbc.co.uk/bbcone/programmes/genres/sport/football/worldcup/schedules/2014/07/13</a></p>
+<p>Unlike early iPlayer service listings, /programmes service type and service aggregations are based on broadcast history rather than masterbrand. So programmes like Eastenders and Doctor Who still appear on BBC Three listings even though their masterbrand is BBC One:</p>
+<p><a href="http://www.bbc.co.uk/bbcthree/programmes/genres/drama/soaps/player">http://www.bbc.co.uk/bbcthree/programmes/genres/drama/soaps/player</a></p>
+<h3 id="container-aggregations">Container aggregations</h3>
+<p>Most of the /programmes aggregations link down to TLEO pages (brand, series and orphan episodes). Once you've arrived at a brand or series you still need to be able to find individual episodes inside it. So /programmes also publishes aggregations of episodes inside brands and series. These are:</p>
+<ol>
+<li>
+<p>A list of episodes currently available online:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/episodes/player">http://www.bbc.co.uk/programmes/b006q2x0<strong>/episodes/player</strong></a></p>
+</li>
+<li>
+<p>A list of upcoming broadcasts (including repeats):</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/broadcasts/upcoming">http://www.bbc.co.uk/programmes/b006q2x0<strong>/broadcasts/upcoming</strong></a></p>
+</li>
+<li>
+<p>A list of upcoming broadcasts (excluding repeats):</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/broadcasts/upcoming/debut">http://www.bbc.co.uk/programmes/b006q2x0<strong>/broadcasts/upcoming/debut</strong></a></p>
+<p>This view isn't currently linked to.</p>
+</li>
+<li>
+<p>A list of all broadcasts by month:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/broadcasts/2014/09">http://www.bbc.co.uk/programmes/b006q2x0<strong>/broadcasts/2014/09</strong></a></p>
+<p>Hackable back to months with broadcasts in a year.</p>
+</li>
+<li>
+<p>A list of direct children (series and episodes):</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/episodes/guide">http://www.bbc.co.uk/programmes/b006q2x0<strong>/episodes/guide</strong></a></p>
+</li>
+</ol>
+<p>The URLs have changed a little since we first went live and probably aren't as hackable as they could be with /episodes listing years and months with broadcasts and /broadcasts redirecting to the current year and month.</p>
+<p>There also used to be aggregations of episodes by tag but they disappeared when tags disappeared.</p>
+<h4 id="onion-problem">The Onion Problem</h4>
+<p>So we ended up with a lot of aggregations and probably spent more time thinking about them than we did the "content" pages (brands, series, episodes etc). The upsides are obvious; many more approach roads to programmes for both users and search bots. But one thing we never quite solved were the journeys up from programme pages and back out to the aggregations. Given a made up example of an episode of In Our Time tagged with Babylon should it link up to other In Our Time episodes also tagged Babylon, programmes from Radio 4 tagged Babylon, programmes from across radio tagged Babylon, all programmes tagged Babylon or everything the BBC has about Babylon. There were arguments both ways; that the higher up the onion you link the more stuff you expose but the more context you lose. And definite arguments around losing the context of intended audience. The best argument to keep links local was for children's programmes where you probably didn't want to link up outside that context. Although since Children's TV eventually opted out of /programmes for programme pages (links from the /programmes <a href="http://www.bbc.co.uk/cbbc/programmes/schedules">CBBC schedule page</a> get redirected which is rather sad) that became less of an issue. I think our gut feeling was to take users as high up the tree as possible and expose as much content as possible. And other options felt a little like information architecture as organisation structure. But then parts of the BBC organisation structure are meaningful to users. And some parts definitely aren't. So there's no absolutely, definitely correct answer.</p>
+<h2 id="universality">Universality and "one web"</h2>
+<p>The overriding principle when designing /programmes was <a href="http://www.w3.org/Press/IPO-announce">universality</a>. The "<a href="http://smethur.st/posts/64839140">manifesto</a>" we drew up included:</p>
+<blockquote>
+<p>/programmes believes:</p>
+<ol>
+<li>in one web</li>
+<li>in accessibility for people</li>
+<li>in accessibility for machines</li>
+</ol>
+</blockquote>
+<p>The aim was to ensure users got the information they wanted no matter what their accessibility needs, device or agent. For that reason we spent a lot of time ensuring that the URLs we supported were accessible, would work across screen sizes and would output data in whatever fashion users wanted.</p>
+<h3 id="mobile">Mobile views</h3>
+<p>/programmes was born in the age of "feature phones". The first generation iPhone launched a few months before we did but web browsing smart phones weren't commonplace and there were another 3 years before <a href="http://alistapart.com/article/responsive-web-design">responsive design</a> went mainstream. But there was a feeling that one day smart phones would be everywhere and <a href="http://www.yandatime.com/">Chris Yanda</a> in particular was telling everyone at the BBC to design for mobile. And /programmes was supposed to work everywhere so...</p>
+<p>In the absence of responsive design we added a separate set of templates to /programmes serialising all the standard views as <a href="https://en.wikipedia.org/wiki/XHTML_Mobile_Profile">XHTML Mobile Profile</a>. The plan was to add some device detection to route requests between "desktop" views and "mobile" views but since we didn't have that technology in place for a few months, the first mobile friendly /programmes pages were served at separate URLs with a .mp suffix. Some of those views still exists like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/b006q2x0/episodes/guide.mp">http://www.bbc.co.uk/programmes/b006q2x0/episodes/guide<strong>.mp</strong></a></p>
+<p>/programmes is currently being migrated to responsive design so I guess all these .mp URLs will 301 to the standard URL some time fairly soon.</p>
+<h3 id="data-views">Data views</h3>
+<p>All of what follows and any previous mention of XML or JSON or ICS comes with the caveat of being true at the time of typing. By the time you read this (if anyone makes it this far) it may no longer be true. If you curl a /programmes data view like:</p>
+<p>curl --head http://www.bbc.co.uk/programmes/genres.xml</p>
+<p>part of the response you get back is:</p>
+<blockquote>
+<p>X-Aps-Deprecation-Notice: APS is soon to be deprecated. It will first of all cease to be supported on a 24/7 basis, and will then cease responding entirely. Nitro is the BBC's new API for programme data, and can provide all the information previously provided by APS. Go here to read more: http://developer.bbc.co.uk/nitro</p>
+</blockquote>
+<p>So data views exist for now but possibly / probably not for much longer.</p>
+<p>In keeping with the principle of universal access to information, /programmes was designed to be <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a>. Not RESTful as in a RESTful API and some other separate website thing somewhere else. But RESTful as in some resources and some representations where one of those representations just happens to be HTML. But could be JSON or YAML or XML or RDF-XML or ICS or RSS or XSPF. And which representation you get back depends on what you <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">choose to accept</a>.</p>
+<p>Or at least that was the case when /programmes still supported <a href="https://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a>. These days you have to request a specific representation by adding an extension to the URL (except for HTML which comes back as default (obviously)). So adding .json brings back JSON, .xml returns vanilla XML, .rdf gets you RDF-XML, .ics added to schedule views gets you ICS files and adding /segments.xspf to an episode page with a tracklist will bring back an XSPF playlist. Obviously not all URLs support all representations and some are more specialised than others. Back in the early design and development phase we used to have a whole wall of post-its outlining the URL structure and which representations each resource returned. If you're designing large and fairly complex websites it's still a useful technique for getting a general feel of the shape of what you're building.</p>
+<p><a href="/assets/2014/09/postits.jpg"><img src="/assets/2014/09/postits.jpg" alt="Post-it notes for URLs" title="Post-it notes for URLs" width="1024" height="768" class="aligncenter size-full wp-image-176135865" /></a></p>
+<p>It's interesting (I think) that we seem to have moved from seeing the web as a universal information space and drawn clear lines of demarcation between content delivery to end users (the website) and a data space for programmers (the API). It always felt to me more like a continuum than a strict separation. You have:</p>
+<ol>
+<li>HTML designed to be viewed by end users in browsers</li>
+<li>Data exchange formats designed to be used by end users outside browsers (RSS, ICS, XSPF) which also happen to be handy for programmers</li>
+<li>The standard API-ish serialisations like JSON and XML up to various flavours of RDF</li>
+<li>And RDFa (RDF in HTML) and you're back where you started</li>
+</ol>
+<p>Trying to draw a clear line and segment the continuum by class of user agent and intended use seems to me misguided but maybe I'm suffering a Web 2.0 hangover and these days people are happier with websites as sealed systems.</p>
+<h3 id="linked-data">Linked data views</h3>
+<p>Sometime in early 2008 <a href="http://raimond.me.uk/">Yves Raimond</a> joined us for a couple of weeks and started to translate the PIPs data model into the <a href="http://www.bbc.co.uk/ontologies/po">Programmes Ontology</a>. A few months later he joined us full time and began to add RDF views to /programmes in much the same way as we'd already added XML, JSON and YAML. I think maybe because we spoke quite a lot about RDF and the semantic web, /programmes is seen in some parts as a linked data website. But it's no more a linked data site than it is a desktop site or a tablet site or a mobile site or a JSON site. RDF is just one more serialisation it publishes and one more way of making it universal.</p>
+<p>At this point discussion about URLs gets a bit complicated and you probably end up slipping into talking about URIs (or if you're feeling particularly geeky IRIs). A central conceit of the semantic web is that you need different URIs to publish data about the document and the real-world thing the document represents. So you might want to say that one person wrote an Archers' episode page but another person wrote the episode. There's a fair amount of bickering about the nomenclature around this but people tend to refer to the real-world thing (the actual episode) as a non-information resource and the document about the thing (the various serialisations of the episode "page") as an information resource. And some people talk about the non-information resource having a URI and the information resource having a URL. And some people use URI for everything.</p>
+<p>There are two common ways to differentiate between non-information resources and information resources:</p>
+<ol>
+<li>
+<p>Give the non-information resource a completely different URI path like http://www.bbc.co.uk/<strong>things</strong>/:pid and when that resource gets requested return a 303 (see other) to the information resource at http://www.bbc.co.uk/<strong>programmes</strong>/:pid</p>
+<p>This is the <a href="http://www.w3.org/2001/tag/group/track/issues/14">httpRange-14</a> debate. It's been going on since 2002 and it's almost guaranteed to make your brain hurt.</p>
+</li>
+<li>Give the non-information resource a hash URI like http://www.bbc.co.uk/programmes/:pid<strong>#thing</strong>. Because hashes don't get sent to the server when you request a hash URI the server sees the hashless URI and returns details of the information resource</li>
+</ol>
+<p>For simplicity and because our existing URIs were fairly granular (one URI per thing, one thing per URI) we chose to go with the hash pattern. For about an hour we went with the hash being the class of the object like http://www.bbc.co.uk/programmes/:pid<strong>#brand</strong> or http://www.bbc.co.uk/programmes/:pid<strong>#series</strong> but figured it would be easier for external consumers (who might not necessarily know the class of an object) to just go with http://www.bbc.co.uk/programmes/:pid<strong>#programme</strong></p>
+<p>So we ended up with:</p>
+<ol>
+<li>http://www.bbc.co.uk/programmes/:pid<strong>#programme</strong> being the URI of the non-information resource</li>
+<li>http://www.bbc.co.uk/programmes/:pid being the URI of the generic information resource</li>
+<li>http://www.bbc.co.uk/programmes/:pid<strong>.:representation</strong> being the URI of the information resource representation</li>
+</ol>
+<p>Unlike the fairly common DBpedia URI pattern this doesn't conflate the information resource / non-information resource split (I can't send you that but (303) here's some information) with the content negotiation part (which serialisation of the  information would you prefer). So the thing that appears in the browser bar and gets copied and pasted and used to create new links is the generic information resource URI and not the representation URI.</p>
+<p>Anyway, at some point fairly soon, the RDF XML views (like the JSON and XML and YAML and ICS and XSPF) will (probably) disappear. But /programmes won't quite stop being a linked data website. Specifically because it will continue to serve RDFa (as Programmes Ontology / <a href="http://schema.org/">Schema.org</a>). Where JSON or JSON-LD etc are only ever a transform away. But more generally because the principles that underlie the design of /programmes and the design of PIPs (since its Programme Information <strong>Pages</strong> days) are the same principles that underlie linked data: one URL (I?) per thing, one thing per URL, semantically linked. RDF was only ever an implementation detail and the design principles of <a href="http://www.bbc.co.uk/blogs/legacy/radiolabs/2009/01/how_we_make_websites.shtml">how we make websites</a> all remain true.</p>
+<h3 id="general-stuff">General stuff</h3>
+<p>There are a few general points about the URLs that don't fit anywhere else but are fairly obvious. For completeness: the URLs don't include any technology choices (no .php or /servlets/ etc) because the technology always changes. They don't include brand names (except for service level aggregations) because brand names change. They don't include any details about the backend systems (like those newspaper sites you see with /cms/ in the URL bar). And they only ever use parameters to change the display of a resource like:</p>
+<p><a href="http://www.bbc.co.uk/programmes/a-z/by/a/all?page=2">http://www.bbc.co.uk/programmes/a-z/by/a/all<strong>?page=2</strong></a></p>
+<p>and never to specify the resource requested.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>So that's all I can think of on why /programmes URLs / URIs / whatever ended up looking like they did. The general rule of making object URLs flat, opaque and persistent and the aggregation URLs readable, meaningful and hackable seems to work quite well. It's not perfect but then the way that programmes get commissioned, produced and broadcast isn't "perfect". And as URLs disappear back into the plumbing, I'm probably <a href="http://smethur.st/posts/176135843">less of a fan of readable / hackable URLs that I was</a>. Anyway, if there's any obvious omissions or loose ends please do leave a comment.</p>

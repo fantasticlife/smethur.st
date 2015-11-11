@@ -1,0 +1,61 @@
+---
+layout: post
+status: publish
+published: true
+title: A tedious post about designing IDs
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Following on from a tweet from Erik Wilde the other day... there should be
+  a way how web pages can advertise the fact that they intend to maintain @id as stable
+  identifiers of page fragments. ...I thought I'd type up a few notes on how we went
+  abo...
+wordpress_id: 50351370
+wordpress_url: http://smethur.st/a-tedious-post-about-designing-ids
+date: '2011-04-21 00:00:00 +0100'
+date_gmt: '2011-04-20 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments: []
+---
+<p>Following on from a tweet from <a href="http://www.twitter.com/dret">Erik Wilde</a> the other day...</p>
+<blockquote><p><a href="http://twitter.com/dret/status/60394083063046144">there should be a way how web pages can advertise the fact that they intend to maintain @id as stable identifiers of page fragments.</a></p>
+</blockquote>
+<p>...I thought I'd type up a few notes on how we went about designing IDs on <a href="http://www.bbc.co.uk/programmes">/programmes</a>, <a href="http://www.bbc.co.uk/music">/music</a> and <a href="http://www.bbc.co.uk/nature">/nature</a>. I guess the truth is we didn't really design them; their form and structure came about as a side effect of the way we worked in general. So taking /programmes as an example...</p>
+<p>...the first step (at least once we got to the web page stage) was to make each and every primary resource addressable at a persistent URI. In the first instance all these pages had was an h1 with the title of the object (or something to serve as a title if no obvious title presented itself). As ever we tried to keep the URI structure as flat as possible and avoid building in taxonomy to maximise persistence. Over time we filled these pages out with additional information but only ever showing direct attribute data.</p>
+<p>Next we linked up directly connected primary resource objects (so episodes to the series they belonged to etc).</p>
+<p>Step 3 was to build aggregation / list views (schedules, a-z, genres and formats) to get to the primary resources.</p>
+<p>Step 4 was to build the subsidiary resources and scoped aggregations. As an example a programme episode can have many contributors so we made /the_programme_episode/contributors to list them.</p>
+<p>And finally we built out the primary resource pages by including (or transcluding as some might say) subsidiary resources onto them. So /contributors was mirrored as a fragment of the episode page. And brought its URI fragment identifier with it for use as its ID attribute.</p>
+<p>So you end up with <a href="http://www.bbc.co.uk/programmes/b01064h6/segments">http://www.bbc.co.uk/programmes/b01064h6/segments</a> and <a href="http://www.bbc.co.uk/programmes/b01064j1#segments">http://www.bbc.co.uk/programmes/b01064j1#segments</a>.</p>
+<p>And in the wildlife world <a href="http://www.bbc.co.uk/nature/life/Tiger/sounds">http://www.bbc.co.uk/nature/life/Tiger/sounds</a> and <a href="http://www.bbc.co.uk/nature/life/Tiger#sounds">http://www.bbc.co.uk/nature/life/Tiger#sounds</a>.</p>
+<h2>What's the point?</h2>
+<p>This all seems like quite a lot of work for very little benefit but there is some point:</p>
+<ol>
+<li>Fragment identifiers matter because people (and not necessarily you) link to them and if they change links break. And with Google now indexing fragments, changing fragment identifiers risks losing Google juice.</li>
+<li>It forces you to think about your fragment identifiers as much as your standard page URIs because they're one and the same thing. So they need to be designed with all the usual requirements of non-fragment URIs: readability, hackability and <em>most importantly</em> persistence. And they need to follow your standard URI design patterns which in our case means lower case, hyphen separated and true to the language of the domain model.</li>
+<li>It means adding IDs for fragments / anchor points isn't just a case of typing a string into a template. Before you even get to the template you've already thought about the patterns, written a route to handle the subsidiary resource, written controller code etc.</li>
+<li>It means you can rapidly respond to user testing and real use in the wild by reprioritising the elements of your user experience. If your page gets cluttered you can easily remove the content of a transluded fragment and instead link to the subsidiary resource.</li>
+<li>You can easily change the experience for different platforms. If users are browsing with low-end mobile phones, page weight and download speeds matter. So you can remove the content of less important transcluded resources and again just link to them. (Though you're probably better off just using @media queries and responsive design for smart phones.)</li>
+<li>Everyone working on the project (software engineers, user experience people, product managers...) can easily see which subsidiary resources are available to build the primary resource page. Like an ingredient list for a recipe.</li>
+<li>You can easily add data views to subsidiary resources (RSS for an episodes available to watch list) that live at sensible URIs.</li>
+<li>It's not actually that much extra work. You can reuse the same model code and templating and CSS. It just needs a new route and some minimal controller code.</li>
+<li>Anything that makes you think before you code saves work.</li>
+</ol>
+<h2>Back to the question</h2>
+<blockquote><p><a href="http://twitter.com/dret/status/60394083063046144">there should be a way how web pages can advertise the fact that they intend to maintain @id as stable identifiers of page fragments.</a></p>
+</blockquote>
+<p>I'm not aware of any mechanism to do this. That said I'm not aware of any mechanism to allow web pages to advertise the fact their URIs in general won't change. Maybe there's something out there that I've not come across but if not it would be a nice idea if you could say "we guarantee our URIs (including fragment identifiers) for 5 / 10 / 20 / 50 / 100 years". URIs are your contract with the web and formalising your side of the bargain seems to make sense. It would certainly make my life easier...</p>
+<p>Being unable to answer the question raised another question in my head: why do fragment identifiers change?</p>
+<p>I think mostly it's because they're just not given the same consideration as non-fragment identifiers. Lots of organisations have URI design policies but they rarely extend <em>into</em> the document.</p>
+<p>But maybe it's also because ID attributes fulfill three different functions:</p>
+<ol>
+<li>They act as fragment identifiers as here.</li>
+<li>They act as hooks to hang CSS styling off. Personally I think using IDs in CSS introduces too much specificity and avoid them unless I'm targeting a genuine fragment for styling.</li>
+<li>They act as hooks for javascript behaviours. Unfortunately this one's more difficult to avoid. Targeting an ID in javascript is simpler and quicker than targeting a class and picking the first one where there is only one.</li>
+</ol>
+<p>I'm not suggesting we go back to &lt;a name=""&gt; but I do wonder if some means to separate genuine fragment identifiers from styling and behaviour hooks would be useful?!?</p>
+<p>Finally I wondered what happens if the fragment identifier remains unchanged but the URI of the containing resource does change. So if example.com/foo has a fragment of #me and example.com/foo gets 301ed to example.com/bar. I ran a quick test and found out that the behaviour changes depending on the browser. So Firefox 3, Chrome 10 and Safari 4 all take example.com/foo#me and send example.com/foo off to the server. And the server responds to say example.com/foo has moved to example.com/bar. At this point Firefox and Chrome both take example.com/bar and append the original fragment identifier to get example.com/bar#me. But Safari seems to suffer a short-term memory failure and the #me never gets appended. From chats with <a href="http://moustaki.org/">Yves</a> and <a href="http://www.aelius.com/njh/">Nicholas</a> Firefox and Chrome seem to be behaving correctly and Safari's getting it wrong.</p>
+<p>(At this point the conversation veered off into whether servers should ever get involved with fragment identifiers and whether content location should ever return a fragment URI. And what would happen if a slash based URI linked data site (like DBpedia) decided to change to a hash based URI scheme (or just became RDFa in Wikipedia) and whether it would be possible to redirect from a slash to a hash. But that seemed outside the limits of tedium / my understanding for even this tedious post...)</p>
+<h2>A tedious summary</h2>
+<p>If you consider your website to be a tree (which <a href="http://derivadow.com/2010/02/18/the-problem-with-breadcrumb-trails/">for all kinds of other reasons you really shouldn't</a> - the web is a web, not a tree) and your pages to be leaves, then fragment identifiers are those bits of the twigs that extend into the leaves as veins. (At this point I asked <a href="http://derivadow.com">Tom</a> for the scientific name for leaf veins but his memory failed and I felt quite let down.) They get forgotten about because they're lesser seen. And because they get forgotten about they're often not designed with the care and attention we put into non-fragment URIs. Separating out fragment identifiers from styling / behaviour hooks and making transcluded fragments separately addressable doesn't guarantee persistence but putting in the thought up front does make change less likely.</p>

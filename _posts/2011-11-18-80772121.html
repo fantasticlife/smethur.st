@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: Data ghosts in the Facebook machine
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: This is partly an extended comment on Paul Clarke's excellent Accidental
+  Data Controller post. And partly a whine that, even though we've been talking about
+  social graphs, and very little else, for the last few years, we still don't really
+  think i...
+wordpress_id: 80772121
+wordpress_url: http://smethur.st/data-ghosts-in-the-facebook-machine
+date: '2011-11-18 00:00:00 +0000'
+date_gmt: '2011-11-18 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments: []
+---
+<p>This is partly an extended comment on Paul Clarke's excellent <a href="http://paulclarke.com/honestlyreal/2011/11/the-accidental-data-controller/">Accidental Data Controller</a> post. And partly a whine that, even though we've been talking about social graphs, and very little else, for the last few years, we still don't really think in graph terms when it comes to our friendships. Or much else.</p>
+<p>Paul's post is about the "find my friends by pillaging my address book" function that seems to ship with every social networking / commodity publishing website. And in particular about how Facebook stores contact data for people who've never registered with Facebook, the better to help them find their friends when / if they do. But best to <a href="http://paulclarke.com/honestlyreal/2011/11/the-accidental-data-controller/">read it</a>.</p>
+<h2>The ghosts of the not yet born</h2>
+<p>Obviously I have no more knowledge of how Facebook model their data than the next data geek. But if I were evil then...</p>
+<p>...say Alice registers on Facebook and consents to the pillage my address book function. Somewhere in that address book are contact details for Bob. Let's say email and mobile number. The first step is to check if there's a registered account in the system matching those details. If there is then Bob gets suggested to Alice as a possible friend. But if Bob isn't registered or is registered but hasn't supplied those details, Ghost Bob gets created:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/11/34543537-1.png"><img class="aligncenter size-full wp-image-176135761" title="34543537-1" src="/assets/2011/11/34543537-1.png" alt="" width="1403" height="837" /></a></div>
+<p>If real Bob comes along later and registers or gives his email / mobile number to Facebook real Bob gets consolidated with Ghost Bob. But it doesn't necessarily stop there. Say Chris registers and also consents to the pillage. Chris isn't really a friend of Bob but they have worked together. So Chris' address book has a record for Bob with his email address and his work phone number. All of this is about finding points in data you can triangulate from. In this case it's the email address so Facebook's Ghost Bob now has email, mobile and work number:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/11/34543550-2.png"><img class="aligncenter size-full wp-image-176135762" title="34543550-2" src="/assets/2011/11/34543550-2.png" alt="" width="2250" height="837" /></a></div>
+<p>Add in Dave who submits Bob's email address and postcode and Ghost Bob starts to accrete data like a velcro ball on a fluffy rug:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/11/34543556-3.png"><img class="aligncenter size-full wp-image-176135763" title="34543556-3" src="/assets/2011/11/34543556-3.png" alt="" width="2250" height="1298" /></a></div>
+<p>Then add in Edith and Fred and Gareth and Ghost Bob gets a lot less ghostly. He's just another person node in a huge graph of data; just a slightly less active one.</p>
+<h2>And the ghosts of the dead</h2>
+<p>It's been <a href="http://www.digitaltrends.com/social-media/facebook-accused-of-tracking-users-even-after-they-delete-accounts/">reported</a> <a href="http://www.zdnet.com/blog/igeneration/facebook-does-not-erase-user-deleted-content/4808">almost</a> <a href="http://mashable.com/2011/10/21/facebook-deleted-data-fine/">everywhere</a> that <a href="http://articles.businessinsider.com/2011-10-21/tech/30304684_1_facebook-friend-requests-data-protection">Facebook's delete button is really more of a hide button</a>. So the same thing works in reverse; leave Facebook and your data ghost lingers on. It would be interesting to know the figures for registered accounts vs the ghosts of the dead and the ghosts of the not yet born. I'm not on Facebook anymore but I'd happily bet that my data ghost still haunts the place.</p>
+<h2>Putting the ghosts to work</h2>
+<p>In theory the ghost people just sit there until a corresponding account is created / linked, at which point the suggested friendship schtick takes over. But even ghost people can be useful.</p>
+<p>If you can infer that Alice knows Ghost Bob, Chris knows Ghost Bob and Dave knows Alice, Chris and Ghost Bob, then Alice has three indirect connections to Chris. One through Dave, one through Ghost Bob and one through Dave and Ghost Bob. Which increases the chances that Alice might know Chris. The more connections in the system the better you can predict other connections. And it really doesn't matter how many of those connections link to ghosts; the number of edges is more important than the quality of the nodes.</p>
+<h2>The social graph is not a different thing</h2>
+<p><a href="http://dynamicorange.com/2010/11/15/what-people-find-hard-about-linked-data/">Thinking in graph terms is hard</a>. Thinking in social graph terms is even harder because our egos take over and we tend to picture ourselves at the centre of a spider's web of connections. To understand what's going on you need to step above, god-like and look down.</p>
+<p>The other problem when thinking about the social graph is the tendency to see it as something separate. In page design terms it's usually the bit on the right of the "content" that looks like a bolted on afterthought. But switching examples to Twitter.</p>
+<p>If Alice follows Bob and Bob follows Alice and Chris follows Bob and Dave follows Chris. And if Alice tweets and Bob retweets and Chris retweets and Dave favourites. And if Chris makes a list and Bob and Dave are both on that list and Alice follows that list. The whole thing is just some interwingled things and there's no content and no social graph; just a graph and some nodes and some edges. And some of the nodes are people.</p>
+<h2>It's not how big it is or even how you use it</h2>
+<p>Paul ends his post with a question:</p>
+<blockquote cite="http://paulclarke.com/honestlyreal/2011/11/the-accidental-data-controller/"><p>how big does your address book have to be before you need to register it under the Data Protection Act?</p></blockquote>
+<p>I tried to leave an intelligent comment but accidentally added some angle brackets. So failed. What I wanted to say was: it doesn't matter how big the <a href="http://twitter.com/yourbigdata">data set</a> is or even how you (intended) to use it. <a href="http://blog.kasabi.com/2011/09/28/beyond-the-triple-count/">The only thing that matters is how interwingled it is</a>. Divide your edges (relationships) by your nodes (things) and you might be on to something...</p>
+<h2>Why is any of this a problem?</h2>
+<p>Mostly it isn't. Everyday in every way we trade privacy for convenience. Own a mobile phone or a sat nav or a connected set top box or a supermarket loyalty card and you're trading some privacy for some convenience. The trouble is it's never quite clear what the trade-off is. (Maybe we just need the equivalent of a nutritional information label for privacy / convenience?)</p>
+<p>But most of the debates about online privacy aren't really about privacy at all. They're about <strong>informed consent</strong> and how we make the decision to make the privacy / convenience trade. Most of the convenience benefits are seen best from inside the graph. And most of the privacy invasion is only apparent when you step outside and look down. Which makes things tricky.</p>
+<p>Being informed enough to give consent is difficult enough for most people. If you're Ghost Bob you were never even given the opportunity. You never signed up for the service or ticked the crappy little "I've read the Ts and Cs" checkbox. You're just an accidental node in some parasite's <a href="http://twitter.com/fantasticlife/status/136554454811017216">recommendation engine</a>.</p>
+<p>Massively interconnected data is dangerous when some of the nodes are people. When some of the nodes are ghost people it's just unethical.</p>

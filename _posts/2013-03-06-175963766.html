@@ -1,0 +1,75 @@
+---
+layout: post
+status: publish
+published: true
+title: Thoughts on open music data
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Yesterday I wore my MusicBrainz hat (or at least moth-eaten t-shirt) to the
+  music4point5 event. It was an interesting event, but with so many people from so
+  many bits of the music industry attending I thought some of the conversation was
+  at cross-...
+wordpress_id: 175963766
+wordpress_url: http://smethur.st/thoughts-on-open-music-data
+date: '2013-03-06 20:23:35 +0000'
+date_gmt: '2013-03-06 20:23:35 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 33
+  author: gurdonark
+  author_email: ''
+  author_url: http://www.gurdonark.com
+  date: ''
+  date_gmt: ''
+  content: You make some good points here, particuolarly in the way you subdivide
+    the issue and then show inter-relationships. I favor a world with lots of freely
+    shared and pay-what-one-wills content, but even in a worldwith lots of marketed,
+    paid content, open tags, open curatorship,open infrastructure and open dissemination
+    will be essential.
+---
+<p>Yesterday I wore my <a href="http://musicbrainz.org">MusicBrainz</a> hat (or at least moth-eaten t-shirt) to the <a href="http://www.music4point5.com/#/open-data-agenda/4573274398">music4point5 event</a>. It was an interesting event, but with so many people from so many bits of the music industry attending I thought some of the conversation was at cross-purposes. So this is my attempt at describing open data for music.</p>
+<h2>What is (are, if you must) the data?</h2>
+<p>The first speaker on the schedule was <a href="https://twitter.com/agentGav">Gavin Starks</a> from the <a href="http://www.theodi.org/">Open Data Institute</a>. He gave a good talk around some of the benefits of open data on the web and was looking for case studies from the music industry. He also made the point that, "personal data is not open data" (not an exact quote but hopefully close enough).</p>
+<p>After that I think the "personal data" point got a bit lost. Data in general got clumped together as an homogenous lump of stuff and it was difficult to pick apart arguments without some agreement on terms. It felt like there was a missing session identifying some of the types of data we might be talking about. Someone tried to make a qualitative distinction between data as facts and data as other stuff but I didn't quite follow that. So this is my attempt...</p>
+<p>In any "content" business (music, TV, radio, books, newspapers) there are four layers of data:</p>
+<ol>
+<li>The core business graph. Contracts, payments, correspondence, financial reports</li>
+<li>The content graph. Or the stuff we used to call metadata (but slightly expanded). For music this might be works, events, performances, recordings, tracks, releases, labels, sessions, recording studios, cover art, licencing, download / streaming availabilities etc. Basically anything which might be used to describe the things you want to sell.</li>
+<li>The interest / attention graph. The bits where punters express interest toward your wares. Event attendance, favourites, playlists, purchases, listens etc.</li>
+<li>The social graph. Who those punters are, who they know, who they trust.</li>
+</ol>
+<p>I <em>don't think</em> anyone calling for open music data was in any way calling for the opening of 1, 3 or 4 (although obviously aggregate data is interesting). All of those touch on personal data and as Gavin made clear, personal data is not open data. There's probably some fuzzy line between 1 and 2 where there's non-personal business data which might be of interest to punters and might help to shift "product" but for convenience I'm leaving that out of my picture:</p>
+<p><a href="/assets/2013/03/47466547-graphs.png"><img class="aligncenter size-full wp-image-176135775" title="47466547-graphs" src="/assets/2013/03/47466547-graphs.png" alt="" width="517" height="576" /></a><br />
+Given that different bits of the music industry have exposure to (and business interests in) different bits of these graphs they all seemed to have a different take on what data was being talked about and what opening that data might mean. I'm sure all of these people are exploring data from other sources to improve the services they offer, but plotting more <em>traditional</em> interests on a venn:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2013/03/47466553-venn.png"><img class="aligncenter size-full wp-image-176135776" title="47466553-venn" src="/assets/2013/03/47466553-venn.png" alt="" width="464" height="388" /></a></div>
+<p>So lack of agreement on terms made conversation difficult. Sticking to the content graph side of things I can't think of any reasonable reason why it shouldn't be open, free, libre etc. It's the Argus catalogue of data (with more details and links); it describes the things you have for sale. Why wouldn't you want the world to know that? I don't think anyone in the room disagreed but it was hard to say for sure...</p>
+<h3>Data portability</h3>
+<p>The social and interest / attention graphs are a different breed of fish. Outside the aggregate they're where personal data and personal expression live. Depending on who you choose to believe that data either belongs to the organisation who harvested it or the person who created it. I'm firmly in the latter camp. As a consumer I want to be able to take my Last.fm interest data and give it to Spotify or my Spotify data to Amazon or my Amazon data to Apple or my Apple data to Last.fm. In the unlikely event I ever ran a startup I'd also want that because otherwise my potential customers are locked-in to other services and are unlikely to move to mine. If I were an "established player" I'd probably feel differently. Anyway data portability is important but it's not "open data" and shouldn't be confused with it.</p>
+<h3>Crossing the content to social divide</h3>
+<p>Many things in the content graph have a presence in the social graph. Any music brand whether it's an artist, a label or a venue is likely to have a Twitter account or a Facebook account or etc. So sometimes the person to interest to content graph is entirely contained in the social graph. Social media is often seen as a marketing channel but it's a whole chain of useful data from punters to "product". Which is why it puzzles me when organisations set up social media accounts for things they've never minted a URI for on their own website (it's either important or it's not) and with no real plan for how to harvest the attention data back into their own business. "Single customer view" includes people out there too.</p>
+<h2>Data views, APIs and API control</h2>
+<p>Just down the bill from Gavin were two speakers from Last.fm. They spoke about how they'd built the business and what they plan to do next. In the context of open data (or not) that meant reviewing their API usage and moving toward a more "industry standard" approach to API management. Twitter was mentioned alongside the words best practice.</p>
+<p>Throughout the afternoon there was lots of talk about a "controlled open" approach; open but not quite. Occasionally around licencing terms but more often about API management and restrictions. It's another subject I find difficult as more and more structured data finds its way out of APIs and into webpages via <a href="http://en.wikipedia.org/wiki/RDFa">RDFa</a> and <a href="http://schema.org/">schema.org</a>. In the past, the worlds of API development and Search Engine Optimisation haven't been close bedfellows but they're heading toward being the same thing. And there's no point having your developers lock down API views when your SEO consultants are advising you to add RDFa all over your web pages and your social media consultants are advising you to add <a href="http://developers.facebook.com/docs/concepts/opengraph/">OpenGraph</a>. But it all depends on the type of data you're exposing, why you're exposing it and who you want to expose it to. If you're reliant on Google or Facebook for traffic you're going end up exposing your some of your data somehow. The risk either way is accidentally outsourcing your business.</p>
+<h2>MusicBrainz</h2>
+<p>Robert from <a href="http://musicbrainz.org">MusicBrainz</a> appeared at the conference via a slightly glitchy Skype link. He spoke about how MusicBrainz came into being, what its goals are and how it became a profit making non-profit. He also said the most important thing MusicBrainz has is not its data or its code or its servers but its community. I've heard this said several times but it tends to treated like an Oscar starlet thanking her second grip.</p>
+<p>From all dealings with open data I've ever had I can't stress enough how wrong this reaction is. The big open data initiatives (<a href="http://dbpedia.org/About">Wiki/DBpedia</a>, MusicBrainz, <a href="http://www.geonames.org/">GeoNames</a>, <a href="http://www.openstreetmap.org/">OpenStreetMap</a>) are not community "generated". They are not a source of free labour. They are community governed, community led and community policed. If your business adopts open data then you're not dealing with a Robert like figure; you're dealing with a community. If you hit a snag then your business development people can't talk to their business development people and bang out a deal. And the usual maxim of not approaching people with a solution but an explanation of the problem you want to solve is doubly true for community projects because the chances are they've already thought about similar problems.</p>
+<p>Dealing with open data means you're also dealing with dependencies on the communities. If the community loses interest or gets demoralised or moves on then the open data well dries up. Or goes stale. And stale data is pretty useless unless you're an historian.</p>
+<p>So open data is not a free tap. If you expect something for nothing then you might well be disappointed. The least you need to give back is an understanding of and an interest in the community and the community norms. You need to understand how they operate, where their interests lie and how their rules are codified and acted on. And be polite and live by those rules because you're not a client; you're a guest. You wouldn't do a business deal without checking the health of the organisation. Don't adopt community data without checking the health of the community. Maybe spend a little of the money you might have spent on a biz dev person on a "community liaison officer".</p>
+<h3>Question and answer</h3>
+<p>At the end of Robert's talk I had to get up and answer questions. There was only one which was something like, "would you describe MusicBrainz as disruptive?" I had no idea what that meant so I didn't really answer. As ever with question sessions there was a question I'd rather have answered because I think it's more interesting: why should music industry people be interested in and adopt MusicBrainz. Answers anyway:</p>
+<ol>
+<li>Because it has stable identifiers for things. In an industry that's only just realising the value of this, it's not nothing.</li>
+<li>Because those identifiers are HTTP URIs which you can put in a browser or a line of code and get back data. This is useful.</li>
+<li>Because it's open and with the right agreements you can use it to open your data and make APIs without accidentally giving away someone else's business model.</li>
+<li>Because it links. If you have a MusicBrainz identifier you can get to artist websites, Twitter accounts, Facebook pages, Wikipedia, Discogs, YouTube and shortly Spotify / other streaming services of your choice. No data is an island and the value is at the joins.</li>
+<li>Because it's used by other music services from Last.fm to the BBC. Which means you can talk to their APIs without having to jump through identifier translation loopholes.</li>
+<li>Because, whilst it's pretty damn big, size isn't everything and it's rather shapely too. The value of data is too easily separated from the shape of the model it lives in. Lots of commercial music data suppliers model saleable items because that's were the money lives. MusicBrainz models music which means it models the relationships between things your potential customers care about. So not just artists and bands but band memberships. And not just Rubber Soul the UK LP and the Japanese CD and the US remastered CD but Rubber Soul the cultural artefact. Which is an important hook in the interest graph when normal people don't say, "I like the double CD remastered rerelease with the extra track and the tacky badge."</li>
+<li>Because its coverage is deep and wide. Their are communities within communities and niches of music I never knew existed have data in MusicBrainz.</li>
+<li>Because the edit cycle is almost immediate. If you spot missing data in MusicBrainz you can add it now. And you're a part of the community.</li>
+<li>Because the community is engaged and doing this because they care, it polices itself.</li>
+<li>Because Google's <a href="http://www.google.com/insidesearch/features/search/knowledge.html">Knowledge Graph</a> is based on <a href="http://www.freebase.com/">Freebase</a> and Freebase takes data from MusicBrainz. If you want to optimise for the search engines, stop messing about with h1s and put your data in MusicBrainz.</li>
+</ol>
+<p>So if any record label or agent or publisher or delivery service ever asked me what the smallest useful change to the data they store might be, I'd say just store MusicBrainz identifiers against your records. Even if you're not yet using open data, one day they'll be useful. Stable identifiers are the gateway drug to linked data. And I'd advise any record label large or small to spend a small portion of the money they might have spent building bespoke websites and maintaining social media accounts, on adding their data to MusicBrainz. Everybody benefits, most of all your consumers.</p>
+<p>ps If you're an indie artist <a href="http://freshonthenet.co.uk/musicbrainz/">Tom Robinson wrote a great guide to getting started with MusicBrainz here</a>.</p>

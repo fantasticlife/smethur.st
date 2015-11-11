@@ -1,0 +1,506 @@
+---
+layout: post
+status: publish
+published: true
+title: UX deliverables are dead, long live code
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: This post is a possibly ranty reaction to the recent Wireframes are dead,
+  long live rapid prototyping post on UX for the masses. If you've not read it, it's
+  definitely worth a click. And also worth working your way through the comments it
+  generate...
+wordpress_id: 38810571
+wordpress_url: http://smethur.st/ux-deliverables-are-dead-long-live-code
+date: '2011-01-06 00:00:00 +0000'
+date_gmt: '2011-01-06 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 43
+  author: Paul Rissen
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Or in summary (perhaps) - wireframes &amp; visual designs will always suffer
+    from the fact that they are isolated, static documents. Personally I think there's
+    some utility to them in terms of conveying the general idea of various parts of
+    a website, but what worries me from designs/wireframes I've seen recently is the
+    lack of annotation and/or context. And there's only so much annotation you can
+    place on a static document before it becomes incomprehensible. With such static
+    documents, the links &amp; complexity ate implicit or hidden, and rely on you
+    being able to communicate what actually happens in other ways, disconnected from
+    the document - unless you want to create thousands of documents for the many complex
+    cases.
+- id: 44
+  author: Samuel Ericson
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Prototyping isn't about code, it's about communication. Wireframes do lack
+    the possibility to communicate interactions, something that prototypes can do
+    well. It's about rapid iterations of design so that the techies, designers, stakeholders
+    and users can all agree on what to build, to be confident that the solution will
+    solve the problem, whatever it is.I get the point to build real stuff and test
+    with real data and users, that's obviously something yo have to do as well, but
+    why rush to the coding when you  don't know what to build?
+- id: 45
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: 'Samuel, I''m baffled. What do you think code is about if not communication?
+    Prototypes might communicate interactions better than wireframes but not nearly
+    so well as real code with real data and real content and real users. Code is as
+    good a place as any to design and solve problems. When we''re talking about the
+    web it''s the best place. There''s no spec on earth that doesn''t need to change
+    the minute code hits data hits content hits users. I guess this is all an extension
+    of the usual UCD vs agile debate. My take: UCD has had it''s day; agile has won
+    that war. And it''s won it because it doesn''t just pay lip service to &quot;user
+    centric&quot; whilst hiding away in a design studio with process documents for
+    6 months.'
+- id: 46
+  author: Samuel Ericson
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: It's all about finding the right level and if you are skilled enough to
+    produce a design in real code as fast as you do with a prototyping tool, then
+    I'm all for it. In my reality though, when iterating through your designs, you
+    just don't have the time to code it all, so you use prototyping tools on the way
+    to find the best solution.There's no contradiction between UCD and agile and of
+    course you need to prepare for change. A prototype isn't the final solution, but
+    a common ground to communicate what problems are supposed to be solved. A good
+    prototype (simulation is a far better word btw) reduces the need for changes based
+    on misunderstanding extensively.At least that's my experience.
+- id: 47
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Hi SamuelI guess then we're agreeing to differ. I just don't think wireframes
+    (whether omnigraffle style or developed through a rapid prototyping tool) allow
+    you to ask and get answered the difficult questions that are important to user
+    experience. Concentrating on the visible bits at the expense of the 90% of a modern
+    web app that lives under the surface just feels like a mistake cos it's the 90%
+    invisible bit that makes the most difference. If you don't get that right your
+    UX is just lipstick painting on pigs.So is your markup semi sane? Is it search
+    bot friendly? Does it work in a screen reader? Any screen reader? Are you using
+    AJAX? What happens when j/s is turned off? Does the site degrade gracefully? Or
+    are you taking a progressive enhancement approach? Or does it break? Is your site
+    crawlable with j/s off? Are you pulling in data from other sites (a twitter feed
+    eg)? What happens if twitter's down? Does the include degrade? To what? What's
+    you page weight? How smooth is your page rendering? What's the page load time?
+    How persistent are your URLs? Do you have a search sitemap? One for mobile? Do
+    they work? How is your content licenced? Is it possible to embed it off site /
+    syndicate it? What are your terms and conditions? What's your privacy policy?
+    Do users own data submitted to your site? Do you make feeds available? Have an
+    API? What's your caching strategy? Particularly http caching? Particularly for
+    mobile? How does your site work across browsers? Across devices?The other problem
+    is web sites aren't CD-ROMs. They don't exist in isolation. They are not complete
+    in and of themselves. Web design isn't about making an isolated product. A web
+    site has be designed to sit in the ecosystem of the web. So how does it play with
+    Google? With Bing? With Twitter? With Facebook? What if you're replacing an existing
+    site? Have you got a redirect plan? Using the appropriate http codes?Wireframes
+    won't answer any of those question. Nothing but real live code will.
+- id: 48
+  author: Samuel Ericson
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: I don't really see how code can help with licensing, terms and conditions
+    or privacy questions, but other than that, what you mention is mostly technical
+    requirements that obviously need to be developed and tested. I don't question
+    that.My point with using simulations is not to solve these problems, but to figure
+    out if the Twitter integration is needed or not in the first place. It helps finding
+    the right requirements, and sets the right expectations early for all involved.But
+    if it works for you and your team to jump it to code directly, you should do it.
+    There's no single solution for all projects.
+- id: 49
+  author: Mike Atherton
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: I agree it does seem preposterous to invest time in learning increasingly
+    complex prototyping tools, which only result in throwaway deliverables. Better
+    perhaps to spend that time learning, as you suggest, real client-side markup and
+    even Ruby etc. so that prototypes are the first iteration of real applications,
+    rather than a smoke and mirrors show. Right now, there's a skills gap and UX people
+    who are good at making interactions intuitive, aren't necessarily skilled developers
+    and so are understandably drawn to empowering WYSIWYG tools with a lower learning
+    curve. Maybe this will evolve over time. I also feel that if your site is essentially
+    a one-way content repository, then evaluating it through its layout (i.e. via
+    wireframes etc.) puts the emphasis on the wrong thing, leading (in my experience)
+    to client squabbles over box placement when really the focus should be on a decent
+    content strategy.But while I take your point about you wanting to control your
+    own stylesheet, and that's fair enough, it isn't the be-all end-all of UX, on
+    the web or any platform. Yes, on the kind of resource- and data-join-centric products
+    we make, certainly most of the heavy lifting is going on beneath the presentation
+    layer. But what if you were designing Mint.com, or Flickr, or Google Docs? There's
+    got to be some particular skill in designing an interface that maximises task
+    time and minimises tool time, and that's typically the purview of UX, and probably
+    a good use case for rapid prototyping.
+- id: 50
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@samuel - Just to be clear (which I don't think I have been) I'm not saying
+    jump straight to code. I am saying that for every standard UX deliverable there
+    is a code equivalent in the web stack. And because that code is specifically written
+    to describe that functionality it's better at it than pictures and natural language.
+    At least in my opinion. So working with markup and CSS will give more accurate
+    results than wireframes or prototyping tools. A routes file describing the URL
+    structure and mapping it to controllers / actions is a better site map than a
+    site map. Unit and functional tests are better at describing functional requirements
+    than standard spec documents. And you can use tools like cucumber to write your
+    spec and it'll automagically output tests.The problem at the moment is the functionality
+    is defined in one set of formats by UX people, then translated into another set
+    of formats by developers. Which to my mind is wasteful. And often leads to stuff
+    getting lost in translation. The more we can close the gap between developers
+    and UX and make UX deliverables a proper part of the development process and not
+    just some paperwork the better. And prototyping tools don't help to close this
+    gap.Also on the projects I work on we don't start with code. We start with a domain
+    model which is the only real &quot;artifact&quot; we ever create. Obviously neither
+    the domain model nor the code will write your privacy policy for you but they
+    will, in my experience, raise the interesting and difficult questions far earlier
+    than any standard UX deliverable. There's more on how we work &lt;a href=&quot;http://www.bbc.co.uk/blogs/radiolabs/2009/01/how_we_make_websites.shtml&quot;&gt;here&lt;/a&gt;.Just
+    as an example if your site has registered users and those users can comment there
+    are immediate questions of whether and how those comments are moderated, whether
+    the user can choose who can see them and whether the user can update or delete
+    those comments. I've never seen UX deliverables surface these issues as early
+    or clearly.@mike - Totally agree about the skills gap. Or maybe it's more of an
+    understanding gap / language barrier? I wonder if something like the Rails for
+    journalists meetups that happen would be useful for UX people too?Also agree that
+    there's real skill in designing interfaces to minimise task time. Just think the
+    duplication of effort (wireframes and CSS) means there's less UX time spent where
+    it should be spentAnd to be double clear. None of this is intended as a criticism
+    of UX people. I am a UX person. Just a comment on the redundancy (and lack of
+    resolution) of many UX deliverables and a hope that joining up UX with development
+    would remove duplication, make things more efficient and make UX deliverables
+    more accurate to real world use."
+- id: 51
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@samuel - Sorry, one final point. The stuff I mentioned earlier is not
+    &quot;technical requirements&quot;. It's a list of user experience questions.
+    Every issue listed will affect how users experience your site. If we want to be
+    described as user experience people and not designers we have to care about that
+    stuff as much as we care about page layout and navigation structures."
+- id: 52
+  author: Andy Braxton
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: I think you raise some interesting points. There's definitely wastefulness
+    and in some organisation there are barriers to getting stuff built quickly and
+    testing in the real world. The skills gap you guys have identified is a frustration
+    for me. I think there's also a real lack of experimentation about how teams in
+    organisations (at least the ones I've worked in) go about designing/building stuff.
+    Most web/digital companies I've worked for have very siloed teams. They are allocated
+    as 'resources' and the process becomes very linear and structured. Hence Agile
+    ends up looking like mini-waterfalls.I wonder if a kind of pair programming might
+    work where you take a talented developer and a UX person and sit at a desk and
+    give them water and some shade. Or any other more collaborative process where
+    skills cross over and where the whole thing is less structured. I imagine this
+    kind of thing must happen in an informal way at startups and possibly teams that
+    are more off-radar in large organisations.
+- id: 53
+  author: Mike Atherton
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@andy I reckon a UX/dev team (akin to the art director/copywriter teams
+    of the advertising world) would be a cracking way to get experimental prototypes
+    together quickly. When I worked at a great metropolitan web agency a few years
+    back, they had a spiffing wheeze of teaming an IA and a VD (ironically, given
+    this post, to produce visual mockups) which I felt worked really well to de-silo
+    skills. Sadly it didn't catch on."
+- id: 54
+  author: Samuel Ericson
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Just a final comment... Again, I think communication is key, and I've found
+    simulations to be really efficient both when communicating with the business,
+    with developers and when testing it on end users. That secures that we design
+    something that solves the business problems, works for the users and is technically
+    feasible.From your link I read &quot;This should be clear from the business requirements&quot;
+    and that's what the above usually is for in the projects I'm in.When it comes
+    to the output from that work, the next challenge is to find the right deliverables
+    of it and I guess it's here that the problem arises... But at least by now everyone
+    has agreed on  what to build so the developers can focus on solving the issues
+    with SEO, page load times etc instead of re-coding the entire application because
+    &quot;that's not what we meant&quot;.I was previously a web developer, so I know
+    the challenges and using simulations to find the right requirements really has
+    saved me LOTS of time. But hey, whatever works for you...
+- id: 55
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@paul - Sorry mate. Completely missed your comment. But basically yes.
+    Wireframes for the web don't work cos they don't use web standards. They don't
+    use document standards (HTML, CSS, Javascript) so they don't tell you how the
+    page will actually render in the real world on multiple browsers / devices. And
+    they don't use linking standards (HTTP and URIs) so you have to overload the documents
+    with context which makes them confusing. Prototyping tools try to solve some of
+    this by making wireframes clickable but that only gives you a slightly more accurate
+    of how your site links together and not how it fits into the wider web.@andy -
+    Totally agree. Which is why I wonder if Rails for UX people (or something similar)
+    would be useful. Anyway, I think the more differently talented people you can
+    get working together on designing and building something the easier it becomes
+    to solve real problems. When we started /programmes we had an IA, software engineers
+    and designer all working together, all grappling with the same problems at the
+    same time and all helping each other. It worked well and by the end it became
+    difficult to tell where the SE stopped and the designer started and the IA stopped
+    and the SE started and etc.But I think you point to a wider problem that the UX
+    agency approach doesn't work cos it silos talent. The trouble is many of the 'UX
+    superstars' come from design agency backgrounds and bring the talent split mentality
+    with them. User experience on the web is holistic and needs lots of different
+    people with lots of different skills to pull it off. The UX / dev split will always
+    lead to inefficiencies and thinking that gets lost in translation. I think the
+    real key is getting past multi-disciplinary working to having &quot;T-shaped people&quot;.
+    But multi-disciplinary working is the obvious way to get to that point@samuel
+    - So obviously business requirements evolve over time. You can take two approaches
+    to that: stick with the UX process and get sign off on documentation before building
+    or accept changes happen and go agile. The wider point is business requirements
+    don't change in isolation. They usually change because of outside influences like
+    some innovation a competitor has made. Signing off on documentation is gonna stop
+    scope creep but I know from experience that it won't lead to the making of better
+    things.In terms of business requirements all you really need to know is what domain
+    you're working in. The UX process is designed to flesh out the details, ask the
+    right questions, work through the issues etc. All I'm saying is that that splitting
+    that process from development is wrong. And, imo, getting devs, designers, product
+    managers etc to engage together, from the start, in designing the domain model
+    is a better approach.As I said to andy, UX is holistic. It takes lots of different
+    talents to make a good UX. And UX professionals don't have all those talents.
+    And neither do software engineers. And neither do product managers.An example
+    I've faced in the past: the UX people design wireframes for a given list view.
+    The wireframes are fine. They get 'tested' with users who think they're fine.
+    They get handed over to the dev team who also think they're fine. But unfortunately
+    they don't think they're buildable. Or maybe they are buildable but the query
+    required to build them is so complex the page would take 10 secs to load. And
+    you can't cache it cos it's personalised. So you end up going back thru the circle
+    again. I just think that's wasteful and getting talented devs and designers together
+    from the start makes things easier. Any UX person or group of UX people who think
+    they're solely responsible for the user experience of a site are wrong."
+- id: 56
+  author: FalconsJHicks
+  author_email: ''
+  author_url: http://twitter.com/FalconsJHicks
+  date: ''
+  date_gmt: ''
+  content: 'I think UX deliverables are as much a resource to web production as a
+    recipe is to a chef, or a map is to a cab driver. If you''re a seasoned professional,
+    you don''t need such guidance.  Nonetheless, they''re always a waste of time when
+    you consider that stakeholders and/or clients tend to desire constant change.  Why
+    spend 6 weeks on a UX that will take 3 weeks to build and will only live for 3
+    days before Mr. X demands it redone?: sigh :'
+- id: 57
+  author: nick
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: In a perfect world, all IA/UX people would know how to code, all architects
+    would be engineers, all contracters would be architects, all physicists would
+    be able to teach molecular biology, and all front end developers would know how
+    to interact with clients, or people at all for that matter.
+- id: 58
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: 'Sorry Nick, perfect world wasn''t my point. If you call yourself an IA
+    / UX person and you don''t consider how your design works across browsers or across
+    devices, with images off, with CSS off, with javascript off, for screen reader
+    users, for search bots... If you just throw photoshop documents over the wall
+    for others to build... you''re not a web designerBecause you need to understand
+    the separation of web technology layers to be able to even think about how your
+    design works in the real world, then, if you''re not at least capable of writing
+    semantic html, css and javascript... you''re not a web designer.For the rest of
+    your comment: for a physicist to teach molecular biology would require several
+    years of education. For a web designer to know html, css and javascript would
+    take a few weeks for even the slowest learner.'
+- id: 59
+  author: James Hicks
+  author_email: ''
+  author_url: http://theargiope.com
+  date: ''
+  date_gmt: ''
+  content: "@Michael I agree with you, but in the real world, we don't usually get
+    the luxury of considering our users.  I'm usually crushing 3 week projects into
+    a couple of days, in subsequent fashion.  It's getting very difficult to maintain
+    a relative level of quality;  let alone do it right.  "
+- id: 60
+  author: nick
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: I think you're confusing IA/UX with what I call graphic designers and creative.  I
+    agree, if you don't know those things (HTML, Styles, JS/AJAX) you're in the wrong
+    business.  How can you design anything without knowing the capabilities of the
+    tools.  I don't know any IAs that don't.And who uses the term &quot;Web Designer&quot;
+    anymore anyway? is it 1998?  Are you a &quot;Web Master&quot; also?I think everything
+    you say is great if you're a sole proprietor/consultant and work intimately with
+    your clients for the full lifecycle of the project...Hell in that case, the prototype
+    is the documentation, everything in the discovery and details phase can be covered
+    with a chat over coffee and a whiteboard.   But with huge corporate clients, it
+    doesn't work.  There are too many fingers in the pie and as a result, a ton of
+    required documentation.Also in the Agency model, there's far too much work for
+    everyone to be involved in the project in every phase from strategy to development.   Lastly
+    , I'm not a developer, but our front end guys would take serious exception to
+    implying an individual can learn their craft in a few weeks....come on, that's
+    ridiculous.  You couldn't learn dick in a few weeks and expect to be efficient
+    when thrown a handful of projects from simple store fronts to major data heavy
+    apps, due for approval....yesterday.  Its no easier than physics and and as polymorphous
+    as molecular biology.
+- id: 61
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: Hi JamesThat just sounds like a more general development / management problem.
+    It might get fixed by something like behaviour driven development and getting
+    your user stories designed and testable upfront. But it won't get fixed by one
+    set of people throwing ill-considered photoshop comps at another...
+- id: 62
+  author: James Hicks
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: 'Michael, especially when those PSDs are intercepted and &quot;improved&quot;
+    by a committee of folks in various parts of the business!  I think process is
+    vastly different, if it exists at all, depending on who we work for.  There seems
+    to be three points of view here, and each relative to the if the point of view:  1.  works
+    for an agency where quality is key to the client relationship;2.  works for a
+    dot-com where the web/app is the product and quality is key to anyone buying it;  3.  works
+    for a brick and mortar where the web is just another way to promote a product,
+    thus, quality doesn''t impact the bottom line enough to justify higher costs to
+    do it right.  The first two put much more emphasis on UX than the latter.  =DI
+    think this debate is interesting -- mostly for the difference in where points
+    of view are coming from.  In the end, if UX matters to a person, the solution
+    is probably to go where UX matters rather than try to get the current process
+    to consider it.  It''s very difficult to prove UX leads to profits if the project
+    isn''t the product.  '
+- id: 63
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "&gt; I think you're confusing IA/UX with what I call graphic designers
+    and creative.maybe. mostly they just design websites tho&gt; I agree, if you don't
+    know those things (HTML, Styles, JS/AJAX) you're in the wrong business. How can
+    you design anything without knowing the capabilities of the tools. I don't know
+    any IAs that don't.we agree on this at least :-)&gt; And who uses the term &quot;Web
+    Designer&quot; anymore anyway? is it 1998? Are you a &quot;Web Master&quot; also?no,
+    i'm a web designer. i've sat thru endless ia summits on &quot;what is an ia?&quot;,
+    &quot;what is an interaction designer?&quot;, &quot;what is a ux professional?&quot;,
+    &quot;what is a context strategist?&quot;, &quot;what is a blah?&quot;. it would
+    sometimes seem that the sole outlet for the &quot;ux communities&quot; creativity
+    is in the invention of ever more ridiculous job titles. usually it's best to stick
+    to the labels the rest of the world uses about you. applying ever more impenetrable
+    labels that only serve to obscure meaning is the last refuge of the stalinist.
+    but if &quot;strategic ux content strategy professional&quot; gets you paid that's
+    fine too...&gt; I think everything you say is great if you're a sole proprietor/consultant
+    and work intimately with your clients for the full lifecycle of the project...Hell
+    in that case, the prototype is the documentation, everything in the discovery
+    and details phase can be covered with a chat over coffee and a whiteboard. But
+    with huge corporate clients, it doesn't work. There are too many fingers in the
+    pie and as a result, a ton of required documentation.which i guess is my wider
+    point. the ux deliverable approach is broken because it's inefficient and confusing.
+    doing the same work twice (once as &quot;ux deliverables&quot;, once to translate
+    that stuff to code) and risking mistinterpretation at every step makes no sense.
+    since the ux agency approach is predicated on white collar ux &gt; deliverable
+    &gt; blue collar code monkey, it is also broke beyond repair&gt; Also in the Agency
+    model, there's far too much work for everyone to be involved in the project in
+    every phase from strategy to development.as above. the ux agency model is broken!&gt;
+    Lastly , I'm not a developer, but our front end guys would take serious exception
+    to implying an individual can learn their craft in a few weeks....come on, that's
+    ridiculous. You couldn't learn dick in a few weeks and expect to be efficient
+    when thrown a handful of projects from simple store fronts to major data heavy
+    apps, due for approval....yesterday.i doubt they'd consider front end development
+    impossible without a phd. and suspect they'd be more upset by your earlier suggestion
+    that they struggle to deal with people!?! who knows, some of they might have mothers,
+    possibly even lovers&gt; Its no easier than physics and and as polymorphous as
+    molecular biology.bollocks"
+- id: 64
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@jamesguess this post is more about people who realise ux matters. and
+    still mess things up by outsourcing design and development to different agencies.
+    as in my comment to nick i think the ux agency model is fundamentally broken because
+    anything that separates user from design from code from business is broken. if
+    ux doesn't matter to your business then outsourcing to a ux agency is only gonna
+    make things worse. personally i wouldn't touch any ux agency with a barge pole..."
+- id: 65
+  author: James Hicks
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@michaellol -- &quot;ux agency&quot; ... like social media agency and
+    all the other groups of folks who profit from a buzz phrase to sell their opinions
+    to the timid.  I agree with you completely.  UX is a part of the brand, and like
+    all branding exercises, the folks executing it need to at least be in the same
+    room.  "
+---
+<p>This post is a possibly ranty reaction to the recent <a href="http://www.uxforthemasses.com/rapid-prototyping/">Wireframes are dead, long live rapid prototyping</a> post on <a href="http://www.uxforthemasses.com/">UX for the masses</a>. If you've not read it, it's definitely worth a click. And also worth working your way through the comments it generated. As the title makes clear the post argues that wireframes, a traditional tool of the 'UX professional', no longer add value. I'd agree with this and probably go further and say they never have. And probably go further still and say none of the accepted 'UX Deliverables' (sitemaps, user journeys, card sorts (you're not building a library; this is the web; things don't have places) etc) add value either. And don't even get me started on 'Personas'...</p>
+<p>But I disagree with the post on two counts. First off the 'Why ditch wireframes?' section lists six reasons why wireframes don't help you actually make stuff. I'd agree with all six but think they're not the most important reasons why wireframes suck. And secondly:</p>
+<blockquote class="posterous_medium_quote"><p>the alternative is to bypass wireframes altogether and either go straight from sketch / outline designs to developing working code (in an Agile fashion), or as is more use common use [sic] a rapid prototyping tool to create a prototype</p>
+</blockquote>
+<p>which loses me at the comma. Because rapid protyping tools suck too. And, being harder to use than Omingraffle / fag packets + pencil, suck worse than wireframes.</p>
+<h2>If wireframes aren't dead I'd be more than happy to take them outside and put a bullet through their head</h2>
+<p>It's probably best to consider this list a personal addendum to the six reasons to ditch wireframes list in the original post.</p>
+<ol>
+<li>
+<p>'UX professionals' seem to be obsessed with defining <em>optimum</em> user experience. Which is fine if you're making a poster or a magazine or a twonkPad app. But mostly we're talking about the web. And if I want / need to overwrite your CSS (because you've not designed for colour blind users (again!)) I will do. And if I want / need to increase your font size (because I'm getting older and my eyesight isn't as good as it was) I will do. And if I care about my privacy and want to ban your cookies I will do. And if I don't trust your javascript and want to stop it running I will do. And if my eyes really give out and I need to use a screen reader...</p>
+<p>On a more basic level if I want to resize my browser I will do. And if your wireframes say the search form is top right what happens? Is your layout absolute so the search form disappears somewhere out of view or is your layout liquid making the search form always visible? CSS makes this behaviour explicit, wireframes don't.</p>
+<p>The point is user experience on the web is up to the user. It's not something you as a designer / publisher can define and control. Wireframes are just one way to fool yourself and / or your 'client'.</p>
+</li>
+<li>
+<p>Wireframes conflate: the data / content / assets you need to build a resource with one specific representation of that resource with the visual layout of that representation with the document order of that representation. Breaking that apart:</p>
+<ol>
+<li>
+<p>Imagine you want to list some things. Imagine that list is time based with new items being added as some state somewhere changes. Do you want to make RSS of that list available? Or imagine it's a list of events. Do you want to make that list available as an ical / ics feed? From a less data centric point of view do you want to make a mobile friendly version of your page? A smart phone version? An iPad version? Then what is your wireframe supposed to represent? And are you going to make a different wireframe for every possible device that might at some point want to access your content?</p>
+<p>The point is to document the data / services you need to build <em>all</em> representations of your resource, not just some simplified / idealised desktop HTML version. How best to do that? My advice would be over a coffee / beer with a developer on a fag packet. If god had intended us to specify data queries in plain Engish / French / whatever (s)he wouldn't have invented SQL or SPARQL. The best way to document code is in code. The rest is paperwork and process.</p>
+</li>
+<li>
+<p>The second problem is more general and more common. Very roughly speaking (and for accessibility and SEO reasons) an HTML document should be: h1, content, navigation. For some 'stickiness' reason or some misguided belief that most visitors arrive through your homepage and have the patience to navigate your navigation, page layouts tend to stick 'global navigation' (for some definition of global) at the top of the page. Which is fine from a page presentation point of view. But a bit rubbish from a document design / SEO / accessibility point of view. Again, title, content, navigation. And use CSS to 'move' your navigation to the top of the 'page'. If god had intended us to specify page layout in pictures (s)he wouldn't have invented CSS.</p>
+<p>Document design has nothing to do with visual layout (except by default with CSS off). Design your document first, then use CSS to add layout. For what it's worth I divide my CSS into two bits: layout.css handles the floats and the positions and the margins and the padding; decor.css handles the decorative stuff (colours, typefaces etc). Like it or loathe it, CSS is the design language of the web. If you want to wireframe stuff edit layout.css. Any other means of codifying layout is a lie and will catch up with you.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2>If wireframes are dead, rapid prototyping tools should die in their arms</h2>
+<p>So I don't really like wireframes. But I really dislike rapid prototyping tools. If you've not already read the comments on the original post it's probably worth doing so. They break down roughly into:</p>
+<ol>
+<li>wireframes are still useful as a deliverable / conversation tool with clients</li>
+<li>suggestions for other rapid prototyping tools to use. From a quick scan through, suggestions are:  Axure, Balsamiq, EasyPrototype, iPoltz, InDesign, SketchFlow, Flowella, Justinmind Prototyper, LucidChart, Tiggr, Protoshare, Naview and Cacoo</li>
+</ol>
+<p>How in god's name did so many people make so many tools that pretend to make websites when making websites isn't that hard? The problem is all these tools output wireframes with links. Sometimes they do that by outputting HTML and CSS and a few annotations. But even then they do it badly. Which is almost forgiveable: even people employed to make HTML and CSS often do it badly; the machines never stood a chance. But they have all the problems of wireframes (conflation of resource and representation, document and layout) without the benefit of being easy to ammend and update. Really, stick to pencils and fag packets and working code.</p>
+<p>One final rant: Designing how code interacts with idealised data is easy. But you're never going to know how your application works until you combine real code with real data with real users. You can wrap your process in as many "user centric" buzzwords as you like but until you're testing real code with real data with real users the picture will be, at best, fuzzy. Or ship, test, change. And realise UX deliverables are fine as project checkpoints and fine as signifiers to client X that this might be a good point to donate to your bank account but they're really only of benefit to your agency / bank manager / random important person incapable of abstract thought, and they really won't lead to the things you're making being any better / the making of better things.</p>

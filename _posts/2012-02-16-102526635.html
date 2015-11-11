@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: A rambling post about RiscOS. Ish
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: As a kid I never had a computer. In those pre-web days the main reason for
+  owning one seemed to be the playing of games and I never really liked games. Still
+  don't. The first computer I ever met was a university mainframe. You'd spend a morning
+  wi...
+wordpress_id: 102526635
+wordpress_url: http://smethur.st/a-rambling-post-about-riscos-ish
+date: '2012-02-16 00:00:00 +0000'
+date_gmt: '2012-02-16 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 23
+  author: danja
+  author_email: ''
+  author_url: http://twitter.com/danja
+  date: ''
+  date_gmt: ''
+  content: Rambling, but readable and plenty of gems:&quot;compilation&quot;...the
+    water into wine thing [that is truly awesome!]The minute you started up one of
+    these applications your Mac stopped being a general purpose computer.geography
+    teacher retreads Anyhow I reckon you're absolutely right about APIs being viewed
+    in the wrong way (in the Web context, http://blog.whatfettle.com/2007/01/11/good-web-apis-are-just-web-sites/
+    is a pretty good attitude).But one thing I do disagree with:permissioning is easy:)
+---
+<p>As a kid I never had a computer. In those pre-web days the main reason for owning one seemed to be the playing of games and I never really liked games. Still don't.</p>
+<p>The first computer I ever met was a university mainframe. You'd spend a morning with a map chart and something that looked like an air hockey puck, tracing lines from red shifting stars or particles being accelerated or collided or some such. Then take the results and write some convoluted Fortran programme which would (hopefully) change the numbers you entered into some different set of numbers.</p>
+<p>Except not before the code had been "compiled". I don't think anyone ever explained what "compilation" entailed. You spent several minutes copying your Fortran to a huge floppy disc, handed it over to a sullen lab assistant and they went away and did the water into wine thing. Which for more reasons unexplained took most of the afternoon. Since any time spent in the Blackett Laboratory was demoralising and depressing, compilation time was pub time.</p>
+<p>My second meeting with a computer was a Mac Classic that sat in the corner of the same lab. You'd stagger back from the pub and (if you'd struck lucky and your code had compiled) take the new numbers it had made and type them into a spreadsheet type programme on the Mac and get back a pretty graph. I remember wondering why that Fortran computer thing couldn't just work like this Mac computer thing. It had the distinct advantage of working even when you were drunk; the mainframe thing barely worked if you were sober.</p>
+<p>After university I went into the then thriving (cough) CD-ROM trade. It was mostly Mac "Power PCs" with a few Windows machines scattered about. But they felt like a different breed than the old Mac Classic. The CD-ROM industry inherited the Adobe bloat-wear of the 1980s desktop publishing industry that we're still stuck with today (Photoshop and Illustrator). And added a few of its own (Director and Authorware). The minute you started up one of these applications your Mac stopped being a general purpose computer. The chosen application ate all your memory for several hours before eventually overheating the machine and crashing. These were applications as operating systems; for the duration of use nothing else was possible.</p>
+<p>After a little while I moved to glorious Norwich to make educational CD-ROMs. At that time most schools had graduated from the BBC Micro but kept faith with Acorn and invested in shiny new RISC PCs running RISC OS. So alongside the PCs and Macs we had RISC PCs. Which were desperately unfashionable. The only people who ever bought RISC PCs were schools so any RISC OS conference was entirely populated by geography teacher retreads with beards and elbow patches. In the room next door was <a href="http://husk.org/">Paul Mison</a> (who <a href="https://twitter.com/#!/blech/status/167320252361867264">kicked off this vague reminisce</a>) and the first web people I ever met. They were Mac users to a (wo)man; our RISC PCs and CD-ROM burners were a badge of digital shame.</p>
+<p>But secretly I quite liked my RISC PC. It was cute and simple and transparent. You could look inside it and tinker with it and work out what it was trying to do. It was far removed the shrink-sealed product of the modern Apple machine. And it didn't have dongles and bloatware. Instead of a packaged applications like Photoshop to meet all your photo editing needs it had an app for resizing photos, an app for recolouring, an app for cropping...</p>
+<p>In some ways these were a bit like the modern app of the twonkPhone or twonkPad: single purpose applications designed to do one thing (fairly) well. But unlike app store apps they co-operated, they talked to one another. As <a href="http://derivadow.com/">my friend Tom</a> might say, they were <a href="http://derivadow.com/2008/10/18/media-companies-should-embrace-the-generative-nature-of-the-web/">generative</a>. You could drag and drop the output from one app as the input for another. You could write simple little scripts that chained together apps as a mini process. And because each component co-operated you never got stuck with vendor lock-in or forced upgrades. You could just grab a different app for the same purpose off a floppy disc and swap them in and out at will.</p>
+<h2>Which reminded me for some reason...</h2>
+<p>...of a pub chat with <a href="http://twitter.com/nevali">Mo</a> and <a href="http://twitter.com/FaithMo">Faith</a> about APIs and open data. In my head at least there is a connection here...</p>
+<p>Most businesses of any size will have data spread across multiple systems (staff details, product inventories, room bookings, finances). At some point there's a realisation that scattering knowledge is inefficient and there'd be more value if the multitude of different system co-operated and exchanged information. For lots of organisations that path leads inevitably to the large scale enterprise architecture dreams of one consolidated system to rule them all. So the usual coterie of consultants march in to design the uber-system. It's the mainframe mentally that never quite died out. (I half remember another company I used to work for had seven systems, all called The Global Platform).</p>
+<p>Eventually the uber system gets built and all the data from the legacy systems gets pumped in. And it fails. Because the data isn't quite the right shape and different systems use different identifiers and some systems use different fields to mean different things at different points in time... But mostly the enterprise architect dreams die because they ignore the real problem until it's too late. Designing data cathedrals is (relatively) easy; data and identifier consolidation is the hard part. And if you can solve identifier consolidation in the first place there's no need to ever build the cathedral. Which is why god gave us URIs, HTTP and APIs. And why...</p>
+<h2>...tl;dr everything should have an API</h2>
+<p>I realise there's nothing new in any of this. It's the usual, "small pieces, loosely joined" (though I'd quibble about the definition of loosely). And I realise that hanging this argument on nostalgia for the rotting corpse of a badly failed operating system weakens it somewhat :-/</p>
+<p>But business systems should be more like RISC OS and less like mainframes or enterprise / Adobe bloat-wear. They should do one thing well and co-operate and communicate. An organisation should be its APIs. And <em>everything</em> should have an API.</p>
+<p>If you're in the legal business every case should have an API, every lawyer should have an API, every citation of case law or legislation should have an API. If you're in the TV / radio business every studio should have an API (what's recording there, what was recorded there, what's planned), every camera should have an API (where is it, where has it been), every production should have an API (what stage is it at, what's the budget, who's the co-producer). If you're in the news business every camera crew should have an API (where are they, where have they been), every journalist should have an API (what have they submitted, where are they (though it's not unlikely that Twitter or Facebook or FourSquare already know this)). If a riot kicks off somewhere in Tottenham you should be able to query across systems to easily find the closest journalist, the closest camera crew, the closest radio car... without having to chase down six different spreadsheets across four different departments.</p>
+<p>Whenever talk turns to APIs it's usually a side effect of already publishing to the web. The usual question is, "we've published this content to the open web, can we give it an API?" Which feels like the wrong question. If everything is / has an API the real question is, "Which bits of this can we open to the web and which bits are better kept private?" That's just a permissioning problem and permissioning is easy :-)</p>
+<p>All of this is dependent on whether the intention is to create a more intelligent, connected, generative website. Which is not a bad goal. It just seems more ambitious to create a more intelligent, connected, generative business. And expose the bits you choose to expose to the world.</p>

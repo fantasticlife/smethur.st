@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: If I worked for a big media organisation...
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: "...(or at least one whose content could reasonably end up encoded as an
+  mp3 / mp4) one thing I'd definitely like to see is an ID3 tag dedicated to holding
+  a RESTful HTTP URI. ID3 tags are designed to allow people to embed metadata about
+  the conten..."
+wordpress_id: 65937786
+wordpress_url: http://smethur.st/if-i-worked-for-a-big-media-organisation
+date: '2011-08-16 00:00:00 +0100'
+date_gmt: '2011-08-15 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 66
+  author: zazi__
+  author_email: ''
+  author_url: http://twitter.com/zazi__
+  date: ''
+  date_gmt: ''
+  content: Agreed. in ~2009 I proposed in my Bachelor-like thesis to included Linked
+    Data (Semantic-Web-Ontology-based knowledge representations) into ID3 tags or
+    replace them completely by such KRs. Unfortunately, I haven't fully implemented
+    this vision yet. However, http://smiy.svn.sourceforge.net/viewvc/smiy/pmkb-aperture-extractor/
+    might be a good start for such a transformation. It is a proper mapping from ID3
+    tags into Music Ontology and related ontologies terms. Furthermore, another interesting
+    forthcomming place might be the Playdar/Tomahawk ecosystem, where things like
+    track webpages (see http://www.gettomahawk.com/test/trackpage) are on the roadmap.
+    Let's enhance them with some RDFa ;)
+---
+<p>...(or at least one whose content could reasonably end up encoded as an mp3 / mp4) one thing I'd definitely like to see is an <a href="http://www.id3.org/">ID3 tag</a> dedicated to holding a RESTful HTTP URI.</p>
+<p>ID3 tags are designed to allow people to embed metadata about the content of a media file into the file. Although designed can seem quite a strong word in this context. A quick glance at the ID3 spec gives the impression that it was more thrown together. New tags have accreted over time with little discernible rhyme or reason. What started as an attempt to add core metadata like track title, artist name and release title to music tracks has bloated to a spec with a quite ridiculous number of tags.</p>
+<p>But there are still two important attributes missing from ID3:</p>
+<ol>
+<li>A stable, persistent identifier for the content of the file</li>
+<li>A way to get more information about the content of the file</li>
+</ol>
+<p>Actually ID3 does make provision for a Unique file identifier but it goes on to disclaim responsibility with:</p>
+<blockquote cite="http://www.id3.org/id3v2.4.0-frames"><p>This frame's purpose is to be able to identify the audio file in a database, that may provide more information relevant to the content. Since standardisation of such a database is beyond this document, all UFID frames begin with an 'owner identifier' field. It is a null-terminated string with a URL [URL] containing an email address, or a link to a location where an email address can be found, that belongs to the organisation responsible for this specific database implementation. Questions regarding the database should be sent to the indicated email address.</p>
+</blockquote>
+<p>Eh? Really? Who on earth would populate an ID3 tag with the email address of a database owner? And why?</p>
+<p>Both gaps could be filled by the addition of a ID3 tag dedicated to storing a RESTful HTTP URI. Settling on a stable URI gives a stable globally-unique identifier. And because it's an HTTP URI you can dereference it to get back more information. And if that information is returned as <a href="http://linkeddata.org/">Linked Data</a> you can follow your nose to more information and etc. In short the URI should employ <a href="http://en.wikipedia.org/wiki/Content_negotiation">content negotiation</a> so if it's requested by a browser the user should get back an <em>appropriate</em> human readable webpage. And if the user requests JSON or RDF or CSV then the URI should return JSON or RDF or CSV. And if the user requests the media itself (audio/mp3 eg) they should get back the media file if it's still available.</p>
+<p>The basic problem with ID3 is however much the spec expands and however many tags get added there's always going to be more that people want to say about a music track or a film or a TV programme. Trying to encapsulate all this descriptive power in a pre-defined set of tags is always going to be way too limiting. Or why embed metadata as tags when you could embed one HTTP URI and just dereference that to get the data? Metadata embedding is a silly solution to a hard problem.</p>
+<p>Taking music as an example, you could embed an artist name, track title, release title and record label in the file. But adding a <a href="http://musicbrainz.org/">MusicBrainz</a> URI makes all this core data available over HTTP. And adding a MusicBrainz URI makes additional data that could never be encoded in ID3 (like band membership (and data about those members)) available too. Because both MusicBrainz and <a href="http://www.bbc.co.uk/music">BBC Music</a> are published as Linked Data you can traverse the web to get BBC News stories for that artist, BBC reviews for that artist and BBC programmes that play that artist. Because <a href="http://www.guardian.co.uk/info/developer-blog/2011/aug/02/music-album-pages">The Guardian uses MusicBrainz identifiers in their new music site</a> you can get Guardian reviews and news stories about that artist. And because the <a href="http://developer.echonest.com/sandbox/musicbrainz.html">Echonest uses MusicBrainz identifiers</a> you can get recommendations for similar artists.</p>
+<p>Taking a BBC programme example, if ID3 allowed for an HTTP URI, that tag could be populated by a RESTful <a href="http://www.bbc.co.uk/programmes">/programmes</a> URI. Dereference that and you'd get not only core episode data (title, the programme it belongs to, the series it belongs to, broadcast information, contributor information, clips) but also music played in that episode (again linked to MusicBrainz), trackbacks to blog posts about the episode, products for sale including that episode, recipes in that episode. The list probably isn't endless but it's more than ID3 could ever scale to.</p>
+<p>Most importantly for content publishers one of the many things you could get back is recommendations for similar (legally available) content. If there's a recognition that content will "travel", the benefits of "upselling" to legality feels like an obvious response. So punters get better, more expansive metadata, better services and opportunities to explore new content. And publishers get an opportunity to tempt people back to legality. And if it doesn't completely solve the provenance problem at least it's a step in the appropriate direction.</p>
+<p>All it takes (and I'm probably simplifying through ignorance) is for media companies to mint HTTP URIs for their content which return liberally licenced (meta)data in standard, non-proprietary formats and link out to other data sources. And an ID3 tag to embed these URIs into files. And for people to build smart media clients that suck in this data to make interesting and useful experiences.</p>
+<p>In the meantime, as <a href="http://nevali.net/">Mo</a> has pointed out, there are ID3 tags designed to hold URLs. WOAF (Official audio file webpage) and WOAS (Official audio source webpage) are obvious candidates for overloading if anyone fancies a hack. But even the use of the word "webpage" suggests they weren't designed for RESTful HTTP URIs.</p>
+<p>So, in summary, if I worked for a big media company i'd be putting in the effort to ensure both my website <em>and ID3</em> were Linked Data compliant.</p>

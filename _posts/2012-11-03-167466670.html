@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: A late answer to a question from the digital humanities conference
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: The week before last Silver and I went along to the Realising the Opportunities
+  of Digital Humanities conference in Dublin. We gave a short presentation about linked
+  data at the BBC then sat on a panel session attempting to answer questions. I've
+  ...
+wordpress_id: 167466670
+wordpress_url: http://smethur.st/a-late-answer-to-a-question-from-the-digital
+date: '2012-11-03 00:00:00 +0000'
+date_gmt: '2012-11-03 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments: []
+---
+<p>The week before last <a href="http://blockslabpillar.com/">Silver</a> and I went along to the <a href="http://www.dri.ie/realising-opportunities-digital-humanities">Realising the Opportunities of Digital Humanities</a> conference in Dublin. We gave a short presentation about linked data at the BBC then sat on a panel session attempting to answer questions. I've never been on a panel before but it's a bit like an interview: you only think of the answer you wanted to give once you've left the room.</p>
+<p>Anyway, one person asked a question something like, "with all this data does 'content' become a second class citizen". At the time we were sat in the <a href="http://www.ria.ie/Library.aspx">Royal Irish Academy library</a> which is three storeys of floor to ceiling books. The thought that all that <em>humanity</em> could ever become subservient to some descriptive data seemed so odd that I don't think anyone even answered the question. A bit like suggesting if the library catalogue ever got good enough you could just burn the books.</p>
+<p>A follow up point was made by a person from <a href="http://www.rte.ie/">RTE</a> about the costs associated with digitising content. I think it's often hard to justify digitisation costs because the thing you end up with is pretty much the thing you started with except in ones and zeros. And to my mind there are three steps to opening an archive. As a fag packet sketch it would look something like:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2012/11/45540869-fag-packet.png"><img class="aligncenter size-full wp-image-176135778" title="45540869-fag-packet" src="/assets/2012/11/45540869-fag-packet.png" alt="" width="411" height="314" /></a></div>
+<h2>Step 1: Digitisation</h2>
+<p>As the RTE person said, digitisation is expensive and sometimes hard to justify. And I have no ideas on how to make it less expensive. Until content is digitised there's no way to get the economies of scale that computers and the web and the people on the web bring. And there's no real benefit in <em>just</em> digitising. You can put the resulting files <em>on the web</em> but until they link and are linked to and findable they're not <em>in the web</em>. To put stuff in the web you need links and to make links you need context so...</p>
+<h2>Step 2: Contextualisation</h2>
+<p>Once you have digitised files you need to <em>somehow</em> generate context and there seem to be three options:</p>
+<ol>
+<li>employ a team of librarians to catalogue content - which is great if you can but doesn't scale too well and can, occasionally, lead to systems which only other librarians can understand</li>
+<li>let lose the machines to analyse the content (OCR, speech to text, entity extraction, music detection, voice recognition, scene detection, object recognition, face recognition etc etc etc) - but machines can get things wrong</li>
+<li>build a community who are willing to help - but communities need nurturing (not <em>managing</em>, never <em>managing</em>)</li>
+</ol>
+<p>The <a href="http://www.bbc.co.uk/blogs/researchanddevelopment/2012/03/automatically-tagging-the-worl.shtml">project I'm currently (kind of) working on</a> has the research goal of finding a sweet spot between the last two: machine processing of audio content to build enough descriptive data to be corrected and enhanced by a community of users. Copying / pasting from <a href="http://pigsonthewing.org.uk/open-licensed-format-recordings-voices-wikipedia-wikimedia-commons/#comment-55411">an earlier comment</a>:</p>
+<blockquote><p>We've been working on a project for BBC World Service to take 70,000 English-language programmes and somehow make them available on the web. The big problem is that whilst we have high quality audio files we have no descriptive data about them. So nothing about the subject matter discussed or who's in them and in some cases not even when they were broadcast.</p>
+<p>To fix this we've put the audio through a speech to text system which gives us a (very) rough transcript. We've then entity extracted the text against DBpedia / Wikipedia concepts to make some navigation by "tags". Because the speech to text step is noisy some of the tags extracted are not accurate but we're working with the World Service Global Minds panel (a community of World Service listeners) who are helping us to correct them.</p></blockquote>
+<p>Machine's plus people is an interesting approach but, like digitisation, machine processing of content is expensive. Or at least difficult to set up unless you're a <a href="http://moustaki.org/">technology</a> <a href="http://blog.chrislowis.co.uk/">wizard</a>. And there's a definite gap in the market for an out-of-the-box, cloud-based (sorry) solution (sorry) for content processing to extract useful metadata to build bare-bones navigation.</p>
+<h2>Step 3: Analysis</h2>
+<p>The line between contextualisation and analysis is probably not as clear cut as I've implied here. But by analysis I mean any attempt to interrogate the content to make more meaning. I'm reminded of the recent <a href="http://lareviewofbooks.org/article.php?type=&amp;id=1040&amp;fulltext=1&amp;media=">Literature is not Data: Against Digital Humanities</a> article by Stephen Marche:</p>
+<blockquote class="posterous_medium_quote"><p>But there is a deeper problem with the digital humanities in general, a fundamental assumption that runs through all aspects of the methodology and which has not been adequately assessed in its nascent theory. Literature cannot meaningfully be treated as data. The problem is essential rather than superficial: literature is not data. Literature is the opposite of data.</p>
+<p>Data precedes written literature. The first Sumerian examples of written language are recordings of beer and barley orders. But The Epic of Gilgamesh, the first story, is the story of "the man who saw the deep," a hero who has contact with the ineffable. The very first work of surviving literature is on the subject of what can't be processed as information, what transcends data.</p></blockquote>
+<p>It also reminds me of a trip to a Music Information Retrieval conference a couple of years back. Every other session was accompanied by a click track and seemed to be another attempt to improve "onset beat detection" in some exotic music genre by two or three percent. I'm no musicologist but it felt like a strange approach to determining meaning from music. If you were ever asked to describe punk or hip-hop or acid house I doubt you'd start with chord sequences or rhythm patterns. For at least some genres the context of the culture and the politics (and the narcotics) feels like a better starting point.</p>
+<p>So I think when we throw machines at the analysis part there's a tendency to reduce down the ineffable to a meaningless set of atoms. Or a pile of salt. Machines have their place but it's their usual place: boring, repetitive tasks at speed.</p>
+<p>Getting back to the diagram: once archive items are digitised, contextualised, findable and <em>in the web</em> they become social objects. People can link to them, share them, "curate" them, annotate them, analyse them, celebrate them, debunk them, take them, repurpose them, "remix" them and make new things from them. The best description I've seen of the possibilities of what could happen when people are allowed to meet archive items is <a href="http://ecommons.eu/wp-content/uploads/Tony-Ageh-%E2%80%93%C2%A0The-Economies-of-Sharing.pdf">Tony Ageh's recent speech on the Digital Public Space</a> which is too good to quote and should just be read.</p>
+<p>On the original question then, no I don't think "content" (novels, poems, pamphlets, journalism, oral history, radio, film, photography etc) will ever become a second class citizen to the data describing it. And digitisation costs are a lot easier to justify when coupled with contextualisation and analysis. And that some jobs are best done by machines and some jobs are best done by people.</p>
+<p>&nbsp;</p>

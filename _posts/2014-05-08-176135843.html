@@ -1,0 +1,74 @@
+---
+layout: post
+status: publish
+published: true
+title: Yet another post about Google (not really) removing the URL bar from Chrome
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135843
+wordpress_url: http://smethur.st/?p=176135843
+date: '2014-05-08 21:43:21 +0100'
+date_gmt: '2014-05-08 20:43:21 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 187
+  author: Some quick thoughts on URLs | r4isstatic.com
+  author_email: ''
+  author_url: http://www.r4isstatic.com/566
+  date: '2014-05-08 21:55:38 +0100'
+  date_gmt: '2014-05-08 20:55:38 +0100'
+  content: "[&#8230;] One: As expected/hoped for, Michael Smethurst has written something
+    more precise on the topic &#8211; go read [&#8230;]"
+---
+<p>A <a href="https://twitter.com/frankieroberto/status/464172892595699712">Twitter conversation</a> with <a href="http://www.frankieroberto.com/">Frankie Roberto</a> and <a href="http://www.r4isstatic.com/">Paul Rissen</a> continuing in my head.</p>
+<p>A few days ago Google released a canary build of Chrome which, by default, hid the URL of the current page behind a button. The clue was probably in the canary part; the next day's build reverted to visible URLs. And the URL was never actually removed, just placed a click away. Users were free to type URLs or search by whichever search engine they had configured in standard "omnibar" fashion.</p>
+<p>Even so just about everyone seems to have chipped in with an opinion about this. I can't pretend I have a clue about whether Google were experimenting with ways to protect users from phishing attacks or whether it was just a toe in the water of self interest (<q>"<a href="http://ntlk.net/2014/05/05/chrome-obfuscates-the-urls/">an attempt to expand and consolidate centralised power</a>"</q>). But it's their browser and I guess they can do what they like with it. Beware Silicon Valley bearing gifts and all that; they'll probably arrive in wrapping paper made of adverts.</p>
+<p>What I do think is: the URL has too many people expecting too much and that makes things break.</p>
+<p>A few years back I always used to say a good URL should be three things:</p>
+<ol>
+<li>Persistent</li>
+<li>Readable</li>
+<li>Hackable</li>
+</ol>
+<p>And the greatest of these was persistent. Three is a nice number and I enjoy a biblical reference or two but I'm not sure I ever really thought hackable mattered. It's a nice geek feature to navigate by chopping bits out of URLs but do punters actually do that? If they do it's probably more because your navigation is broken than because your <a href="http://shiflett.org/blog/2010/may/url-sentences">URLs make nice sentences</a>.</p>
+<p>But the persistent / readable trade off is hard. My natural inclination is to repeat the words of my former <a href="http://nic.ferrier.me.uk/" title="Nic Ferrier">teacher</a>; <q>"the job of a URL is to identify and locate a resource, the job of a resource is to describe itself."</q> And of course to quote liberally from <a href="http://www.w3.org/Provider/Style/URI.html">Cool URIs don't change</a>. Whilst making the usual point that:</p>
+<p><code><br />
+	&lt;a href="this-bit-is-for-machines"&gt;this-bit-is-for-people&lt;/a&gt;<br />
+</code></p>
+<p>or</p>
+<p><code><br />
+	&lt;a href="identify-and-locate"&gt;label-and-describe&lt;/a&gt;<br />
+</code></p>
+<p>Which is why browsers have URL <em>and</em> title bars. Identifying / locating and labelling / describing are different things and HTML and browsers provide for both.</p>
+<p>All of which is fine in theory but...</p>
+<p>URLs have long since broken free of the href attribute and the URL bar. They're on TV, read out on radio and on the side of buses. Pretending that URLs are just there to identify and locate sidesteps how they actually get used and how people think about them. When they stopped being an implementation detail of the linky web, when they stopped being identifiers and started becoming labels, everyone had an opinion on what they were for and what they should look like. The techy people have an opinion, the UX people have an opinion, the brand manager has an opinion, the marketing department have an opinion, the SEO people have an (often misguided) opinion and then the social media team chip in with theirs. And <a href="http://icannwiki.com/index.php/Brand_TLD">the people selling domains want to sell more domains</a>. None of the opinions agree or are reconcilable. Like most things with more than one stakeholder the result is a bit of a shambles.</p>
+<p>I guess the starting point is what do punters actually want from URLs:</p>
+<ol>
+<li>they want to trust that the page they're looking at comes from the domain they think it does</li>
+<li>a sub-set want to copy and paste the URL and make new links</li>
+<li>they want to trust that the link they're clicking on goes to the domain they think it does</li>
+<li>they might want to type one they've seen on the side of bus into a box but probably they'll just search like normal people do</li>
+</ol>
+<p>And that's probably about it. But it does mean that as well as techy and UX and marketing and SEO and etc opinions the URL also gets lumbered with providing provenance and trust. It's quite a lot to expect from a short string of letters and numbers and colons and slashes.</p>
+<p>That said, in almost all cases (aside from the suspiciously spammy looking email) trust really resides in the linker and not the link. There are plenty of places where the bit-for-people part just replicates the bit-for-machines, often with the added <a href="http://derivadow.com/2009/06/09/url-shortening-its-nasty-but-its-also-unnecessary/">horrors inserted by a series of URL shorteners</a>. But we keep clicking on links in Twitter because we trust the linker not the link.</p>
+<p>Even so there must be a way we can decouple provenance from location from label. What we've got now doesn't work because too many "stakeholders" disagree about what we're trying to achieve. It's hard to not break the web because the marketing manager changes their mind about the brand message and no-one knows how to separate identifiers from labels. The problem isn't with Google "removing" the URL bar; whatever any browser provider does to patch over this won't work because there isn't a right answer because the problem goes deeper. We're misusing a thing designed to do one thing to do half a dozen other things none of which are compatible.</p>
+<h2>Update</h2>
+<p>A couple more things since I posted this:</p>
+<h3>Should URLs be "hackable"?</h3>
+<p>Via Twitter <a href="http://dracos.co.uk/">Matthew Somerville</a> said, <q>"<a href="https://twitter.com/dracos/status/464539393823629313">FWIW I know many people who 'hack' the http://traintimes.org.uk  URLs, though not many of them would call it that ;)</a>"</q>.</p>
+<p>It's something I do myself, usually to get a feel for the shape of the thing, more often when presented with a new website to check if there are any holes in the URL structure. As the same old <a href="http://nic.ferrier.me.uk/" title="Nic Ferrier">mentor</a> used to say, <q>"never hack back to a hole"</q>. Does it really matter? Not really but removing bits of the URL on the lookout for redirects or 40Xs is a pretty good proxy for how much care and attention has been given to the design.</p>
+<p>I can't deny hackable URLs are cute and lots of geeks seem to think the same. I just searched twitter for "hackable URL" and came across someone who "loves RESTful, hackable URLs" which is as big a misreading of REST as almost all other uses. But in real life (and in user testing) I've never seen anyone go anywhere near the URL bar. It gets used to check the page they're looking at really is coming from their bank, to bring back websites from history and to summon Google. I suspect (though have no data) that's the majority use case. Given all the other things we seem to expect of URLs expecting them to also function as navigation widgets probably just adds to the confusion.</p>
+<p>And again, <a href="http://blog.ploeh.dk/2013/05/01/rest-lesson-learned-avoid-hackable-urls/">conflating REST with human readable and hackable is just wrong</a>. And don't get me started on "RESTful APIs" which are apparently something different from websites.</p>
+<h3>Should URLs be hidden?</h3>
+<p>I stumbled across a post from <a href="http://www.nczonline.net/">Nicholas C. Zakas</a> with the title <a href="http://www.nczonline.net/blog/2014/05/06/urls-are-already-dead/">URLs are already dead</a> which didn't actually say URLs were dead (because that would be silly) but did say they were slowly disappearing in the same way email addresses and telephone numbers are disappearing. Which is true; URLs are already hidden away in iOS and as screen sizes shrink that will probably continue. Wherever browsers can use titles in preference to URLs they do. Autocomplete (from history) completes on titles (and URLs), history shows title not URLs, bookmarks show titles not URLs. Take a look at your bookmarks and history and imagine how much less useful and useable they'd be if they listed URLs.</p>
+<p>The natural extension is to put URLs a click away from the URL bar. Whatever their motivations Google were right to hide the URL. It's just a shame it only happened for one day.</p>
+<h3>Does hiding URLs in the browser solve the bigger problem?</h3>
+<p>No because URLs long ago stopped being the province of developers and became voodoo fetish objects for marketeers and brand consultants. I'd happily predict that the first place were we'll no longer see URLs will be the browser. Well past that point they'll be shown on telly screens, read out on air, plastered over posters etc.</p>
+<p>I now think my thinking that URLs / URIs / whatever should be persistent, human readable and hackable made a nice slogan but was just wrong. They should only and always be persistent. Everything else is just sugar.</p>
+<p>But that still leaves us with a problem because the marketeers and sales people still want to slap URLs over posters and books and beer mats. It's interesting that the presence of a URL no longer seems to signify you can get some more information if you type this into a URL bar but instead to signify a vague acceptance of modernity (look we're the webz).</p>
+<p>Or at least that's my understanding. Presumably the marketeers don't assume punters emerge from a tube station and type these URLs into URL bars? Because that isn't what appears to happen. From my day job I know plenty of people search for "bbc.co.uk". Given the omnibar I'm fairly sure lots of people end up searching Google for Google. They're just happier using search than weird looking slashdot protocols. Twitter is an interesting side case where the slightly geeky @ of @fantasticlife displaces the very geeky slashdots of https://twitter.com/fantasticlife. Good.</p>
+<p>So what if the marketeers could be dissuaded from plastering URLs over every surface they see. It would make our lives easier because we'd no longer have to have all those conversations trying to find a middle ground between "must / just persistent" and "must carry the brand message". But it won't happen because the alternative is something like, "just search for" and then you're at the mercy of Google and Bing and all those competitors outbidding you for keywords.</p>
+<p>Which is <em>complete bollocks</em>. Because that's what happens. Punters <em>do not</em> memorise your URL and even if they do they search for it anyway. Your organisation / brand / "product" / whatever is already at the mercy of search engines because that's how real people use the web.</p>
+<p>So love of god Google, if only to save me from another meeting conversation about this <em>please hide the URL behind a click in Chrome</em>. And hope the marketeers start to think that covering the world in URLs makes as much sense as covering it in ISBNs or catalogue numbers or Amazon product IDs.</p>

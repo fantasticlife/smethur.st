@@ -1,0 +1,188 @@
+---
+layout: post
+status: publish
+published: true
+title: Storytellin'
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Round where I live it's almost impossible to walk past a powerpoint session
+  without coming across the "Storytelling" word. Bonus points get scored for managing
+  to get "second screen" and "transmedia" in the same "deck" but we won't go there.
+  It al...
+wordpress_id: 66087518
+wordpress_url: http://smethur.st/storytellin
+date: '2011-08-18 00:00:00 +0100'
+date_gmt: '2011-08-17 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 19
+  author: r4isstatic
+  author_email: ''
+  author_url: http://twitter.com/r4isstatic
+  date: ''
+  date_gmt: ''
+  content: Well, if that's all we get from all this, that's more than good enough
+    for me - just having a corpus of all that information on the Linked Data Web would
+    be brilliant, and (IMHO) with lots of potential for things to be built on top
+    of that.Thanks for working through this and showing that a lot of this is theoretically,
+    and in part, practically possible - not only with fiction, but with news and history
+    too. Really good to get your perspective on it (no pun intended..)I think that
+    the mechanics, whilst not necessarily being the story *telling* part, would at
+    least get us some way towards a proper Web 'adaptation' of a story - really using
+    the mechanics of the Web in the same way that books use text and illustration,
+    film uses camera tricks etc.And then at least the potential is there to build,
+    experiment and improve upon - rather than not having any of the information at
+    all.
+- id: 20
+  author: billroberts
+  author_email: ''
+  author_url: http://twitter.com/billroberts
+  date: ''
+  date_gmt: ''
+  content: 'I really like your analysis of this and having a structured representation
+    of news or fiction would be really useful.I had a brief look last year at how
+    you might go about an RDF version of the events in news stories, but didn''t get
+    very far. The thing I found tricky was that when I looked at a selection of news
+    stories, many of them consisted of what someone said about an event, rather than
+    about the event itself.  (The really annoying articles are the ones that recycle
+    politicians'' press releases and tell us what they will say  later that day!)I
+    was thinking along the lines of Yves'' event ontology - the who/when/what/where
+    aspects and found it all a bit difficult to fit to the example stories I picked.  But
+    I suppose ''person X says Y about Z'' is an event as well, and one of the attributes
+    of this event would be the link to the ''primaryTopic'' secondary event.  These
+    relationships between events are pretty important as a common way to  slice this
+    data would be to look at who had said what about a particular event, last week''s
+    riots say.In a lot of cases it might be because the story depends on the opinion
+    or testimony of the source, so it''s presented as ''Officials say 6 people have
+    died in Israel''.  The event of interest is that 6 people have died, but an important
+    aspect of the article is where the information comes from, ie from whose perspective
+    it is presented.I suppose the same thing comes up in fiction, where the scenes
+    describe different people''s viewpoints of the same event.Anyway, particularly
+    in news, the ''A said B about C'' pattern comes up a lot.  I think it fits in
+    your model but would be interesting to hear how you think it should be represented.  '
+- id: 21
+  author: zazi__
+  author_email: ''
+  author_url: http://twitter.com/zazi__
+  date: ''
+  date_gmt: ''
+  content: Well written. You clearly pointed out the two different levels storytellin
+    can have. So at a first glance, I came to the conclusion that all this can be
+    represented quite good with the existing Stories Ontology (http://www.contextus.net/stories/
+    - I guess you know that one ;) ). In general every RDF Statement is an assertation,
+    i.e., the problem of how to do knowledge representation on storytellin is ubiquitous.
+    During the research for my master thesis, I started thinking of the &quot;association-context-event&quot;-triangle
+    (see zazi.smiy.org/gfx/association-context-event-triangle.png ; the notes are
+    unfortunately in German ;) ).
+- id: 22
+  author: Michael Smethurst
+  author_email: ''
+  author_url: ''
+  date: ''
+  date_gmt: ''
+  content: "@paul - Suspect my problem is more with the &quot;storytelling&quot; word,
+    than with the concept. The web's great for exploring but it's pretty rubbish at
+    &quot;telling&quot;. IMO, mythology engine and story ontology are more about exploring
+    stories from different angles. And less about storytelling. That said I think
+    there's definitely milage in modelling stories for exploration. For news / history
+    in particular I think the ability to explore conflicting claims of cause and effect
+    *might* lead to better journalism.Strikes me that a lot of what gets labelled
+    &quot;data journalism&quot; is actually the release of some data that backs up
+    claims made in journalism. The Guardian's &lt;a href=&quot;http://www.guardian.co.uk/news/datablog/interactive/2011/aug/10/poverty-riots-mapped&quot;&gt;mapping
+    of riot zones against deprivation&lt;/a&gt; is an obvious example. The claim is
+    something like: (relative) poverty &gt; alienation from consumer capitalism &gt;
+    loss of hope &gt; riot. The map provides some evidence for the claim. But there
+    were lots of claims around cause and effect and no data published to back up those
+    claims. Because it doesn't exist? Because no-one's published it? If it was published
+    you couldn't state it as undermining The Guardian's claim because the claim was
+    never published. And without being able to see all claims made by all claimers
+    it's all just lies and damned lies... @bill - I did think about including something
+    about dialogue in this but the post felt long enough and I was already quite confused.
+    Feels like a simple dialogue ontology might be possible. A dialogue event identifying
+    the person or agent (&quot;a Government spokesperson said&quot;) who spoke, the
+    intended audience, the thing said and some basic in_reply_to relationships between
+    dialogue events. the primary topic might be an event on the story level or might
+    be a dialogue event in someone else's discourse. Obviously if it's gonna cope
+    with Midsomer Murders you'd need some concept of unintended audience; the murderer
+    is almost guaranteed to overhear something said by someone that turns that person
+    into a murderee :-) Also wondering if FOAF would be useful for &quot;friends of
+    the prime minister have told me&quot; :-)Again think all this is more difficult
+    in fiction. Particularly for the nested narrative model. In Wuthering Heights
+    it's Nelly Dean telling the story (with narrated dialogue) to Mr Lockwood but
+    all written by Emily Bronte. Who's telling which story to whom? Who's the &quot;intended
+    audience&quot;? Who's doing the overhearing? Introduction to the Structural Analysis
+    of Narratives has a whole piece about author as narrator and how that breaks down
+    when one character tells another character something they'd already know for the
+    benefit of the reader / convenience of the author.Even in current affairs the
+    &quot;friends of the prime minister have told me&quot; is an artful conceit. It's
+    basically &quot;some people I claim the prime minister has at some point trusted
+    are using me as a channel to tell you the reader something the prime minister
+    would probably rather you didn't know&quot;@zazi - I've looked at the story ontology
+    but can't say I'm sure it matches this model. Not sure why there's a separation
+    between story and assertion. I think a story is an ordered set of assertions rather
+    than an ordered set of events. Assertions are made as part of the story as well
+    as part of the interpretation...?"
+---
+<p>&nbsp;</p>
+<p>Round where I live it's almost impossible to walk past a powerpoint session without coming across the "Storytelling" word. Bonus points get scored for managing to get "second screen" and "transmedia" in the same "deck" but we won't go there. It all leads to lots of talk around what storytelling means, how it's done and how it relates to the web. To date the main experiment has been building the <a href="http://www.bbc.co.uk/blogs/researchanddevelopment/2010/03/the-mythology-engine-represent.shtml">Mythology Engine</a> and injecting some Doctor Who storylines into it to make journeys between characters and events from the new and 'classic' Doctor Who. What follows are some fairly random thoughts on how you'd go about modelling stories in order to tell them on the web. Since I'm an expert in neither RDF modelling nor critical theory it might all be nonsense.</p>
+<p>&nbsp;</p>
+<h2>Events</h2>
+<p>The obvious starting point for modelling stories is the event. Things happen in stories; capture those things and you have the basic building blocks of story telling. So we've used <a href="http://moustaki.org/">Yves</a>' <a href="http://motools.sourceforge.net/event/event.html">Event Ontology</a> to capture events (real and fictional), the time they occured, the place they occured and the people and things involved. The next obvious step is to say a story has many events but also different people might tell different stories around the same event(s). So stories have many events and events have many stories. Which in relational database terms means a many-to-many and a many-to-many tends to suggests a missing concept. In this case the missing concept is narrative order, allowing a story to reveal events out of the sequence in which they happened. Which is useful if you're trying to describe a non-linear narrative with flashbacks and various recollections of nested narrators (think Wuthering Heights). So you end up with something like:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30577227-events_stories.png"><img class="aligncenter size-full wp-image-176135786" title="30577227-events_stories" src="/assets/2011/08/30577227-events_stories.png" alt="" width="507" height="81" /></a></div>
+<p>As a simple example take two of my favourite TV programmes: <a href="http://en.wikipedia.org/wiki/Columbo">Columbo</a> and <a href="http://en.wikipedia.org/wiki/Midsomer_Murders">Midsomer Murders</a>. They have the same basic event structure which looks roughly (give or take a murder) like:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578559-events.png"><img class="aligncenter size-full wp-image-176135787" title="30578559-events" src="/assets/2011/08/30578559-events.png" alt="" width="570" height="103" /></a></div>
+<p>But they're told very differently. Columbo almost always tells it straight, in event order: first establishing the characters (murderer and murderee), then revealing the motive, the means, the murder and onwards. Right from the start you know who did it, why and how. For the audience the game is all about guessing how Columbo will come good and catch them.</p>
+<p>Midsomer Murders is a more standard whodunnit, told out of sequence using the usual techniques of recollection and flashback. It often opens with the murder scene followed by the investigation. The investigation turns up various clues on route; some real, some red herrings. The motive and means are only fully revealed as part of the post-investigation accusation. (Which, as a complete aside, is not a disimilar narrative structure to <a href="http://www.bbc.co.uk/programmes/b0071b63">The Apprentice</a>: Sir Alan as detective in a murder mystery, the country house replaced by a rented office in Docklands.)</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578571-reordered_events.png"><img class="aligncenter size-full wp-image-176135789" title="30578571-reordered_events" src="/assets/2011/08/30578571-reordered_events.png" alt="" width="570" height="103" /></a></div>
+<h2>Assertions</h2>
+<p>This basic model works fine if all stories that agree on an event also agree on all the assertions made about that event: when, where, who and what. But imagining that the event being described is a crime, everyone might agree the crime took place but Alice might say that Bob was present and Bob might not agree.</p>
+<p>None of this potential for disputed assertion (whether when, where, who or what) is covered by the stories as ordered events model. But in my mind at least stories are more an ordered set of assertions than a reordered set of events.</p>
+<h2>Scenes</h2>
+<p>So the reordered events model for Midsomer Murders shown above is clearly not correct. Midsomer Murders does often start with a scene from the murder event but whilst the murderee and maybe the location are depicted the murderer is kept out of shot. Over the course of the programme subsequent scenes often return to the murder event progressively revealing more detail. It's this split between events and scenes that the 'stories as reordered events model' doesn't give you.</p>
+<p>Every medium has a bag of tricks that allows story tellers to control what's revealed when. In TV and film it's usually close up, over the shoulder shots filmed with low light levels (the shower scene in Psycho). Columbo's interesting for comparison because it's not a whodunnit. The murder is usually filmed as a well-lit wide shot with every detail (location, time, murderer, murderee, weapon...) made explicit.</p>
+<p>The closest comparison I can think of to the bag of assertions model is the RDF named graph. And I'm not saying that to be all linked data-ish; I just can't think of a way you'd do this in any other data store. Named graphs allow you to bundle up a set of statements / assertions / claims (in this case RDF triples) and associate them with some provenance: person X stated these things:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578633-namedgraph.png"><img class="aligncenter size-full wp-image-176135790" title="30578633-namedgraph" src="/assets/2011/08/30578633-namedgraph.png" alt="" width="560" height="388" /></a></div>
+<p>The named graph model only gets you as far as some collections of assertions. But stories are more than just bags of assertions: in order to 'tell' them you need to be able to control how those assertions are revealed to the reader. In this case it's the scene (maybe that should be act?) that reveals a particular named graph's bag of assertions:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578697-scenes.png"><img class="aligncenter size-full wp-image-176135791" title="30578697-scenes" src="/assets/2011/08/30578697-scenes.png" alt="" width="596" height="566" /></a></div>
+<h2>Event interwingling</h2>
+<p>The model so far allows you to bundle up and progressively reveal assertions around events. But it doesn't allow for assertions about the relationships between events: event A directly caused event B; A was one factor in B happening; A didn't cause B, but without A, B couldn't have happened etc. For me these assertions are the most important thing about storytelling because they speak to the reason we tell stories in the first place: an attempt to understand and explain why things happen. They also speak to the inner child's cry of "why?" (and the inner adults response of "because"). Every story we tell is one long chain of "cause" and "effect", why and because. Who and where and when matter but why trumps them all.</p>
+<p>In news storytelling in particular, why and because are the central pillars of decent journalism. Why is my local library closing? Because of council cutbacks. Why are the council cutting back? Because of central government cutbacks. Why are central government cutting back? Because they need to balance the national budget? Why does the budget need to be balanced? Because the previous government borrowed too much? Why did they borrow too much? Because the banks collapsed. Why did the banks collapse? Because mankind is sinful and the bankers weren't washed in the blood of Christ...</p>
+<p>Almost all journalism (all the examples I can think of anyway) follow this pattern of chaining events together with a sequence of becauses. Sometime the because is explicit, sometimes implied, sometimes insinuated but it's almost always there. And it's usually where the majority of disputes arise. Even where they agree on all other details, The Guardian's chain of causality is going to look very different to the Daily Mail's and every claim in the cause and effect chain could be and will be disputed by someone. The ability to see how claims of "causality" differ between different journalists and different news organisations would be a handy tool for general media literacy.</p>
+<p>As an aside I think this is my main misgiving about the <a href="http://dev.iptc.org/rNews">rNews</a> spec. It models online news article publishing; it doesn't model news or journalism. No events, no claims of event &lt;&gt; event causality, no why, no because. To steal a line from <a href="http://derivadow.com">Tom Scott</a> <a href="http://derivadow.com/2011/06/02/some-thoughts-on-rnews/"> news stories [are] metadata about real world events.</a>. And to steal a line from <a href="http://www.buzzmachine.com/">Jeff Jarvis</a> <a href="http://www.buzzmachine.com/2011/05/28/the-article-as-luxury-or-byproduct/">articles are the byproducts of journalism</a>. Which makes rNews meta-metadata or the byproduct of a byproduct.</p>
+<p>Anyway, that was a long aside to add one more line to the model: Alan was arrested for the murder of Joyce.</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578791-causality.png"><img class="aligncenter size-full wp-image-176135792" title="30578791-causality" src="/assets/2011/08/30578791-causality.png" alt="" width="596" height="566" /></a></div>
+<h2>Stories and discourse</h2>
+<p>From the diagram above it seems like stories operate on two basic levels: the assertions they contain (the story) and the way in which those assertions are revealed (the telling). At this point I went off in search of better labels for these levels. I'd thought that some of story, narrative and plot might apply here but all the definitions seem a little fuzzy being both event (rather than assertion) centric and using account to cover a multitude of "telling" possibilities. At least according to the <abbr title="Oxford English Dictionary">OED</abbr>:</p>
+<dl>
+<dt>Story</dt>
+<dd>an account of imaginary or real people and events told for entertainment</dd>
+<dd>an account of past events, experiences, etc</dd>
+<dt>Narrative</dt>
+<dd>spoken or written account of connected events; a story</dd>
+<dt>Plot</dt>
+<dd>the main sequence of events in a play, novel or film</dd>
+</dl>
+<p>A chat with <a href="http://hellomatty.com/">Matthew</a> sent me in the direction of Roland Barthes' Introduction to the Structural Analysis of Narratives, an essay collected in <a href="http://www.mediafire.com/?dzydnuj2jmi">Image Music Text</a> [PDF - page 76 (page 79 of the book)] which says:</p>
+<blockquote class="posterous_medium_quote"><p>Tzvetan Todorov [..] proposes working on two major levels, themselves subdivided: story (the argument), comprising a logic of actions and a 'syntax' of characters, and discourse, comprising the tenses, aspects and modes of the narrative.</p></blockquote>
+<p>Which gives two useful labels, ending up with something roughly like:</p>
+<div class="p_embed p_image_embed"><a href="/assets/2011/08/30578858-story-discourse.png"><img class="aligncenter size-full wp-image-176135793" title="30578858-story-discourse" src="/assets/2011/08/30578858-story-discourse.png" alt="" width="742" height="653" /></a></div>
+<h2>Down the structuralist rabbit hole</h2>
+<p>From my (probably simplistic) reading of Barthes his main point seems to be that discourse can be analysed and deconstructed in much the same way that linguistics deconstructs the sentence. The major premise being:</p>
+<blockquote class="posterous_short_quote"><p>[A narrative] shares with other narratives a common structure which is open to analysis, no matter how much patience its formulation requires.</p></blockquote>
+<p>Once this structure is identified:</p>
+<blockquote class="posterous_medium_quote"><p>[The] 'art' of the storyteller, [..] is the ability to generate narratives (messages) from the structure (the code). This art corresponds to the notion of performance in Chomsky and is far removed from the 'genius' of the author, romantically conceived as some barely explicable personal secret [..] it is impossible to combine (to produce) a narrative without reference to an implicit system of units and rules.</p></blockquote>
+<p>Barthes proposes that narratives operate over a set of hierarchical levels in much the same way as linguistics describes the sentence as operating at multiple levels:</p>
+<blockquote class="posterous_medium_quote"><p>To understand a narrative is not merely to follow the unfolding of the story, it is also to recognize its construction in 'storeys', to project the horizontal concatenations of the narrative 'thread' on to an implicitly vertical axis; to read (to listen to) a narrative is not merely to move from one word to the next, it is also to move from one level to the next.</p></blockquote>
+<p>That said, Barthes doesn't identify the precise levels of narrative but he does propose:</p>
+<blockquote class="posterous_medium_quote"><p>to distinguish three levels of description in the narrative work: the level of 'functions' (in the sense this word has in Propp and Bremond), the level of 'actions' (in the sense this word has in Greimas when he talks of characters as actants) and the level of 'narration' (which is roughly the level of 'discourse' in Todorov).</p></blockquote>
+<p>If you choose to believe Barthes then the story level shown above breaks down into two parts: <a href="http://en.wikipedia.org/wiki/Vladimir_Propp#Functions">Propp style functions</a> and 'actions'. Which seems to fit with the event part of the model although I have no idea how you'd model 'charcters', let alone 'characters as actants'. And life's too short to read Greimas. If you choose to believe Propp then capturing the functions seems trivial, every event sub-classes some more archetypal event / function.</p>
+<p>But more interesting is Barthes' description of the way narrative levels interact:</p>
+<blockquote class="posterous_medium_quote"><p>Narrative thus appears as a succession of tightly interlocking mediate and immediate elements; dystaxia determines a 'horizontal' reading, while integration superimposes a 'vertical' reading: there is a sort of structural 'limping', an incessant play of potentials whose varying falls give the narrative its dynamism or energy.</p>
+<p>these levels are in a hierarchical relationship with one another, for, while all have their own units and correlations [..] no level on its own can produce meaning. A unit belonging to a particular level only takes on meaning if it can be integrated in a higher level. The theory of levels gives two types of relations: distributional (if the relations are situated on the same level) and integrational (if they are grasped from one level to the next);</p></blockquote>
+<p>All of the examples given in the book are based in literature but thinking about film (and TV) for a minute, there's lots of obvious examples of integrational relationships between the story and discourse levels: again the background "music" in the Psycho shower scene, the cymbal crash at the end of a pratfall. When it comes to "telling" a story there are all kinds of claims made on the discourse level about things on the story level. Every decision on script, casting, costumes, locations, props, sound effects, background music, lighting, camera angles, editing, maybe even film stock is a claim made in the discourse level about objects in the story level.</p>
+<p>Any attempt to capture the relationships between discourse and story (beyond "reveals") turns the simple model shown above to spaghetti. But storytelling is as much about how things are revealed as it is about when they're revealed. There are techniques that could probably be identified but how you'd model that I have no idea.</p>
+<h2>An attempt at a conclusion</h2>
+<p>I think it's possible (although the presence of named graphs makes it tricky) to model the <em>mechanics</em> of a story (the ordered revealing of claims around events). And the "cause and effect claims" still feel like the most important part (especially for news and history) because they reflect how we attempt to understand the world.</p>
+<p>But a model of the <em>mechanics</em> of a story doesn't really get you any closer to being able to <em>tell</em> a story using that model. I think it would be good for news organisations to share identifiers for events and people and places. I think it would be good for journalism if claims of causality were made explicit rather than insinuated. (I'm thinking of the Tottenham / London / England riots and the varying claims of causality.) But I don't think it gets us any closer to "web native storytelling". Whatever that might be.</p>

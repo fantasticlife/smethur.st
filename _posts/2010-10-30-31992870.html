@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: URI per Twitter conversation
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Occasionally I have a conversation on Twitter which, in the full light of
+  the following morning's sobriety, I half remember as being interesting. So I try
+  to replay the conversation the next morning. I use Tweetie as a client which makes
+  things ea...
+wordpress_id: 31992870
+wordpress_url: http://smethur.st/uri-per-twitter-conversation
+date: '2010-10-30 00:00:00 +0100'
+date_gmt: '2010-10-29 23:00:00 +0100'
+categories:
+- Uncategorized
+tags: []
+comments: []
+---
+<p>Occasionally I have a conversation on Twitter which, in the full light of the following morning's sobriety, I half remember as being interesting. So I try to replay the conversation the next morning. I use Tweetie as a client which makes things easier cos you can double-click a tweet and if that tweet was in reply to another tweet it'll show that tweet and if that tweet was in reply to another tweet it'll show that tweet and etc. But there's 3 problems with this:</p>
+<ol>
+<li>Often people will reply to the same tweet twice. Then someone else will reply to one of those tweets. So the unreplied to tweet(s) won't appear in the conversation timeline</li>
+<li>Conversations aren't linear; they often branch. Sometimes they branch into someone you don't follow replying to someone you do follow on the same thread. Given the way Twitter works it's impossible to ever know where a conversation ends</li>
+<li>Because the conversation timeline is constructed by the client there's no URI to point at if you want to follow up the conversation in an email or link from a blog post etc</li>
+</ol>
+<p>All of these problems are basically the same. Twitter (and the Twitter API) expose that tweet b was in reply to tweet a; it doesn't expose that tweet a had replies of tweets b, c and d. So basically you need access to <em>all tweets ever</em> to work back to a conversation. Which I think means you could only make this with firehose access...</p>
+<p>Given /:user/status/:id it would be nice to have /:user/status/:id/conversation. The first job would be to get back to where the conversation started so work through the chain of in_reply_tos to find the first tweet with no in_reply_to (either through the firehose data or directly through the api). If the tweet you're asking for didn't start the conversation (so had an in_reply_to) redirect (303?) to /:user/status/:originating_tweet_id/conversation to avoid multiple URIs per conversation.</p>
+<p>From there do some map reduce magic on the firehose data to get every tweet in reply to the originator and every tweet in reply to that and every tweet in reply to that and onwards to plot a branched conversation. No idea how you'd design that interface wise...</p>
+<p>That said there might be a simpler way to do this that I'm not spotting...</p>
+<h2>Other stuff you could do</h2>
+<p>Plotting all geocoded tweets in the conversation onto a map might be cute. And including any retweets, possibly any favourite counts etc. And publishing a data representation for the conversation. Guessing each tweet would be a SIOC post, you'd link between them with sioc:has_reply and the conversation would be a sioc:Container.</p>
+<h2>Update (19/01/2011)</h2>
+<p>Since typing this I've come across two services which do exactly this:</p>
+<ol>
+<li><a href="http://twitter.theinfo.org/">twitter.theinfo.org</a> is pretty much as described above. Feed it a tweet ID and it'll gather up any tweet it was in reply to and any tweets that replied to it recursively and display them as a nice nested list (well nested blockquotes anyway).</li>
+<li><a href="http://www.exquisitetweets.com/">www.exquisitetweets.com</a> does a similar job but adds in a little more curation. So you can add / remove tweets from the conversation by hand.</li>
+</ol>
+<p>I'd assumed they were both using the firehose but according to <a href="http://twitter.com/jwheare">@jwheare</a> (creator of Exquisite Tweets) <a href="http://twitter.com/#!/jwheare/status/27517780949471233">#newtwitter introduced an experimental related results api</a>. So no firehose access required. Details of the new api features <a href="http://groups.google.com/group/twitter-development-talk/browse_thread/thread/cdc34ae78a2350b8">here</a>.</p>

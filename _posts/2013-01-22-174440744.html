@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: Dumb TVs
+author: Michael Smethurst
+author_login: fantasticlife
+excerpt: Following on from this year's CES there's been lots of talk about bigger,
+  better, sharper, smarter TVs. As ever conversation around gadgets tends to get caught
+  up with conversations around business models which tends to lead to breathless commenta...
+wordpress_id: 174440744
+wordpress_url: http://smethur.st/dumb-tvs
+date: '2013-01-22 00:00:00 +0000'
+date_gmt: '2013-01-22 00:00:00 +0000'
+categories:
+- Uncategorized
+tags: []
+comments: []
+---
+<p>Following on from this year's <a href="http://www.techradar.com/news/computing/ces-2013-top-10-moments-1111489">CES</a> there's been lots of talk about bigger, better, sharper, smarter TVs. As ever conversation around gadgets tends to get caught up with conversations around business models which tends to lead to breathless commentary on OTT vs traditional broadcast and whether smart TVs will render traditional broadcasters as obsolete as Blockbusters, HMV and Jessops. But this is only tangentially about that.</p>
+<p>Rumbling away in the background is the usual speculation around Apple's plans to "revolutionise" the TV "experience" and whether they're planning to do the same to the TV industry as they did to the music industry (content deals permitting). In among the chatter there seems to be an assumption from some commentators that Apple's plans for TV revolve around how Apple TV might improve the on-screen interface and controls, possibly replacing the <abbr title="Electronic Programme Guide">EPG with an App Store style interface. There's a tendency amongst media futurologists to predict the future by extrapolating from the past; therefore televisions will follow the same fat-client route as phones and already complicated TV interfaces will become more complicated still.</abbr></p>
+<p>But to my mind this doesn't make sense. Apple already own the content discovery route via their iDevices, they own the content acquisition route via iTunes and they own the play-out route via AirPlay. Why do they need to invent fat-client TV sets when they've already put fat-client laptops, tablets and phones into the hands of their customers? The App Store model might just about work when it's in your hand / on your lap. But placing the same interaction model 10 feet away just doesn't offer the affordances you need to discover, purchase and play programmes. From an accessibility angle alone, making potential customers interact from 10 feet away when you've already given them a better option seems like a painful redundancy.</p>
+<h2>How "smart" do TVs need to be?</h2>
+<p>In more general terms I think there's a problem with the definition of a "smart" TV and the interfaces envisaged. If TVs are web connected why do they need to be smart? Some arguments why not:</p>
+<ol>
+<li><strong>Upgrade cycles</strong> for TVs and radios (and most other household white goods) are too slow to build-in smartness. Build in too much and the smarts go obsolete before the primary function of the device.</li>
+<li>For any connected device <strong>smartness belongs in the network</strong>. This is why we connect them. If there are existing discovery and distribution channels and backchannels, then all a TV needs to do is accept instructions from the network; a connected (but dumb) screen.</li>
+<li><strong>10 feet away is no place for an interface.</strong> And just because a device has a screen doesn't mean it has to be an input. As TV functionality becomes ever smarter and more complicated, the remote control grows to fit the demands and we end up with something almost resembling a keyboard on the arm of the sofa. When there's a much better, much more accessible phone or pad or laptop (or any point in between) sat redundant alongside.</li>
+<li>The App Store / Smart TV model presupposes the existence of apps. But <strong>making native apps is expensive</strong> and the more platforms you have to provide for the more expensive it gets. A dumb TV only needs to accept instructions and play-out media.</li>
+<li>TV screens tend to be a shared device and <strong>authentication, personalisation and privacy concerns are hard on a shared device</strong>. Hard from an implementation point of view and hard from a user comfort point of view. There's a spectrum from TV screen to desktop PC to laptop to tablet to phone and the further down that list you travel the less shared / more personal the device feels and the more comfortable users feel with authentication. Dumb TVs move authentication to where it makes sense.</li>
+<li>Smart TVs open up the possibility of device manufacturers finding a new role as <strong>content gatekeepers</strong>. Having control of both the interface and the backchannel data allows them to control the prominence of content. This is a <a href="http://www.bbc.co.uk/blogs/aboutthebbc/posts/Ensuring-prominence-for-public-service-content-as-media-converges">particular problem for public service broadcasters</a>. By the time your smart TV is plugged into your set top box and your assortment of games consoles, the front room TV can acquire a stack of half a dozen gatekeepers. Just keeping track of which one is currently active and which one you need to control is confusing.</li>
+<li>Media people like to talk about TV as a "lean back" medium. This is pure conjecture but it's possible that separating the input interface from the play-out leads to this more "lean back" experience...</li>
+</ol>
+<h2>How dumb is dumb?</h2>
+<p>From conversations around Dumb TVs there seem to be two main options: the dumb but programmable TV and the dumber than Kletus TV.</p>
+<h3>Programmable TVs</h3>
+<p>Modern TV sets don't live alone. There are ancillary devices like PVRs which sit alongside the TV box. TVs don't need to be programmable but PVRs do. The big question is where you want to programme your PVR from. If it's same room / same local area network then there's no need for any additional smartness or authentication. If it's on the same network you can control it. If you want to programme your PVR from the top deck of the bus this is somewhat harder. Somewhere you need a server to mediate your actions and given the need for a server there's a need for authentication. But...</p>
+<p>...how do PVRs as discrete devices make sense in a connected world? If 3 million people choose to record an episode of Doctor Who that's a hell of a lot of redundant storage. And a hell of a lot of redundant power usage. Over time PVR functionality will move to "the cloud" (the legality of loopholes not withstanding), your mobile will programme it, discover content there and push that content to you TV screen. With no need for TV programmability.</p>
+<h3>Dumb, dumb, dumb</h3>
+<p>So what's the very simplest thing with the least build and integration costs? Something which allows you to push and control media from a fat client to a dumb TV. <a href="http://www.dial-multiscreen.org/" title="DIscovery And Launch">DIAL</a> promises to do something similar but seems to assume a native app at each end and the simplest thing is probably two browsers.</p>
+<p>So somehow devices on a local area network need to be able to advertise the functionality they offer. There's a <a href="http://webintents.org/">web intents</a> connection here but I'm not quite sure what it is. Once your laptop / tablet / phone knows there's a device on the network which can play audio / video it needs to make that known to the browser. So there needs to be some kind of browser API standardisation allowing for the insertion of "play over there" buttons. And the ability to push a content location with play, pause, stop and volume control notifications from the browser on the fat client to the browser on the dumb TV. Which might be something like <a href="http://www.webrtc.org/running-the-demos">WebRTC</a>. Given the paywalls and geo-restrictions which accompany much of the online TV and movie business there'd probably need to some kind of authentication / permission token passed. But that's all dumb but connected would involve.</p>
