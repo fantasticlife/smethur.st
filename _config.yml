@@ -17,3 +17,5 @@ twitter_username: fantasticlife
 
 # Build settings
 markdown: kramdown
+gems:
+  - jekyll-sitemap
