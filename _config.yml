@@ -14,6 +14,9 @@ permalink: /posts/:title
 timezone: Europe/London
 twitter_username: fantasticlife
 #github_username: fantasticlife
+exclude:
+  - Gemfile
+  - Gemlfile.lock
 
 # Build settings
 markdown: kramdown
