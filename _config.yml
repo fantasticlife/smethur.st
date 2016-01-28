@@ -7,7 +7,7 @@
 
 # Site settings
 title: Smethurst
-description: A Blog by Michael Smethurst
+description: A blog by Michael Smethurst
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://smethur.st" # the base hostname & protocol for your site
 permalink: /posts/:title
