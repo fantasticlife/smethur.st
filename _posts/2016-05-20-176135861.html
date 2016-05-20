@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: A routes file for the state
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135861
+wordpress_url: http://smethur.st/?p=176135861
+date: '2016-05-20 14:35:00'
+date_gmt: '2016-05-20 14:35:00'
+tags: []
+comments: []
+---
+		<p>Another hand-wavy post off the back of assorted chats with the <a href="https://www.parliament.uk/mps-lords-and-offices/offices/commons/hcio/about-our-service/">House of Commons public enquiry service</a> and <a href="http://robert-brook.com/">Robert Brook</a>.</p>
+		<p>We're currently working on redesigning the <a href="https://www.parliament.uk/">Parliament website</a> and have done quite a lot of qualitative research digging into user needs with both internal and external users of our services. But we wanted to get something more quantitative around why people approach Parliament and what types of questions they want to ask. Having already dug into search stats and page impressions someone suggested we speak to the people in the Commons and Lords enquiry services who keep a log of the subject areas of questions they get asked. We were able to take this log, analyse changes over time and cluster some of the subject areas by cooccurrence across enquiries. The clustering makes patterns that seem to make sense and should help us to prioritise some of the questions we might want the website to answer.</p>
+		
+		<h2>The big problem</h2>
+		<p>Having analysed the enquiries log, we spent some time chatting to one of the people on the Commons enquiry desk about how the data was catalogued and how enquiries were routed to the various bits of Parliament: local MPs, Lords' members, Committees  etc. And quickly learned that a sizeable chunk of queries to the Commons Enquiries Service cannot be answered by them. There are no hard numbers but, of incoming emails and phone calls, about two thirds are routed to other offices within Parliament. The rest are deemed to be best answered elsewhere and rerouted out of Parliament to organisations better placed to answer. Of these the majority go to Government departments and of those the majority to the <a href="https://www.gov.uk/government/organisations/department-for-work-pensions">Department of Work and Pensions</a>. Others involve things like neighbour disputes and are rerouted to the appropriate council.</p>
+		<p>The same thing happens in reverse with <a href="https://www.gov.uk/government/organisations/prime-ministers-office-10-downing-street">10 Downing Street</a> and Government departments routing misdirected enquiries to Parliament. Quite how far the chain extends and how many bounces might happen isn't clear.</p>
+		
+		<h2>The bigger problem</h2>
+		<p>The state floats over us like an amorphous blob and the gap between citizen and state can be seen as wide and confusing. People are aware of the existence of the various cogs (Government, Parliaments and Assemblies, local councils, mayors) but don't seem clear about how those cogs connect to form the machinery within the state. Or where the competencies of one stops and another starts. Which usually doesn't matter too much. But if you do have a problem it's hard to identify where the levers of power might be.</p>
+		
+		<h2>What I think this means for the new Parliament website</h2>
+		<p>The team have had lots of conversations about the need for the website to better explain what Parliament does, who does it, how they do it, where, when and why. And more importantly what services it offers. But there seems to be a different need to better explain what Parliament doesn't do. And to redirect users to places where their needs are better met. For accidental visitors, getting them away from Parliament and to the right place as quickly and clearly as possible seems like a reasonable metric of success.</p>
+		<p>And the same argument for accidental visitors to council websites, assembly websites, Government websites etc.</p>
+		<p>In an ideal world you could imagine the <a href="https://www.citizensadvice.org.uk/">Citizens Advice Bureau</a> being a central point in all of this. Taking enquiries and redirecting them appropriately to assorted organisations and cogs of the state. Their website could just be a decorated <a href="https://httpd.apache.org/docs/current/howto/htaccess.html">htaccess file</a>, evaluating enquiries and redirecting to people best equipped to deal with them. Something like a route map for the state. Though for now it seems concentrated on explainer articles.</p>
+		
+		<h2>A side note on Government as a plaform</h2>
+		<p>As ever the <a href="https://gds.blog.gov.uk/">GDS</a> work on <a href="http://www.slideshare.net/tomskitomski/government-as-a-platform-new-foundations-for-a-digital-state">Government as a platform</a> is an exemplar on how you tidy away the detailed workings of the state to make interactions task focused. In almost every major endeavour (setting up a company, moving house, dealing with medical and disability issues) you're dealing with a complicated ruleset derived from various bits of the state. By tidying away which bit of the state you're dealing with and where the individual rules in the ruleset are derived from, citizens can do the things they need to do faster and easier.</p>
+		<p>But Parliament is a different beast. You don't go to Parliament to find the most efficient route through the existing ruleset (although you might go through Parliament to your local MP). Amongst Parliaments' many jobs are proposing, debating, accepting and rejecting changes to the ruleset. And I guess there's a vague danger that by shaving off the gnarly details of how you deal with the ruleset, Government as a platform could obfuscate where the individual rules come from and what you'd need to do if you didn't agree with them.</p>
+		
+		<h2>Some kind of summary</h2>
+		<p>The main point is I think there needs to be more thought about how Parliament points to Government and Government points to Parliament and Parliament points to councils and councils point to Government and national Government points to devolved governments etc. But also that there's a place for being able to drop out of Government as a platform to see where the rules originate. And links to institutions (Parliament(s) and political parties and pressure groups and lobbyists) in places where citizens believe the rules need to change. Something like a view source button but for the state.</p>
+		<p>So, roughly speaking, you should be able to use Government as a platform and know that if you fill out the form and click next and fill out the form and click next you'll be able to do what you need to do and abide by the ruleset without having to care about the implementation details of the state. But if you hit a snaggle that doesn't seem quite right you should be able to drop out and see where that snaggle originates and at least attempt to change it.</p>
+		<p>Or Government as a platform should hide the gnarly bits of the ruleset but provide routes in. Parliament as a platform should provide services to citizens around parlimentary functions. And it should also provide a means to see proposed changes to the ruleset and link to places (sometimes inside Parliament, often outside) where the ruleset might be changed. And legislation as a platform should provide a place where users can point at the ruleset and quibble with it. Though <a href="http://www.legislation.gov.uk/">that bits already done</a>.</p>
