@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: Positing 3 axes of web design (possibly 4) (working title)
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135864
+wordpress_url: http://smethur.st/?p=176135864
+date: '2017-01-27 15:02:00'
+date_gmt: '2017-01-27 15:02:00'
+tags: []
+comments: []
+---
+		<h2>Dancing about architecture</h2>
+		<p>Opinions model's own; don't shoot.</p>
+
+		<p>The usual thing where I try to type sentences rather than just groan into Twitter. I have no idea if there are 3 axes. Or 4. Or what axes might be. But here goes.</p>
+
+		<h2>Axis 1: Not every bit of your "page" makes it to users. Not every "user" cares</h2>
+		<p>Delivering all the bits that go to make up your web page is complex. In the sense that's it not predictable. There's a standard web stack that goes (from the top down) something like:</p>
+		<ol>
+			<li>JavaScript - to add behaviours over the top of content.</li>
+			<li>Decorative CSS - the fonts and background colour and background images and "branding".</li>
+			<li>Layout CSS - the floats and positions and margins and paddings that scatter bits of content around screens.</li>
+			<li>Document design - how your HTML gets structured with semantics (at or least document semantics). Headings, paragraphs, lists etc.</li>
+			<li>Resource design - all the information required to create the assorted documents you may want to present the resource as. Which might be HTML or might be vCards or might be iCal documents or might be JSON or XML or whatever.</li>
+		</ol>
+		<p>At minimum you really want the document to arrive at the users' browser. But there are a thousand reasons why all the layers above the document might not arrive. Because the user is in an area with poor mobile coverage; because the user is on a Virgin train and attempting to use the wifi they've paid for; because <a href="https://twitter.com/benwoodhams/status/820959006181232641">the user is in a mock-gothic palace</a> (work example); because the user is desperately attempting to contact their Member of  Parliament from a computer in a library and the library has decided to disable javascript for "security reasons" (second work example); because the user has a public sector Dell built rattle box running a version of Internet Explorer from the 1990s (third work example).</p>
+		<p>There is no way around this. Some stuff necessary to your "design" will sometimes, quite unpredictably, not arrive. And sometimes when it does arrive the user won't want or need it. Because they've increased their text size or inverted their screen colours or written their own style sheet or blocked JavaScript. Because an experience is something a user has rather than something a designer designs.</p>
+		<p>And sometimes even when the connection holds up all the bits of your design won't be needed. Because some of your users will be using a screen reader and really won't care about the effort you've put into your branding. And some users will be bots sent by Google who would really rather not deal with your CSS and JavaScript indulgences. And maybe, one day, <a href="http://smethur.st/posts/176135863">all your users will be bots</a> but you'll still probably be paying branding agencies because you have "stakeholders" to please and it's the end of the financial year and you've got to get rid of the cash somehow.</p>
+		<p>None of this is new. It's progressive enhancement. It's just modern web design. It's what everyone does. Except sometimes it doesn't appear to be.</p>
+
+		<h2>Axis 2: There is no &lt;screen-size&gt; first</h2>
+		<p>Mobile first does make a lot of sense. You're starting with the minimum necessary description of a resource and building up / decorating / transcluding as the screen size increases. Given no sane person would use a watch for computing, a phone is a pretty good starting point. Except not every user has or needs a screen. Again google bots and screen readers. Maybe you should start with screen readers first. Maybe you should re-learn HTML document design.</p>
+		<p>Or maybe say that first just means first. The spectrum from wrist-watch to mobile to tablet to laptop to telly screen is analogue not digital. People do resize windows. "Break points" are just the new "below the fold".</p>
+		<p>The painful point is all this works by design on a standard web page. Layouts are designed to flex to whatever width the user decides to choose. It only fell apart because designers couldn't bear to live without columns. So back in the day developers had to somehow infer how the columns should collapse into one as the window width shrunk. And now they have to infer how they should pop out as the window width increases. If you really can't stand life without columns at least spend some time explaining how they should <em>behave</em>.</p>
+		<p>Maybe one day all general purpose computing will be wrapped up in a mobile "form factor". But we're not there yet. If you're publishing specialist information for professional users they're probably going to be sat in an office using a laptop. Do do mobile first, don't do mobile only, don't do anything because it's a popular slogan and don't assume all your users have screens. Or just spend more time thinking and less time following fashion.</p>
+		
+		<h2>Axis 3: There is no idealised end-state in a complex domain</h2>
+		<p>This one is harder to type about without examples but feels similar to the progressive enhancement stuff. But for content. And the real-world things the content is about. And the ways those things are connected in real life and in the minds of users. Or what does the domain model look like? How do the things you're describing connect to the other things you're describing? How do the things you're describing extend the other things you're describing?</p>
+		<p>Another example from work... We're making pages to describe people. They have all the attributes of people: given names, family names, dates of birth, dates of death. Some of those people happen to be or have been Members of Parliament. Some of those members happen to be current members. Some of those current members happen to be contactable:</p>
+		<p><img src="/assets/2017/01/venn.png" alt="A Venn diagram of people, members, current members and contactable current members" /></p>
+		<p>The natural approach is to work out from the general (people) to the specific (contactable members) but it goes wrong if you get too focused on delivering a single end state. It's almost exactly analogous to the progressive enhancement arguments except for content. <em>Design thinking</em> seems unable to escape from the idealised end state where all the assets have loaded and the resource being described has a full suite of attributes and connections. To use an old work analogy, everyone wants to see a Doctor Who mock-up, no-one's that bothered about seeing a <a href="http://www.bbc.co.uk/programmes/b006sgsh">Bells on Sunday</a>.</p>
+		<p>To resurrect a very old work memory - at one point the BBC brought in Neville Brody to give their website a revamp. He appeared to believe that news would be massively improved if only it could be made to look like a 1980s style magazine. Lots of strange type running at strange angles over massive "hero" images. The mock-ups took up whole walls in the Broadcast Centre, every one designed for a perfect news day. Usain Bolt crashed through finishing lines, the chancellor (any chancellor) stood in Downing Street with his red box. The mock-ups looked super. I guess. On the day it launched one of the top stories was about British people eating more processed cheese than any other nation. And the "hero image" was a badly photoshopped packet of Kraft cheese slices.</p>
+		<p>And the moral of the story is: design is nonsense if it fails to deal with reality. Going further, until your design involves real content wrapped in real data, interplaying with the rest of the real web, heading to real devices, over real connections to real users, all design is artificial. And until all of that's true and you're A/B testing and making tweaks and changes in response to real usage by real people, you've barely even started to design.</p>
+		<p>Anyway...</p>
+		<p>Taking the misunderstandings of progressive enhancement and combining with the misunderstandings of the domain model you end up with something roughly like:</p>
+		<p><img src="/assets/2017/01/2axes.png" alt="Designing down from an idealised end state" /></p>
+		<p>Interpretations of user stories, user requirements and the whole user experience industry often force design backwards and down from idealised end state, with not enough thought given about how the whole experience degrades as connections drop and the content doesn't quite match the idealised patterns.</p>
+		<p>Meanwhile the developers and information architects are working up the stack from an understanding of the resource being described to the document design of the HTML to the layout of the page to the branding to any JavaScript sprinkles. And rightwards from most generic resource to most specific:</p>
+		<p><img src="/assets/2017/01/2axes-done-right.png" alt="Designing up from resource descriptions" /></p>
+		<p>And all the time they're doing this <em>they're doing design</em>. They're making decisions about how things work, not how they look. And every one of those decisions is about <em>user experience</em> for at least some set of users.</p>
+		<p>I don't have a handy name for the bottom left to top right approach. Maybe it was once just Information Architecture but those words got tainted on route. For a little while it looked like the Content Strategy people were getting there but they seemed to slip on the final step. If I had to choose a label I'd go with something like Resource Driven Design. Though not in a formal RDF sense. It's about understanding resources and how they relate to other resources and how that gets expressed as hypertext at each level of the web stack. Maybe that's just called "Web Design".</p>
+		<p>I don't think this is an approach that feels natural to most people working in web design. It requires a degree of patience, a more zen like acceptance of how design happens (gradually) and a suspension of disbelief that when you've finally made all the things addressable and linked them all together, somehow all of that will make sense to users. But design should be <em>emergent</em> from content, content should be <em>emergent</em> from descriptions of real-world things and navigation should be <em>emergent</em> from the real-world links between those things. That takes time and it takes domain knowledge but it certainly saves on Photoshop licences and printer cartridges.</p>
+		
+		<h2>Axis 4: Yes, the web is stateless</h2>
+		<p>I was planning to stop at three and given I've already done this rant on numerous <a href="https://derivadow.com/2010/02/18/the-problem-with-breadcrumb-trails/">other occasions</a> it's probably redundant. But you still see designs that seem to suggest HTTP cares who you are or where you've come from and that user journeys are a limited and controllable set. The problem only seems to get worse with the rise of "service design" and its obsession with prescribed paths through complex systems and the accompanying desire to keep trying to tell the user where they came from. Actually, they probably came from Google like most of the other users.</p>
