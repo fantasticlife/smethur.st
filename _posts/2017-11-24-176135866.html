@@ -1,0 +1,82 @@
+---
+layout: post
+status: publish
+published: true
+title: You don't fix search by fixing search, you fix it by fixing browse
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135866
+wordpress_url: http://smethur.st/?p=176135866
+date: '2017-11-24 10:36:00'
+date_gmt: '2017-11-24 10:36:00'
+tags: []
+comments: []
+---
+		
+		<p>Occasioned by several walks through parks with Robert where we came to the conclusion that we could do a better job of explaining the <a href="https://beta.parliament.uk/search">new Parliamentary search</a>. Why we've done what we've done, what some of the advantages and disadvantages might be, and what we need to do to make it better. So here goes...</p>
+		
+		<h2>The problem we were trying to solve</h2>
+		<p>Parliament has a web presence with a lot of search forms. There's a web search that searches the public website. But not all of it. There's the requisite intranet search. There's an <a href="http://search-material.parliament.uk/">amazingly complicated public search form for Parliamentary material</a> and an even more complicated version available internally. There are search-like forms for individual types of business like <a href="http://www.parliament.uk/business/publications/written-questions-answers-statements/written-questions-answers/">this one for written questions and answers</a> and search forms for particular types of content like <a href="http://parliamentlive.tv/Search">this one for Parliament TV</a>.</p>
+		<p>Over the years we've spent time, effort and money building and tweaking our own search functionality. There's an entire triple store (separate from <a href="http://www.data.parliament.uk/">data.parliament</a>) built to index material for the purposes of search.</p>
+		<p>Past a point it becomes difficult to maintain and update the code sitting behind this assortment of search options. And no matter how much effort we put in to building our own search tools, 90% of traffic still comes from organic web search. So Google, Bing, Duck Duck Go etc. Though in fairness almost entirely Google. There was a general feeling that effort poured into rolling our own search systems for 10% of users, was misaligned to the very little effort we put into making the website friendly to external search engines for 90% of users. And maintaining multiple search options is also confusing for people who have to get used to a variety of interfaces and the feeling of never being quite sure what this particular search is searching over.</p>
+		<p>Our initial goal was to "improve the experience of searching parliament.uk", which gave us some wiggle room because at least no-one was expecting us to fix it overnight. We also wanted to step toward a unified search rather than multiple code bases supporting multiple interfaces.</p>
+		
+		<h2>What we did</h2>
+		<p>Given the opportunity to start afresh with assorted varieties of Parliamentary search we decided not to roll another new search platform, but to make use of what was already out there. So for now we're using the <a href="https://azure.microsoft.com/en-gb/services/cognitive-services/">Microsoft Cognitive Services API</a> which uses Bing web crawlers behind the scenes.</p>
+		<p>This is the first step in making it easier for people to find material from Parliament. We're intending to use more than this one data source and will be adding to it incrementally.</p>
+		<p>There are assorted advantages and disadvantages to this approach. Let's start with the disadvantages and end on a high note.</p>
+		
+		<h2>Some disadvantages of using web search as site search</h2>
+		<ol>
+			<li>You're outsourcing relevancy and ranking to what is, in effect, a black box owned by a third party and subject to change by a third party. If some type of material is deemed by the business to merit a higher ranking than some other type of material you can't just tinker with some relevancy algorithm and see what happens. If you outsource you lose some control.</li>
+			<li>You're outsourcing keywords to the vagaries of a search engine and to the wider web. Since the arrival of <a href="https://en.wikipedia.org/wiki/PageRank">PageRank</a>, search engines tend to work by taking into account not only the words on your pages but the text of links to your pages from other pages. And though we're not entirely sure (because it's all a black box) it looks like they also take account of words on pages linking to your pages regardless of whether those words are in the link text or not. The problem here is <a href="https://en.wikipedia.org/wiki/Google_bomb">Google bombs</a> will happen. People can choose to link to your stuff with deliberately mischievous and occasionally offensive words and search engines will rank your pages for those words. Ask <a href="https://en.wikipedia.org/wiki/Political_Google_bombs_in_the_2004_U.S._Presidential_election">George W. Bush</a> and <a href="https://en.wikipedia.org/wiki/Campaign_for_the_neologism_%22santorum%22">Rick Santorum</a>. It's possible that our new search will return results for slightly offensive terms but if you're spending your time typing swears into text boxes you should probably grow up, maybe?</li>
+			<li>In traditional "enterprise" search you fix search by fixing search. Search engines work by "browsing" your site. So if you want to improve the findability and presentation of material you publish on the web, you have to spend time fixing your website and not tweaking your search code. This is a very different approach, which seems to confuse people.</li>
+		</ol>
+		
+		<h2>Some advantages of using web search as site search</h2>
+		<ol>
+			<li>You're outsourcing your relevancy and ranking. Which is also a good thing. Because relevancy and ranking are hard. For an organisation like Parliament producing a variety of materials, some with long term reference value, some with much more immediate short term value, it's particularly hard. When you roll your own search, all the relevancy signals are packed into your corpus. You can combine with usage stats which in all likelihood you've already bought from Google. But you're still treating your bit of the web as a sealed box rather than part of a wider ecosystem. Using web search plugs you back into that ecosystem by taking account of much more than your documents and their usage. How the web sees them and links to them, what gets clicked on in search results, how usage varies over times of day and days of week, provides a whole new set of relevancy signals you just don't get from mining your own material.</li>
+			<li>You're outsourcing  keywords to the wider web and how your chosen search engine chooses to see the wider web. When you're reliant on keywords contained in your own documents, you're reliant on editorial policies that may have changed over time. So <a href="https://hansard.parliament.uk/">Hansard</a> didn't use the word Brexit until May 2016 but there's lots of Parliamentary debate pertinent to Brexit that predates that. Because other people, outside Parliament, have linked to this material using the word Brexit, our new web based search takes this into account and returns results pertinent to Brexit that never mention the word Brexit. Using web search massively expands your corpus and massively expands your pool of relevant keywords. The price you pay is a few people typing rude words into search boxes. What you gain outweighs that.</li>
+			<li>Our previous approach has been two-pronged. We've been doing the work to improve our own, hand-rolled search whilst also trying to play nicely with search engines (not always with great success). Combining the two means you're optimising once. All the work you do to improve internal search also improves web search. Which might be as simple as giving a little more thought to page titles and descriptions. Or making sure the site is progressively enhanced and doesn't fall to pieces when JavaScript disappears. Or including data in some form of <a href="http://schema.org/">schema.org</a> markup. Again, 90% of traffic comes from external search which in the past has had 10% of the budget. Combining the two means there's a lot less lost effort.</li>
+			<li>Search engines like Google and Bing have a massive user base and a massive cache of usage data. They've seen every possible typo and learned how to route around. So <a href="https://beta.parliament.uk/search?q=dungerous+droogs">a search for dungerous droogs</a> compensates for wonky spellings and returns best guess reasonable results.</li>
+		</ol>
+		
+		<h2>Fix the browse, fix the goddam browse</h2>
+		<p>So we've partially outsourced relevancy, ranking and keywords, but only partially. For now at least, search engines still place some emphasis on site structure, link density and the wording of links. We can still exercise some control over the findability of our documents by:</p>
+		<ol>
+			<li>Creating as many routes to them from as many angles as possible (people, groups, places, times, topics etc.).</li>
+			<li>Increasing link density to more relevant documents (current members above ex members, open inquiries above closed inquiries, bills currently passing through Parliament rather than those that have already passed into legislation etc.)</li>
+			<li>Ensuring that link titles are as descriptive as possible.</li>
+		</ol>
+		<p>The tree-like design of the current website doesn't lend itself to any of this. With important documents hidden at the end of twigs, at the end of branches, at the end of trunks there's no sense of which documents we value and want to promote. By improving the information architecture of <a href="https://beta.parliament.uk">the new website</a>, we have a much better starting point for playing well with the wider web and with search engines.</p>
+		<p>So far we've made a decent stab at making every resource we think might address an information need <a href="https://github.com/ukparliament/ontologies/blob/master/urls.csv">separately addressable</a>. So there are "pages" to answer questions like:</p>
+		<ul>
+			<li><a href="https://beta.parliament.uk/people/Fx1EcmX5/committees/memberships">Which committees has this person been a member of?</a></li>
+			<li><a href="https://beta.parliament.uk/people/Fx1EcmX5/committees/memberships/current">Which committees is this person currently a member of?</a></li>
+			<li><a href="https://beta.parliament.uk/people/aUX3RWgb/parties">Which parties has this member been whipped to?</a></li>
+			<li><a href="https://beta.parliament.uk/parties/GcWDomat/members">Which members have ever been whipped to this party?</a></li>
+			<li><a href="https://beta.parliament.uk/parties/GcWDomat/members/current">Which members are currently whipped to this party?</a></li>
+			<li><a href="https://beta.parliament.uk/houses/1AFu55Hs/parties/wnvdA00Y/members/current">Which members of this house are currently whipped to this party?</a></li>
+		</ul>
+		<p>As we explore and build out more of the domain, other resources designed to answer other questions will appear:</p>
+		<ul>
+			<li>What government bills have been presented by Ministers in this department?</li>
+			<li>What questions have been asked of this department?</li>
+			<li>What stages has this bill passed?</li>
+			<li>Which Members have signed this EDM?</li>
+			<li>Which EDMs has this Member signed?</li>
+		</ul>
+		<p>The intention was to make subsidiary resources available for inclusion in "thing" pages. So nested beneath a person page there's another page listing their committee memberships. And another listing their parties over time. And etc. All of these, or bits of these, can be included into the person page and swapped in and out as design responds to actual usage and changes over time. This at least is the theory.</p>
+		<p>Except in places we've added information to people pages without making the corresponding subsidiary resources. So a person page might list government positions, but as yet <code>/people/:person/government-positions</code> doesn't exist. And where we have made subsidiary resources we haven't made a great fist of linking down to them. So they're invisible to users and invisible to search bots. To meet information needs we need to fix some of this.</p>
+		<p>The upshot of all this is you can't just put time and budget into tweaking search code. Once you've outsourced ranking, the only way to "improve search" is to improve the website and make it friendlier to search bots. Which will have all kinds of <a href="http://www.bbc.co.uk/blogs/radiolabs/2009/03/designing_for_your_least_able.shtml">knock on benefits for the other users who happen to be people</a>.</p>
+		<p>This goes against more traditional (or at least computer age traditional) approaches to search, where you end up building ever more complicated search forms to cope with ever more complicated queries but neglect the work necessary to make the underlying documents discoverable via linking and browsing. This feels particularly true in the worlds of libraries and archives which seem to squeeze whole websites into a single form, a result listing and a "record".</p>
+		<p>As <a href="http://www.kcoyle.net/">Karen Coyle</a> says in <a href="https://kcoyle.net/catcon.html">Catalogs and Context</a>:</p>
+		<blockquote cite="https://kcoyle.net/catcon.html">
+			<p>
+				First, the indexes of the database system are not visible to the user. This is the opposite of the card catalog where the entry points were what the user saw and navigated through. Those entry points, at their best, served as a knowledge organisation system that gave the user a context for the headings. Those headings suggest topics to users once the user finds a starting point in the catalog.</p>
+				<p>Most, if not all, online catalogs do not present the catalog as a linear, alphabetically ordered list of headings. Database management technology encourages the use of searching rather than linear browsing. Even if one searches in headings as a left-anchored string of characters a search results in a retrieved set of matching entries, not a point in an alphabetical list. There is no way to navigate to nearby entries. The bibliographic data is therefore not provided either in the context or the order of the catalog. After a search on "cat breeds" the user sees a screen-full of bibliographic records but lacking in context because most default displays do not show the user the headings or text that caused the item to be retrieved.</p>
+		</blockquote>
+		
+		<h2>Search engines can't search</h2>
+		<p>The emphasis on search interfaces at the expense of browse has other knock on effects for the wider web. If all of your "website" is packed into a single search form, it's impossible for search bots to fill in that form and get to your documents. Because, and this is possibly pointing out the obvious, search engines can't search. They send crawler bots out across the web. The bots "read" a page and follow links, "read" a page and follow links. Onwards and forever. If they meet any means of navigation that's not a plain and simple hypertext link they're baffled. If they meet a search form they're stumped. A page like <a href="http://search-material.parliament.uk/">Search Parliamentary Material</a> is barren soil for search bots. All the money you've spent on building impossibly intricate forms not only makes it more difficult for non-expert users but also makes it impossible for search bots to find your stuff.</p>
+		<p>Anyway, our approach to search will evolve over time but the basic approach should stay similar. Instead of sinking effort into building dazzlingly complex search forms we intend to spend the time making incremental improvements to the website we're searching over. To pin out Parliamentary material like a butterfly and provide as many approach routes and as many aggregations as possible.</p>
