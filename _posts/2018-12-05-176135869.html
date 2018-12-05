@@ -1,0 +1,125 @@
+---
+layout: post
+status: publish
+published: true
+title: Attempting to teach parliamentary procedure to machines
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135869
+wordpress_url: http://smethur.st/?p=176135869
+date: '2018-12-05 14:11:00'
+date_gmt: '2018-12-05 13:11:00'
+tags: []
+comments: []
+---
+
+<h2>Primary and secondary legislation</h2>
+
+<p>The work of Parliament includes scrutinising, amending, passing or indeed rejecting <a href="https://www.parliament.uk/about/how/laws/bills/">bills</a>. The government presents <a href="https://en.wikipedia.org/wiki/Public_bill">public bills</a> in Parliament and they pass through various stages in each House, some of which allow Members to amend the text of the bill, some of which allow Members to <a href="https://www.parliament.uk/about/how/business/divisions/">divide</a> on the whole of the bill. At the end of this process, there may be some to and fro between the Houses as assorted amendments are discussed and agreed on. If the bill completes its journey and is approved by Parliament, it can receive <a href="https://en.wikipedia.org/wiki/Royal_assent#United_Kingdom">Royal Assent</a> and become an <a href="https://www.parliament.uk/about/how/laws/acts/">Act</a>.</p>
+
+<p>Acts are <a href="https://www.parliament.uk/site-information/glossary/primary-legislation/">primary legislation</a>. An Act may delegate the power to do a certain thing to the Minister responsible for a policy area. These powers are exercised by means of <a href="https://www.parliament.uk/about/how/laws/secondary-legislation/">secondary, or delegated, legislation</a> - much of which being in the form of <a href="https://en.wikipedia.org/wiki/Statutory_instrument_(UK)">statutory instruments (SIs)</a> - and come with strings attached. Many of these strings set out a duty to Parliament; to <a href="https://beta.parliament.uk/collections/Z4Ur2XPE">lay papers</a>, to follow a certain <a href="https://en.wikipedia.org/wiki/Westminster_system">procedure</a>, to allow a number of days of a particular sort for Parliament to accept or reject the secondary legislation. The <a href="http://www.legislation.gov.uk/ukpga/2018/16/contents/enacted">European Union (Withdrawal) Act 2018</a> includes a number of these delegated powers and associated duties. Parts of the Brexit implementation require the passage of secondary legislation through Parliament.</p>
+
+<p>Secondary legislation is subject to a different degree of parliamentary scrutiny than primary legislation, the delegated powers and their associated duties having already been scrutinised in the passage of the enabling Act. Scrutiny is intended to ensure that secondary legislation is required and that the exercise of the delegated powers remains within the bounds set out in the relevant Act.</p>
+
+<h2>Modelling procedure: exploratory work</h2>
+<p>In February we were asked to build a '<a href="https://beta.parliament.uk/find-a-statutory-instrument">statutory instrument tracker</a>'. This was largely occasioned by the anticipated increase in secondary legislation as a consequence of Brexit, to give Parliament and the wider public greater visibility of the secondary legislation laid before Parliament, what happens to it and what is likely to happen next. Given the deadlines, this was quite a hard job.</p>
+
+<p>Parliamentary procedures around secondary legislation are complicated, in some respects more complicated than those around primary legislation. They could also be better understood both within and outside Parliament. They touch on most offices across both Houses. Papers are laid, committees scrutinise, <a href="https://www.parliament.uk/site-information/glossary/motion/">motions</a> are <a href="https://www.parliament.uk/site-information/glossary/table/">tabled</a>, <a href="https://www.parliament.uk/site-information/glossary/amendments/">amendments</a> to motions are tabled, debates are held, divisions are taken. It felt like we'd need to model everything to build anything.</p>
+
+<p>Offices within Parliament are loosely coupled and have handover points which often involve documents rather than data. These documents find their way to various bits of Parliament's website but, like much else, they're often not connected in a way that allows you to navigate from one aspect of the procedure to another. In order to track the progress of a statutory instrument through Parliament you'd need to look at about six different bits of the website, assuming you know what documents exist and where to find them.</p>
+
+<p>None of our concerns were eased by our first meeting. Sitting down with clerks who've worked on this stuff for years with a blank whiteboard and a stream of new facts to ingest was head-melting. There didn't seem to be an obvious starting point.</p>
+
+<p>The artefacts that kept surfacing were flowcharts: more and more flowcharts. All useful and all correct from a certain perspective but none comprehensive. There was no one flowchart to rule them all. Instead assorted people from assorted offices had drawn their own to reflect the bits of the procedure that touched on their worlds.</p>
+
+<p>A couple of meetings in we started to get somewhere. If we couldn't model everything, we could <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html">model enough to capture the procedure</a> and use this as the backbone, hanging links from there to unmodelled things or documents. It would give us enough of a start on tracking SIs laid before Parliament, business items scheduled around those SIs and any possible or likely next steps. We then began to model procedure.</p>
+
+<h2>Modelling procedure: boxes and arrows</h2>
+
+<p>The procedure model isn't really a model of parliamentary procedure. It contains little of the language or knowledge of the domain. Possibly the only words in there that a clerk would recognise are House and procedure.</p>
+
+<p>It's a fairly abstract, general purpose, process flow model. This thing having happened, this other thing is caused to happen, allowed to happen or precluded from happening. In a parliamentary context there's a large caveat around caused and precluded, but we'll get back to that.</p>
+
+<p>It started life as something <a href="https://twitter.com/silveroliver">Silver</a> and I had worked on back in our BBC lives. There was a project to domain model the World Cup and some conversations around possible permutations of match results in group games. This team having beaten that team and this other team having drawn with that other team and this goal difference being that, these teams will go through to the next bit and play more football. I knew nothing about football then and know less now, but this is part of the background. Anyway...</p>
+
+<p>Back in Parliament, we started to <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#flowcharts">draw up flowcharts</a>, originally as decision tree type diagrams. There was one meeting where we emerged with a single diagram full of arrows and diamonds and we thought we'd nailed all of SIs. We still think we've nailed all of SIs, but deep down we know we're probably wrong.</p>
+
+<p>More flowcharts got drawn. Whole weeks got lost in filling whiteboards with boxes and arrows. New edge cases emerged. Although the 'edge case' words are also heavily caveated in the parliamentary world. We stepped away from decision tree type diagrams and started to apply types to the arrows between boxes. Causes, allows, precludes. More boxes were added. More arrows were drawn. More questions were asked. What happens when an SI is withdrawn being our most regretted question. Two new boxes and an eye-burning number of new precludes arrows.</p>
+
+<h2>Modelling procedure: routes, packages and indexing</h2>
+
+<p>It is, as they say, a model of two halves. The right hand side describes the procedure, the left hand side describes how the procedure applies over a specific SI or other papers laid before or presented to Parliament.</p>
+
+<p>The procedure part is a wrapper for routes. Routes link a step to a following step. Procedures may have more than one route and different procedures have routes in common. The steps are the building blocks of procedures. At least in my head, they're like stepping stones. The routes taken to cross the river will vary, some steps will rarely be trod, but all steps are possible. On the subject of stretched metaphors, we also talk about maps as differing from sat-navs. The procedure is the map, the suggested journey plan is a set of routes, the steps are the decision points. Turn left at the post office. Or don't.</p>
+
+<p>Steps take place in a House or, as with <a href="https://www.parliament.uk/about/how/committees/joint/">joint committees</a>, in both Houses. Sometimes steps take place in neither House, because some of the steps we model are outside parliamentary procedure. For example: a minister 'making' an SI. We include such steps because they're both important to tracking SIs and often dependent on what happens in Parliament. Procedures may be bound to one House or both. In domain modelling sessions, clerks tend to speak about House of Commons procedure or House of Lords procedure, but many of the procedures we've dealt with so far involve a joint committee. Occasionally the procedural flow through one House will be dependent on something happening in the other. The procedures we have modelled so far have steps in both houses.</p>
+
+<p>The term 'work package' has caused some degree of consternation because it's not a phrase anyone inside or outside Parliament currently uses. It represents a container for a set of work in the form of business items that Parliament does toward some end. Although the concept we're calling 'work package' is widely recognised, as often seems to happen in the world of domain modelling, a concept being recognised does not mean that domain experts have ever had a need to label it. Until someone suggests something better, it's what we have. Work packages are focussed on something, which for our purposes now is either an SI or a <a href="https://www.parliament.uk/site-information/glossary/proposed-negative-statutory-instrument/">proposed negative SI</a>. The thing they're focussed on is subject to a particular procedure.</p>
+
+<p>Much of the day to day work of tracking SIs is done by people in the Indexing and Data Management Section of the House of Commons Library. They burrow into the assorted and scattered reports produced by different offices in Parliament, looking for reports of business items associated with SIs. They then create a business item record linking to the report and 'actualising' the relevant step or steps in a procedure. The actualising predicate being the glue or boundary object between the worlds of abstract procedure and Parliament doing work.</p>
+
+<h2>Building on the procedure model</h2>
+
+<p>On top of the procedure model we have a series of flowcharts, one for each procedure. Whereas the underlying model is abstract and largely domain agnostic, the flowcharts are packed to bursting with domain language and domain knowledge. They're compiled on whiteboards with reference to the brains of House of Lords Jane and House of Commons <a href="https://twitter.com/jackpdent">Jack</a>.</p>
+
+<p>Each blob is a step, each line is a route. The routes are coloured to represent their type: causes, allows or precludes. Unfortunately the colouring is less than intuitive, because I drew them and I'm colour-blind.</p>
+
+<p>Some of the thinking work went into the underlying model, but most of the domain modelling session work went into the flowcharts. We're fairly sure we could show a clerk the procedure model and get a shrug. But we think the flowcharts would make more sense to most of them, which seems to be the case so far.</p>
+
+<h2>Proposed negative statutory instruments</h2>
+
+<p>Part way into the project we had to deal with a new type of paper and a new procedure. The European Union (Withdrawal) Act sets out that any instrument enabled by that Act which the government intends to lay under the made negative procedure must first be laid as a proposed negative statutory instrument subject to its own procedure. A committee in each House considers each PNSI and may recommend that the instrument be laid as a draft affirmative SI.</p>
+
+<p>There's not much to say here, excepting perhaps a note of self-congratulation. Getting the model right and knowing how to capture the <a href="https://ukparliament.github.io/ontologies/procedure/flowcharts/proposed-negative-sis/proposed-negative-sis.pdf">procedure as a flowchart</a> prevented this from becoming overly complex. We think and definitely hope it will make capturing many more procedures a little more straightforward.</p>
+
+<h2>Causation, allowance and preclusion</h2>
+
+<p>The original model gave us the ability to say that something having happened caused another thing to happen or allowed another thing to happen or precluded yet another thing from happening, at least according to procedure. Actual procedure may be more complicated. The causes, allows and precludes may be conditional on a number of factors. In the draft affirmative procedure, an SI being laid before the House of Commons allows it to go to the Joint Committee on Statutory Instruments for consideration, but only if it's also been laid in the House of Lords. Saying a thing is allowed isn't enough: we need to be able to say what other things are required for a thing to happen.</p>
+
+<P>We introduced requires routes to point from a thing to all the things that were required to happen before that thing could happen. Which tightened up the model, but seemingly not enough: sometimes this AND this must happen and sometimes this OR this must happen and sometimes this AND this OR this but NOT this must have happened.</p>
+
+<p>Now we're starting to add <a href="https://en.wikipedia.org/wiki/Logic_gate">logic gates</a> to procedure. They allow us to combine the flow of true or false, happened or hasn't happened from steps, through routes to other steps. All of which makes the model much more descriptive of how procedure actually works.</p>
+
+<p>Having added logic gates there was a feeling that we might be able to replace route types. The requires routes were only ever a lightweight and not particularly pleasing way of expressing logic, so they were easy to strip out. Precludes could be replaced by a NOT gate so long as we fudged the question of whether not allows is the same as disallows. Splitting out causes and allows was trickier but Chris came up with the idea of adding a decision type step to imply that some kind of offstage decision was needed before the following business step could be actualised, which seems a fair summary of steps being allowed but not caused.</p>
+
+<h2>Modelling and reality</h2>
+
+<p>If you've seen us do a talk on any of this you'll have seen we often invoke <a href="https://en.wikipedia.org/wiki/Cynefin_framework">Cynefin</a> definitions of <a href="https://en.wikipedia.org/wiki/Cynefin_framework#Complicated">complicated</a>, <a href="https://en.wikipedia.org/wiki/Cynefin_framework#Complex">complex</a> and <a href="https://en.wikipedia.org/wiki/Cynefin_framework#Chaotic">chaotic</a> when describing Parliament, particularly when describing procedure.</p>
+
+<p>Some of what can be described as procedure is set out in <a href="https://www.parliament.uk/site-information/glossary/standing-orders/">Standing Orders</a>. That the <a href="https://www.parliament.uk/business/committees/committees-a-z/joint-select/statutory-instruments/">Joint Committee on Statutory Instruments</a> must have reached a decision before the government can table an approval motion in the House of Lords, for example: this is what passes for complicated in Parliament.</p>
+
+<p>Some parts of procedure are informed by precedent: things that have happened in the past provide an envelope of likely things to happen in the future. Many of Parliament's methods of operation are not instructions: they're a collection of narratives recorded in <a href="https://en.wikipedia.org/wiki/Erskine_May:_Parliamentary_Practice">Erskine May</a> and the memories of clerks. They don't constrain Parliament because nothing does, but they do inform what might happen and often what's likely to happen. This is what passes for complex in Parliament.</p>
+
+<p><a href="https://www.parliament.uk/about/how/role/sovereignty/">Parliament remains sovereign</a> and free from any ruleset imposed from the outside or followed by previous Parliaments. If Parliament alters or introduces procedure, it does so without constraint, which has the potential to pass for chaotic anywhere.</p>
+
+<p>Procedure in Parliament is not a set of rules to be followed. It is not fixed. It evolves and emerges from precedent and the workings of parliamentary sovereignty. Evolution tends to trump revolution in the long run.</p>
+
+<p>What we describe as procedure in our models and flowcharts cannot be presented as certainty. Our modelling of causation is true, or true enough to be useful, within the bounded context of describing a procedure - but not true by necessity in the bounded context of reality. Procedures are not road maps: they don't determine where Parliament can go. They're a set of likely paths derived from what Parliament has decided and where it has been in the past. Less like roads and more like cowpaths, or <a href="https://en.wikipedia.org/wiki/Desire_path">desire lines</a>, or whatever we call them these days.</p>
+
+<p>We have to bear all this in mind when attempting to teach machines about procedure and try to keep systems flexible enough to not break when Parliament flexes.</p>
+
+<p>An obvious thing is to time bound everything: give procedures and routes and steps start dates and end dates, so that we might say things like "this route was valid but is no longer taken", allowing the model to change in response to changes within Parliament.</p>
+
+<p>We have also learned never, ever to constrain data input to procedural possibilities. Each day a team of librarians are combing through parliamentary reports to check for updates to SI business. When they find something, they add a new business item and actualise a procedural step or steps. When doing the last part they're faced with a list of all possible steps in the appropriate procedure. It would make their lives much easier if they only had to deal with steps that the procedure model indicated were now caused or allowed and not precluded, but <strong>procedure does not dictate what can happen so any model of procedure can't either</strong>. Because our model says this having happened this next thing must happen is a useful description of procedure but not of reality. There's always the chance that Parliament will decide that thing won't happen in this case. Or that we've got our procedure data wrong.</p>
+
+<h2>What can the machines help us do?</h2>
+
+<p><strong>Teaching procedure to machines does feel somewhat thankless and the benefits might not be immediately clear, but we think it's worth it.</strong></p>
+
+<p>Many flowcharts of SI procedure exist, each useful in their own right but none are complete. The flowcharts we've produced through the domain modelling sessions are the most complete and descriptive that Parliament has, although we would say that. Given the procedure model and the data we can take advantage of the machinery to examine both from new and different points of view.</p>
+
+<p>There's a set of visualisations we've made from the model and the procedure instance data here. And here. And here. These are useful in their own right, letting interested people inside and outside Parliament see how all this works.</p>
+
+<p>As long as you know where to look, Parliament is reasonably good at reporting on things that have happened and that are scheduled to happen. It's not as good on saying what will and may happen next according to procedure, with the usual caveat on 'will' and 'according to'. With the procedure model sitting behind SI tracker, we can show a list of things that have happened, a list of things that have been scheduled to happen, a list of things that 'must' or are 'allowed' to happen next, excluding the 'precluded' things. We refer to the things that may or must happen next as the 'future possibility space'. Although, given Parliament is not constrained by procedure, "future possibility space within the bounded context of describing procedure" may be more appropriate. We're starting to visualise future possibility spaces for individual SIs in our development environment. Hopefully these will make it to the website.</p>
+
+<p>Even cowpaths have cowpaths. Procedures define what's possible to the extent to which it is ever possible to define this in Parliament. They provide a network of paths. With enough instance data for enough SIs in the system we can start to map both the well trodden and lesser trodden paths. What this tells us and whether it might be helpful in any future attempts to simplify procedure is presently conjecture, but at least we can see something now.</p>
+
+<h2>Caveats and goals</h2>
+
+<p>The model we have seems flexible enough, so far. The model of Parliament's domain should remain collaborative and knowable. We know we've missed things and got some things wrong because that's true of everything. We're expecting to iterate and update and tweak and all the other words.</p>
+
+<p>Having a procedure model supporting the SI tracker brings benefits we wouldn't have seen if we'd just built a link hub similar to our bill tracker service, because we can use the model to explain the procedure and focus it into the future to show what's likely to happen next. We can also query across any slice to aggregate information in ways we had not anticipated, or had to anticipate, when designing the model. It's not a piece of software or thinking that would necessarily have been commissioned by the business, but it's what happens when you dive into the domain and start to model the bits beneath the surface.</p>
+
+<p>We already publish lists of instruments which have passed through <a href="https://beta.parliament.uk/procedure-steps">a particular procedural step</a>, which is a not a use case recorded at the start of the project or one we envisaged. This has been one argument for domain modelling in the first place: the models are only ever maps, but if they're good enough to be useful they can be useful in ways the map designers never considered. <strong>No amount of requirements gathering or user research will ever compensate for omitting the work on modelling, because user needs are emergent from use and emergent from materials.</strong></p>
+
+<p>Given what we've learnt so far, we'd like to keep kicking the tyres and testing the model against different procedures. We've already started to look at the <a href="https://github.com/ukparliament/ontologies/blob/master/procedure/flowcharts/logic/treaties.pdf">parliamentary procedure for treaties</a>. If you're in Parliament and have a procedure you'd like to see drawn out and taught to machines, do <a href="mailto:smethurstm@parliament.uk">get in touch</a>.</p>
