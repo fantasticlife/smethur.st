@@ -15,6 +15,7 @@ timezone: Europe/London
 twitter_username: fantasticlife
 #github_username: fantasticlife
 exclude:
+  - deploy.sh
   - Gemfile
   - Gemlfile.lock
 
