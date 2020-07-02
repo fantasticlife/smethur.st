@@ -13,6 +13,6 @@ chmod -R u=rwX,go=rX _site
 rsync -avz \
   --delete-after \
   --delete-excluded \
-  --rsh='ssh' \
+  --rsh='ssh -p 5104' \
   ./_site/ \
-  fantasticlife@smethur.st:/srv/www/smethurst
+  fantasticlife@ssh.skypi.hostedpi.com:/srv/www/smethurst
