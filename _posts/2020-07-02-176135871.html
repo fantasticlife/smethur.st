@@ -1,0 +1,96 @@
+---
+layout: post
+status: publish
+published: true
+title: Missing connections from government platforms
+author: Michael Smethurst
+author_login: fantasticlife
+wordpress_id: 176135871
+wordpress_url: http://smethur.st/?p=176135871
+date: '2020-07-02 16:10:00'
+date_gmt: '2020-07-02 17:10:00'
+tags: []
+comments: []
+---
+
+<h2>Parliamentary procedure as process flow</h2>
+
+<p>For the past couple of years I've been working with librarians in the House of Commons to codify parliamentary procedure in a way that's legible to machines - or at least <a href="https://ukparliament.github.io/ontologies/procedure/meta/queries/">queryable</a> by people using machines. We've designed and built an <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html">abstract model to capture procedural flows</a>. This model defines a procedure as a set of <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#d4e164">routes</a> through <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#d4e175">steps</a>, the steps combined using <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#d4e186">logic gates</a>. </p>
+
+<p>The procedure model is not explicitly a model of parliamentary procedure. It contains none of the domain language or domain knowledge of Parliament and would not ring many bells in the minds of clerks. It is a general purpose process flow model, allowing us to say that this thing and this thing - or this thing but not this thing - having happened, this other thing is caused or allowed or precluded from happening.</p>
+
+<p>The domain knowledge is captured as something between <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#maps">a flowchart and a state diagram</a>, then encoded as instance data on top of the procedure model.</p>
+
+<h2>Mapping Parliament's processes</h2>
+
+<p>We work with clerks and with whiteboards, mostly asking "and then what happens?". Sometimes a thing happening causes another thing to happen, sometimes it allows a thing to happen and sometimes it precludes a thing from happening. Sometimes the logic is combinatorial: this AND this OR this but NOT this having happened, these other things are caused or allowed or precluded from happening.</p>
+
+<p>Our procedure model defines a process as a set of routes - joining steps - some of which allow logical combinations to be described. Our maps are a visual representation of the data we add to capture this.</p>
+
+<p>The Indexing and Data Management Section in the <a href="https://commonslibrary.parliament.uk/">House of Commons Library</a> maintains the procedure maps and the procedure data, as well as instance data for <a href="https://statutoryinstruments.parliament.uk/">Statutory Instruments</a> and <a href="https://treaties.parliament.uk/">Treaties</a> subject to those procedures. We talk about <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#d4e224">business steps</a> having happened, or being scheduled to happen. Concrete business steps are indexed against abstract procedural steps, by a process we call <a href="https://ukparliament.github.io/ontologies/procedure/procedure-ontology.html#d4e382">actualising</a>.</p>
+
+<h2>Mapping any process</h2>
+
+<p>Having designed a model, the first thing you want to do is try it out and see what breaks. Having designed a model as abstract and general purpose as the procedure model, the first thing you want to do is throw other processes at it to see just how flexible and generic it actually is.</p>
+
+<p>To that end, we did some work with <a href="https://twitter.com/chairlord">Adam</a> from the <a href="https://www.food.gov.uk/">Food Standards Agency</a>. We mapped out the process flows around the registration of premises as abattoirs or meat processing plants. We also spent time with Felisia and <a href="https://twitter.com/gansenthi">Ganesh</a> at <a href="https://www.gov.uk/government/organisations/government-digital-service">GDS</a> looking at some of their <a href="https://design-system.service.gov.uk/patterns/step-by-step-navigation/">step-by-step guides</a>, transferring them to whiteboards and pondering whether we might be able to use something like the procedure model to describe them.</p>
+
+<h2>Mapping GOV.UK</h2>
+
+<p>GOV.UK step-by-step guides apply a page-by-page pattern to information journeys, stepping out to transactional service en route. The guides are frequently cited as a success story, even <a href="https://www.dandad.org/awards/professional/2019/digital-design/231113/govuk-step-by-step-journeys/">winning a Design and Art Direction Wood Pencil</a>, which is definitely more than any of my work's ever done. Whilst there is no underlying content data model, it is something that GOV.UK are working towards. For now, changes to policy or legislation are reflected in interfaces, but not in structure. There's no data for third parties to grab on to and fewer opportunities for syndication to other platforms.</p>
+
+<p>Along with Felisia and <a href="https://twitter.com/bitten_">Anya</a> and Jayne and Ganesh and <a href="https://twitter.com/silveroliver">Silver</a>, we took to whiteboards to deconstruct at least a little of them. That, though, was before the pandemic - when we still had rooms and whiteboards. These days we're reduced to pixels and shared Omnigraffle documents, but not deterred.</p>
+
+<p>We've continued pulling apart step-by-step journeys and reimagining them as process flow diagrams with a scattering of logic. Although, parsing some of the sentence construction on GOV.UK has occasionally proved problematic. Maybe there's a reason why lawyers write how lawyers write.</p>
+
+<h2>Everything is interwingled</h2>
+
+<p>The first thing we pulled apart was the step-by-step guide to <a href="https://www.gov.uk/marriages-civil-partnerships">whether you can get married or enter into a civil partnership</a> - at least in England and Wales. That <a href="https://github.com/fantasticlife/process-flows/blob/master/maps/marriage/marriage.pdf">process map is here</a>. Having made the decision that getting married is actually something you want to do, found out you can and jumped in with both feet, new routes to new entitlements open up and other routes close. The most obvious new thing you can do once married is get divorced; marriage and civil partnerships also open up and close off avenues to other entitlements to benefits, which in turn open up other entitlements.</p>
+
+<h2>Life events</h2>
+
+<p>The service designers amongst us have long advocated a shift from individual siloed services to a suite of services centred around major life events. Whether that's marriage, childbirth, divorce, (un)employment, opening a business, retirement, illness or death. Without mapping out all the services and routing through common steps, there is no way at present to orientate users around such events.</p>
+
+<p>Mapping out each guide and finding commonly used steps allows us to stitch together fragmented journeys, opening up opportunities for exponential effects across services. You should be able to navigate your way through the civil partnership guide and also find out about the consequential effects of entering into a civil partnership. Having met the criteria for entitlement to a service and taken up that option, that may confer entitlements to other services. Criteria become entitlements become criteria and on it goes. In this way, government services can be seen as cyclic and not as a linear journey. Without that underlying structure, it's hard to know how government services can be realigned to match real needs, let alone life events.</p>
+
+<h2>What are government services for?</h2>
+
+<p>A straightforward description of what government services aim to do is to identify those to whom tax-funded services should be delivered. Money is collected and redistributed in a way that matches political intent. Government hands out benefits - in the very widest sense - to a set of people, or at least legal entities, that match some criteria and possibly perform some duties.</p>
+
+<p>A service delivered by government can be described as a set of conditions and criteria that must be met and a set of duties that must be performed in order to unlock those benefits. This criteria being met AND this duty being performed OR this other criteria being met, entitles the recipient to some benefit, or not. Matching criteria to outcomes is more process flow. Achieving a balance between expected outcomes and appropriate criteria is a large part of politics: that balance being encoded both by means of policy and in legislation.</p>
+
+<h2>Always cite sources</h2>
+
+<p>Citizen-facing services are the visible tip of an iceberg. Under the waterline are policy, codes of practice, guidance, rules and legislation.</p>
+
+<p>Back in Parliament, we've been working on tying procedural steps and routes to the things that inform them. In the case of Parliament, this means <a href="https://www.parliament.uk/site-information/glossary/speakers-rulings/#:~:text=A%20Speaker's%20ruling%20is%20a,no%20clear%20precedents%20to%20follow.">rulings made by the Speaker</a>, <a href="http://smethur.st/posts/176135870">precedent</a>, <a href="https://www.parliament.uk/site-information/glossary/standing-orders/">Standing Orders</a>, Resolutions of the House and statute.</p>
+
+<p>Citing statute is trivial, because providence gave us <a href="https://twitter.com/johnlsheridan">John Sheridan</a> - and John Sheridan gave us <a href="https://www.legislation.gov.uk/">legislation.gov.uk</a>. Citing Standing Orders has always been trickier because the citation takes the form of a number in a list, the order of which changes over time. We've been collaborating with <a href="https://parlrulesdata.org/">a team from Oxford University</a> on making persistent identifiers for <a href="http://standing-orders.herokuapp.com/">House of Commons public Standing Orders</a>, so we're now able to link procedure routes to the underlying ruleset.</p>
+
+<p>It's straightforward to imagine how government services might be described in a similar way. Every step, route, condition and entitlement is there for a reason. That reason will be published somewhere as policy, legislation, rules or guidance.</p>
+
+<p>I've written before about my <a href="https://smethur.st/posts/176135861">unease with some of the ‘government as a platform' thinking</a>. There is a lot to be said for tidying away the detailed workings of the state. For someone who wants to open a cafe, knowing that this form has to be sent to this department and this form has to be posted to this office is unwanted friction. And yet, whilst this may be true if you just want to shop for things, obfuscating the mechanics of government may also serve to obfuscate democratic accountability.</p>
+
+<p>A government department is not a warehouse serving a handful of supermarkets. It has a minister, it is answerable to Parliament and - by means of Parliament - to the electorate. It is fashionable to declare that this or that thing is not a snowflake. It is also often true - far too much time is spent reinventing the wrong wheels. <a href="http://www.jenitennison.com/2012/03/10/precious-snowflakes.html">Government departments however definitely fit the snowflake bill</a>, and should not be swept under service design rugs.</p>
+
+<p>By all means simplify citizen facing services and hide some of the details of how the state operates, but there should always be a 'view source' button. A properly informed society requires clear and accessible means by which people can see how services are used to drive adherence to duties - and why the criteria being imposed exist.</p>
+
+<p>Taking the marriage and civil partnership guide as an example: I can use it to find out if I can enter into a civil partnership in England and Wales. If all I want is a "yes, no, maybe" answer, it's fine - but it doesn't tell me why. There is no link from the guide to the <a href="http://www.legislation.gov.uk/ukpga/Geo6/12-13-14/76/contents">Marriage Act 1949</a>, to the <a href="http://www.legislation.gov.uk/ukpga/2004/33/contents">Civil Partnership Act 2004</a> or to the <a href="http://www.legislation.gov.uk/ukpga/2013/30/contents/enacted">Marriage (Same Sex Couples) Act 2013</a>.</p>
+
+<p>Service design in this form is inherently conservative. Failing to expose the ruleset underpinning the service obscures any mechanism for change. If I'd visited a similar service in 2012 as part of a same-sex couple wanting to marry, I'd have been told no. Not why. Just no. Not how that might be changed. Just no. It's service design for passive consumers rather than for active citizens. Our friends in UX often talk of affordances, but a system that hides its seams and underlying ruleset offers no affordance for change.</p>
+
+<p>Which leads neatly on to a final problem.</p>
+
+<h2>Put the maps where the domain knowledge is</h2>
+
+<p>Encounters with GDS people always uncover a great deal of domain knowledge around GOV.UK, associated services, how they're built, who they're aimed at and how their users use them … and a lack of domain knowledge around the legislation and policy that underpins them. I can't say for sure, but I'm fairly certain that GDS does not have a single librarian, let alone a law librarian. Which, when you're turning legislation into data and code is odd.</p>
+
+<p>If I worked at GDS, I'd build a platform to manage process flow mapping and a means to publish those flows to the web, to users and to third party platforms. I'd push the process flow mapping back out to the departments where the domain knowledge lives and I'd have a team of information managers to spot common patterns and common steps and tie the whole thing together.</p>
+
+<h2>Is this "rules as code"?</h2>
+
+<p>Having typed to the end, I'm beginning to suspect this is not too dissimilar to "<a href="https://govinsider.asia/inclusive-gov/four-things-you-should-know-about-rules-as-code/#:~:text=Rules%20as%20Code%20is%20an,from%20the%20New%20Zealand%20Government.">rules as code</a>". A world where the people who write the legislation and the people who write the policy are also drawing out the process flow and capturing the logic. Not perhaps as code, but definitely as data.</p>
+
+<p>"Rules as code" has always scared me slightly. I would much prefer to be judged by a jury made up of my peers, than by a machine running ifs, elses and loops. I've spent too long around software to begin to think that any of it is much good.</p>
+
+<p>We do seem to be stuck with software and this definitely edges in that direction. Whilst the legislation might at present be unparseable to machines, it is clearly possible to parse the translation layer of process flow data. Is that good? I'm really not sure. But it's probably better than encapsulating policy and legislation into content blobs in a CMS.</p>
